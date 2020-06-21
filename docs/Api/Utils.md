@@ -1,16 +1,17 @@
 # PurplShip\Utils
 
-All URIs are relative to *https://instance.purplship.api/v1*
+All URIs are relative to *http://instance.purplship.api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getReference**](Utils.md#getReference) | **GET** /references | 
-[**printLabel**](Utils.md#printLabel) | **POST** /labels | 
+[**references**](Utils.md#references) | **GET** /references | Get all References
+[**printLabel**](Utils.md#printLabel) | **POST** /labels | Print a Label
 
 
-# **getReference**
-> \PurplShip\Model\References getReference()
+# **references**
+> \PurplShip\Model\References references()
 
+Get all References
 
 # Countries
 
@@ -263,6 +264,8 @@ ZW | ZIMBABWE
 
 ## UNITED ARAB EMIRATES
 
+<details>
+
 Code | Name
 --- | ---
 AB | Abu Dhabi
@@ -273,9 +276,12 @@ RA | Ras al-Khaimah
 SH | Sharjah
 UM | Umm al-Qaiwain
 
+</details><br/>
 
 
 ## CANADA
+
+<details>
 
 Code | Name
 --- | ---
@@ -293,9 +299,12 @@ QC | Quebec
 SK | Saskatchewan
 YT | Yukon
 
+</details><br/>
 
 
 ## CHINA, PEOPLES REPUBLIC
+
+<details>
 
 Code | Name
 --- | ---
@@ -328,9 +337,12 @@ jiangsu | Jiangsu
 shandong | Shandong
 zhejiang | Zhejiang
 
+</details><br/>
 
 
 ## INDIA
+
+<details>
 
 Code | Name
 --- | ---
@@ -370,9 +382,12 @@ UA | Uttaranchal
 UP | Uttar Pradesh
 WB | West Bengal
 
+</details><br/>
 
 
 ## MEXICO
+
+<details>
 
 Code | Name
 --- | ---
@@ -409,9 +424,12 @@ VE | Veracruz
 YU | Yucatán
 ZA | Zacatecas
 
+</details><br/>
 
 
 ## UNITED STATES OF AMERICA
+
+<details>
 
 Code | Name
 --- | ---
@@ -468,6 +486,7 @@ WI | Wisconsin
 WY | Wyoming
 PR | Puerto Rico
 
+</details><br/>
 
 
 </details><br/>
@@ -632,6 +651,8 @@ ZAR | South African Rand
 
 ## Canada Post
 
+<details>
+
 Code | Dimensions | Note
 --- | --- | ---
 canadapost_mailing_box | 15.2 x 10.2 | height x width
@@ -646,9 +667,12 @@ canadapost_corrugated_large_box | 46.0 x 40.6 x 46.0 | height x length x width
 canadapost_xexpresspost_certified_envelope | 15.9 x 1.5 x 0.5 x 26.0 | height x length x weight x width
 canadapost_xexpresspost_national_large_envelope | 29.2 x 1.5 x 1.36 x 40.0 | height x length x weight x width
 
+</details><br/>
 
 
 ## DHL
+
+<details>
 
 Code | Dimensions | Note
 --- | --- | ---
@@ -667,9 +691,12 @@ dhl_didgeridoo_box | 13.0 x 162.0 x 10.0 x 13.0 | height x length x weight x wid
 dhl_jumbo_box | 42.7 x 33.0 x 30.0 x 45.0 | height x length x weight x width
 dhl_jumbo_box_junior | 34.0 x 24.1 x 20.0 x 39.9 | height x length x weight x width
 
+</details><br/>
 
 
 ## FedEx
+
+<details>
 
 Code | Dimensions | Note
 --- | --- | ---
@@ -684,9 +711,12 @@ fedex_10_kg_box | 12.94 x 10.19 x 10.0 x 15.81 | height x length x weight x widt
 fedex_25_kg_box | 16.56 x 13.19 x 25.0 x 21.56 | height x length x weight x width
 fedex_tube | 6.0 x 6.0 x 20.0 x 38.0 | height x length x weight x width
 
+</details><br/>
 
 
 ## Purolator
+
+<details>
 
 Code | Dimensions | Note
 --- | --- | ---
@@ -694,9 +724,12 @@ purolator_express_envelope | 1.0 | weight
 purolator_express_pack | 3.0 | weight
 purolator_express_box | 7.0 | weight
 
+</details><br/>
 
 
 ## UPS
+
+<details>
 
 Code | Dimensions | Note
 --- | --- | ---
@@ -707,6 +740,7 @@ ups_express_tube | 6.0 x 6.0 x 38.0 | height x length x width
 ups_express_pak | 11.75 x 16.0 | height x width
 ups_world_document_box | 12.5 x 3.0 x 17.5 | height x length x width
 
+</details><br/>
 
 
 </details><br/>
@@ -718,6 +752,8 @@ ups_world_document_box | 12.5 x 3.0 x 17.5 | height x length x width
 
 
 ## Canada Post
+
+<details>
 
 Code | Identifier
 --- | ---
@@ -734,9 +770,12 @@ canadapost_return_at_senders_expense | RASE
 canadapost_return_to_sender | RTS
 canadapost_abandon | ABAN
 
+</details><br/>
 
 
 ## DHL
+
+<details>
 
 Code | Identifier
 --- | ---
@@ -966,9 +1005,12 @@ dhl_loss_compensation | ZC
 dhl_customer_rebate | ZD
 dhl_e_com_discount | ZE
 
+</details><br/>
 
 
 ## FedEx
+
+<details>
 
 Code | Identifier
 --- | ---
@@ -1052,9 +1094,12 @@ usps_delivery | USPS_DELIVERY
 usps_pickup | USPS_PICKUP
 weighing | WEIGHING
 
+</details><br/>
 
 
 ## Purolator
+
+<details>
 
 Code | Identifier
 --- | ---
@@ -1068,9 +1113,12 @@ origin_signature_not_required | Origin Signature Not Required (OSNR)
 adult_signature_required | Adult Signature Required (ASR)
 special_handling | Special Handling
 
+</details><br/>
 
 
 ## UPS
+
+<details>
 
 Code | Identifier
 --- | ---
@@ -1093,6 +1141,65 @@ return_service | ReturnService
 sdl_shipment_indicator | SDLShipmentIndicator
 epra_indicator | EPRAIndicator
 
+</details><br/>
+
+
+## Freightcom
+
+<details>
+
+Code | Identifier
+--- | ---
+freightcom_saturday_pickup_required | saturdayPickupRequired
+freightcom_homeland_security | homelandSecurity
+freightcom_exhibition_convention_site | exhibitionConventionSite
+freightcom_military_base_delivery | militaryBaseDelivery
+freightcom_customs_in_bond_freight | customsIn_bondFreight
+freightcom_limited_access | limitedAccess
+freightcom_excess_length | excessLength
+freightcom_tailgate_pickup | tailgatePickup
+freightcom_residential_pickup | residentialPickup
+freightcom_cross_border_fee | crossBorderFee
+freightcom_notify_recipient | notifyRecipient
+freightcom_single_shipment | singleShipment
+freightcom_tailgate_delivery | tailgateDelivery
+freightcom_residential_delivery | residentialDelivery
+freightcom_insurance_type | insuranceType
+freightcom_inside_delivery | insideDelivery
+freightcom_is_saturday_service | isSaturdayService
+freightcom_dangerous_goods_type | dangerousGoodsType
+freightcom_stackable | stackable
+
+</details><br/>
+
+
+## eShipper
+
+<details>
+
+Code | Identifier
+--- | ---
+eshipper_saturday_pickup_required | saturdayPickupRequired
+eshipper_homeland_security | homelandSecurity
+eshipper_exhibition_convention_site | exhibitionConventionSite
+eshipper_military_base_delivery | militaryBaseDelivery
+eshipper_customs_in_bond_freight | customsIn_bondFreight
+eshipper_limited_access | limitedAccess
+eshipper_excess_length | excessLength
+eshipper_tailgate_pickup | tailgatePickup
+eshipper_residential_pickup | residentialPickup
+eshipper_cross_border_fee | crossBorderFee
+eshipper_notify_recipient | notifyRecipient
+eshipper_single_shipment | singleShipment
+eshipper_tailgate_delivery | tailgateDelivery
+eshipper_residential_delivery | residentialDelivery
+eshipper_insurance_type | insuranceType
+eshipper_inside_delivery | insideDelivery
+eshipper_is_saturday_service | isSaturdayService
+eshipper_dangerous_goods_type | dangerousGoodsType
+eshipper_stackable | stackable
+
+</details><br/>
 
 
 </details><br/>
@@ -1104,6 +1211,8 @@ epra_indicator | EPRAIndicator
 
 
 ## Canada Post
+
+<details>
 
 Code | Identifier
 --- | ---
@@ -1130,9 +1239,12 @@ canadapost_small_packet_international_air | INT.SP.AIR
 canadapost_small_packet_international_surface | INT.SP.SURF
 canadapost_tracked_packet_international | INT.TP
 
+</details><br/>
 
 
 ## DHL
+
+<details>
 
 Code | Identifier
 --- | ---
@@ -1171,9 +1283,12 @@ dhl_express_envelope_doc | EXPRESS ENVELOPE DOC
 dhl_express_12_00_nondoc | EXPRESS 12:00 NONDOC
 dhl_destination_charges | Destination Charges
 
+</details><br/>
 
 
 ## FedEx
+
+<details>
 
 Code | Identifier
 --- | ---
@@ -1234,9 +1349,12 @@ smart_post | SMART_POST
 standard_overnight | STANDARD_OVERNIGHT
 transborder_distribution_consolidation | TRANSBORDER_DISTRIBUTION_CONSOLIDATION
 
+</details><br/>
 
 
 ## Purolator
+
+<details>
 
 Code | Identifier
 --- | ---
@@ -1302,9 +1420,12 @@ purolator_express_international_box_9_am | PurolatorExpressInternationalBox9AM
 purolator_express_international_box_10_30_am | PurolatorExpressInternationalBox10:30AM
 purolator_express_international_box_12_00 | PurolatorExpressInternationalBox12:00
 
+</details><br/>
 
 
 ## UPS
+
+<details>
 
 Code | Identifier
 --- | ---
@@ -1332,6 +1453,291 @@ ups_worldwide_express_freight | 96
 ups_priority_mail_innovations | M5
 ups_economy_mail_innovations | M6
 
+</details><br/>
+
+
+## Freightcom
+
+<details>
+
+Code | Identifier
+--- | ---
+freightcom_fedex_priority | 1
+freightcom_fedex_first_overnight | 2
+freightcom_fedex_ground | 3
+freightcom_fedex_standard_overnight | 28
+freightcom_fedex_2nd_day | 29
+freightcom_fedex_express_saver | 30
+freightcom_purolator_air | 4
+freightcom_purolator_air_9_am | 5
+freightcom_purolator_air_10_30 | 6
+freightcom_puroletter | 7
+freightcom_puroletter_9_am | 8
+freightcom_puroletter_10_30 | 9
+freightcom_puro_pak | 10
+freightcom_puro_pak_9_am | 11
+freightcom_puro_pak_10_30 | 12
+freightcom_purolator_ground | 13
+freightcom_purolator_ground_9_am | 19
+freightcom_purolator_ground_10_30 | 20
+freightcom_canada_worldwide_same_day | 14
+freightcom_canada_worldwide_next_flight_out | 15
+freightcom_canada_worldwide_air_freight | 16
+freightcom_canada_worldwide_ltl | 17
+freightcom_dhl_international_express | 106
+freightcom_ups_express_next_day_air | 600
+freightcom_ups_expedited_second_day_air | 601
+freightcom_ups_worldwide_express | 602
+freightcom_ups_worldwide_expedited | 603
+freightcom_ups_standard_ground | 604
+freightcom_ups_express_early_am_next_day_air_early_am | 605
+freightcom_ups_three_day_select | 606
+freightcom_ups_saver | 607
+freightcom_ups_ground | 608
+freightcom_next_day_saver | 609
+freightcom_worldwide_express_plus | 610
+freightcom_second_day_air_am | 611
+freightcom_canada_post_priority | 500
+freightcom_canada_post_xpress_post | 501
+freightcom_canada_post_expedited | 502
+freightcom_canada_post_regular | 503
+freightcom_canada_post_xpress_post_usa | 504
+freightcom_canada_post_xpress_post_intl | 505
+freightcom_canada_post_air_parcel_intl | 506
+freightcom_canada_post_surface_parcel_intl | 507
+freightcom_canada_post_expedited_parcel_usa | 508
+freightcom_tst_ltl | 1100
+freightcom_ltl_chicago_suburban_express | 1500
+freightcom_ltl_fedex_freight_east | 1501
+freightcom_ltl_fedex_freight_west | 1502
+freightcom_ltl_mid_states_express | 1503
+freightcom_ltl_new_england_motor_freight | 1504
+freightcom_ltl_new_penn | 1505
+freightcom_ltl_oak_harbor | 1506
+freightcom_ltl_pitt_ohio | 1507
+freightcom_ltl_r_l_carriers | 1508
+freightcom_ltl_saia | 1509
+freightcom_ltl_usf_reddaway | 1510
+freightcom_ltl_vitran_express | 1511
+freightcom_ltl_wilson_trucking | 1512
+freightcom_ltl_yellow_transportation | 1513
+freightcom_ltl_roadway | 1514
+freightcom_ltl_fedex_national | 1515
+freightcom_wilson_trucking_tfc | 1800
+freightcom_aaa_cooper_transportation | 1801
+freightcom_roadrunner_dawes | 1802
+freightcom_new_england_motor_freight | 1803
+freightcom_new_penn_motor_express | 1804
+freightcom_dayton_freight | 1805
+freightcom_southeastern_freightway | 1806
+freightcom_saia_inc | 1807
+freightcom_conway | 1808
+freightcom_roadway | 1809
+freightcom_usf_reddaway | 1810
+freightcom_usf_holland | 1811
+freightcom_dependable_highway_express | 1812
+freightcom_day_and_ross | 1813
+freightcom_day_and_ross_r_and_l | 1814
+freightcom_ups | 1815
+freightcom_aaa_cooper | 1816
+freightcom_ama_transportation | 1817
+freightcom_averitt_express | 1818
+freightcom_central_freight | 1819
+freightcom_conway_us | 1820
+freightcom_dayton | 1821
+freightcom_drug_transport | 1822
+freightcom_estes | 1823
+freightcom_land_air_express | 1824
+freightcom_fedex_west | 1825
+freightcom_fedex_national | 1826
+freightcom_usf_holland_us | 1827
+freightcom_lakeville_m_express | 1828
+freightcom_milan_express | 1829
+freightcom_nebraska_transport | 1830
+freightcom_new_england | 1831
+freightcom_new_penn | 1832
+freightcom_a_duie_pyle | 1833
+freightcom_roadway_us | 1834
+freightcom_usf_reddaway_us | 1835
+freightcom_rhody_transportation | 1836
+freightcom_saia_motor_freight | 1837
+freightcom_southeastern_frgt | 1838
+freightcom_pitt_ohio | 1839
+freightcom_ward | 1840
+freightcom_wilson | 1841
+freightcom_chi_cargo | 1842
+freightcom_tax_air | 1843
+freightcom_fedex_east | 1844
+freightcom_central_transport | 1845
+freightcom_roadrunner | 1846
+freightcom_r_and_l_carriers | 1847
+freightcom_estes_us | 1848
+freightcom_yrc_roadway | 1849
+freightcom_central_transport_us | 1850
+freightcom_absolute_transportation_services | 1851
+freightcom_blue_sky_express | 1852
+freightcom_galasso_trucking | 1853
+freightcom_griley_air_freight | 1854
+freightcom_jet_transportation | 1855
+freightcom_metro_transportation_logistics | 1856
+freightcom_oak_harbor | 1857
+freightcom_stream_links_express | 1858
+freightcom_tiffany_trucking | 1859
+freightcom_ups_freight | 1860
+freightcom_roadrunner_us | 1861
+freightcom_global_mail_parcel_priority | 3500
+freightcom_global_mail_parcel_standard | 3501
+freightcom_global_mail_packet_plus_priority | 3502
+freightcom_global_mail_packet_priority | 3503
+freightcom_global_mail_packet_standard | 3504
+freightcom_global_mail_business_priority | 3505
+freightcom_global_mail_business_standard | 3506
+freightcom_global_mail_parcel_direct_priority | 3507
+freightcom_global_mail_parcel_direct_standard | 3508
+
+</details><br/>
+
+
+## eShipper
+
+<details>
+
+Code | Identifier
+--- | ---
+eshipper_fedex_priority | 1
+eshipper_fedex_first_overnight | 2
+eshipper_fedex_ground | 3
+eshipper_fedex_standard_overnight | 28
+eshipper_fedex_2nd_day | 29
+eshipper_fedex_express_saver | 30
+eshipper_purolator_air | 4
+eshipper_purolator_air_9_am | 5
+eshipper_purolator_air_10_30 | 6
+eshipper_puroletter | 7
+eshipper_puroletter_9_am | 8
+eshipper_puroletter_10_30 | 9
+eshipper_puro_pak | 10
+eshipper_puro_pak_9_am | 11
+eshipper_puro_pak_10_30 | 12
+eshipper_purolator_ground | 13
+eshipper_purolator_ground_9_am | 19
+eshipper_purolator_ground_10_30 | 20
+eshipper_canada_worldwide_same_day | 14
+eshipper_canada_worldwide_next_flight_out | 15
+eshipper_canada_worldwide_air_freight | 16
+eshipper_canada_worldwide_ltl | 17
+eshipper_dhl_international_express | 106
+eshipper_ups_express_next_day_air | 600
+eshipper_ups_expedited_second_day_air | 601
+eshipper_ups_worldwide_express | 602
+eshipper_ups_worldwide_expedited | 603
+eshipper_ups_standard_ground | 604
+eshipper_ups_express_early_am_next_day_air_early_am | 605
+eshipper_ups_three_day_select | 606
+eshipper_ups_saver | 607
+eshipper_ups_ground | 608
+eshipper_next_day_saver | 609
+eshipper_worldwide_express_plus | 610
+eshipper_second_day_air_am | 611
+eshipper_canada_post_priority | 500
+eshipper_canada_post_xpress_post | 501
+eshipper_canada_post_expedited | 502
+eshipper_canada_post_regular | 503
+eshipper_canada_post_xpress_post_usa | 504
+eshipper_canada_post_xpress_post_intl | 505
+eshipper_canada_post_air_parcel_intl | 506
+eshipper_canada_post_surface_parcel_intl | 507
+eshipper_canada_post_expedited_parcel_usa | 508
+eshipper_tst_ltl | 1100
+eshipper_ltl_chicago_suburban_express | 1500
+eshipper_ltl_fedex_freight_east | 1501
+eshipper_ltl_fedex_freight_west | 1502
+eshipper_ltl_mid_states_express | 1503
+eshipper_ltl_new_england_motor_freight | 1504
+eshipper_ltl_new_penn | 1505
+eshipper_ltl_oak_harbor | 1506
+eshipper_ltl_pitt_ohio | 1507
+eshipper_ltl_r_l_carriers | 1508
+eshipper_ltl_saia | 1509
+eshipper_ltl_usf_reddaway | 1510
+eshipper_ltl_vitran_express | 1511
+eshipper_ltl_wilson_trucking | 1512
+eshipper_ltl_yellow_transportation | 1513
+eshipper_ltl_roadway | 1514
+eshipper_ltl_fedex_national | 1515
+eshipper_wilson_trucking_tfc | 1800
+eshipper_aaa_cooper_transportation | 1801
+eshipper_roadrunner_dawes | 1802
+eshipper_new_england_motor_freight | 1803
+eshipper_new_penn_motor_express | 1804
+eshipper_dayton_freight | 1805
+eshipper_southeastern_freightway | 1806
+eshipper_saia_inc | 1807
+eshipper_conway | 1808
+eshipper_roadway | 1809
+eshipper_usf_reddaway | 1810
+eshipper_usf_holland | 1811
+eshipper_dependable_highway_express | 1812
+eshipper_day_and_ross | 1813
+eshipper_day_and_ross_r_and_l | 1814
+eshipper_ups | 1815
+eshipper_aaa_cooper | 1816
+eshipper_ama_transportation | 1817
+eshipper_averitt_express | 1818
+eshipper_central_freight | 1819
+eshipper_conway_us | 1820
+eshipper_dayton | 1821
+eshipper_drug_transport | 1822
+eshipper_estes | 1823
+eshipper_land_air_express | 1824
+eshipper_fedex_west | 1825
+eshipper_fedex_national | 1826
+eshipper_usf_holland_us | 1827
+eshipper_lakeville_m_express | 1828
+eshipper_milan_express | 1829
+eshipper_nebraska_transport | 1830
+eshipper_new_england | 1831
+eshipper_new_penn | 1832
+eshipper_a_duie_pyle | 1833
+eshipper_roadway_us | 1834
+eshipper_usf_reddaway_us | 1835
+eshipper_rhody_transportation | 1836
+eshipper_saia_motor_freight | 1837
+eshipper_southeastern_frgt | 1838
+eshipper_pitt_ohio | 1839
+eshipper_ward | 1840
+eshipper_wilson | 1841
+eshipper_chi_cargo | 1842
+eshipper_tax_air | 1843
+eshipper_fedex_east | 1844
+eshipper_central_transport | 1845
+eshipper_roadrunner | 1846
+eshipper_r_and_l_carriers | 1847
+eshipper_estes_us | 1848
+eshipper_yrc_roadway | 1849
+eshipper_central_transport_us | 1850
+eshipper_absolute_transportation_services | 1851
+eshipper_blue_sky_express | 1852
+eshipper_galasso_trucking | 1853
+eshipper_griley_air_freight | 1854
+eshipper_jet_transportation | 1855
+eshipper_metro_transportation_logistics | 1856
+eshipper_oak_harbor | 1857
+eshipper_stream_links_express | 1858
+eshipper_tiffany_trucking | 1859
+eshipper_ups_freight | 1860
+eshipper_roadrunner_us | 1861
+eshipper_global_mail_parcel_priority | 3500
+eshipper_global_mail_parcel_standard | 3501
+eshipper_global_mail_packet_plus_priority | 3502
+eshipper_global_mail_packet_priority | 3503
+eshipper_global_mail_packet_standard | 3504
+eshipper_global_mail_business_priority | 3505
+eshipper_global_mail_business_standard | 3506
+eshipper_global_mail_parcel_direct_priority | 3507
+eshipper_global_mail_parcel_direct_standard | 3508
+
+</details><br/>
 
 
 </details><br/>
@@ -1346,10 +1752,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $purplship = new \PurplShip\PurplShip('YOUR_API_KEY', 'https://instance.purplship.api/v1');
 
 try {
-    $result = $purplship->utils->getReference();
+    $result = $purplship->utils->references();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling Utils->getReference: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling Utils->references: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1363,7 +1769,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Token](../../README.md#Token)
+[Bearer](../../README.md#Bearer), [OAuth2 password](../../README.md#oauth2-password)
 
 ### HTTP request headers
 
@@ -1375,7 +1781,7 @@ This endpoint does not need any parameter.
 # **printLabel**
 > printLabel($data)
 
-
+Print a Label
 
 Returns a label PDF file.
 
@@ -1386,12 +1792,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
 $purplship = new \PurplShip\PurplShip('YOUR_API_KEY', 'https://instance.purplship.api/v1');
-
-# Prepare request data
-$data = new \PurplShip\Model\LabelPrintingRequest();
+$data = new \PurplShip\Model\LabelPrintingRequest(); 
 
 try {
-    $purplship->utils->printLabel($data);
+    $result = $purplship->utils->printLabel($data);
 } catch (Exception $e) {
     echo 'Exception when calling Utils->printLabel: ', $e->getMessage(), PHP_EOL;
 }
@@ -1410,7 +1814,7 @@ void (empty response body)
 
 ### Authorization
 
-[Token](../../README.md#Token)
+[Bearer](../../README.md#Bearer), [OAuth2 password](../../README.md#oauth2-password)
 
 ### HTTP request headers
 

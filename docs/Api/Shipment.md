@@ -1,18 +1,18 @@
-# PurplShip\Tracking
+# PurplShip\Shipment
 
 All URIs are relative to *http://instance.purplship.api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**fetch**](Tracking.md#fetch) | **GET** /proxy/tracking/{carrier_name}/{tracking_number} | Track a Shipment
+[**create**](Shipment.md#create) | **POST** /proxy/shipments | Create a Shipment
 
 
-# **fetch**
-> \PurplShip\Model\TrackingResponse fetch($carrier_name, $tracking_number, $test)
+# **create**
+> \PurplShip\Model\ShipmentResponse create($data)
 
-Track a Shipment
+Create a Shipment
 
-You can track a shipment by specifying the carrier and the shipment tracking number.
+Once a Shipment is initialized by fetching the rates, the remaining requirements might be specified  to submit the shipment to the carrier of the selected rate of your choice.
 
 ### Example
 ```php
@@ -21,15 +21,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
 $purplship = new \PurplShip\PurplShip('YOUR_API_KEY', 'https://instance.purplship.api/v1');
-$carrier_name = "carrier_name_example";
-$tracking_number = "tracking_number_example";
-$test = false; 
+$data = new \PurplShip\Model\ShipmentRequest();
 
 try {
-    $result = $purplship->tracking->fetch($carrier_name, $tracking_number, $test);
+    $result = $purplship->shipment->create($data);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling Tracking->fetch: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling Shipment->create: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -38,13 +36,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **carrier_name** | **string**|  |
- **tracking_number** | **string**|  |
- **test** | **bool**| The test flag indicates whether to use a carrier configured for test. | [optional] [default to false]
+ **data** | [**\PurplShip\Model\ShipmentRequest**](../Model/ShipmentRequest.md)|  |
 
 ### Return type
 
-[**\PurplShip\Model\TrackingResponse**](../Model/TrackingResponse.md)
+[**\PurplShip\Model\ShipmentResponse**](../Model/ShipmentResponse.md)
 
 ### Authorization
 
