@@ -1,6 +1,6 @@
 {
     "name": "purplship/purplship-php",
-    "version": "2020.6.2",
+    "version": "2020.6.3",
     "description": "PurplShip Multi-carrier Shipping API PHP client library",
     "keywords": [
         "purplship",

@@ -1769,7 +1769,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Bearer](../../README.md#Bearer), [OAuth2 password](../../README.md#oauth2-password)
+[Token](../../README.md#Token), [OAuth2 password](../../README.md#oauth2-password)
 
 ### HTTP request headers
 
@@ -1814,7 +1814,7 @@ void (empty response body)
 
 ### Authorization
 
-[Bearer](../../README.md#Bearer), [OAuth2 password](../../README.md#oauth2-password)
+[Token](../../README.md#Token), [OAuth2 password](../../README.md#oauth2-password)
 
 ### HTTP request headers
 

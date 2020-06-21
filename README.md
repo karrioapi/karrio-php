@@ -39,7 +39,7 @@ try {
     $result = $purplship->carriers->list();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling carriers->retrieve: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling carriers->list: ', $e->getMessage(), PHP_EOL;
 }
 
 ?>
@@ -91,7 +91,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
 
-## Bearer
+## Token
 
 - **Type**: API key
 - **API key parameter name**: Authorization

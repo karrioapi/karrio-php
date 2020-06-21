@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../../README.md#Bearer), [OAuth2 password](../../README.md#oauth2-password)
+[Token](../../README.md#Token), [OAuth2 password](../../README.md#oauth2-password)
 
 ### HTTP request headers
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[Bearer](../../README.md#Bearer), [OAuth2 password](../../README.md#oauth2-password)
+[Token](../../README.md#Token), [OAuth2 password](../../README.md#oauth2-password)
 
 ### HTTP request headers
 

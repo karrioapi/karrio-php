@@ -49,7 +49,7 @@ class Configuration
     protected $apiKeys = [];
 
     /**
-     * Associate array to store API prefix (e.g. Bearer)
+     * Associate array to store API prefix (e.g. Token)
      *
      * @var string[]
      */
@@ -146,10 +146,10 @@ class Configuration
     }
 
     /**
-     * Sets the prefix for API key (e.g. Bearer)
+     * Sets the prefix for API key (e.g. Token)
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     * @param string $prefix           API key prefix, e.g. Bearer
+     * @param string $prefix           API key prefix, e.g. Token
      *
      * @return $this
      */
