@@ -36,10 +36,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $purplship = new \PurplShip\PurplShip('YOUR_API_KEY', 'https://instance.purplship.api/v1');
 
 try {
-    $result = $purplship->carriers->retrieve();
+    $result = $purplship->carriers->list();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling carriers->retrieve: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling carriers->list: ', $e->getMessage(), PHP_EOL;
 }
 
 ?>
@@ -51,12 +51,13 @@ All URIs are relative to *https://instance.purplship.api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*Carriers* | [**retrieve**](docs/Api/Carriers.md#retrieve) | **GET** /carriers | 
-*Rates* | [**fetch**](docs/Api/Rates.md#fetch) | **POST** /proxy/rates | 
-*Shipments* | [**create**](docs/Api/Shipments.md#create) | **POST** /proxy/shipments | 
-*Tracking* | [**retrieve**](docs/Api/Tracking.md#retrieve) | **GET** /proxy/tracking/{carrier_name}/{tracking_number} | 
-*Utils* | [**getReference**](docs/Api/Utils.md#getreference) | **GET** /references | 
-*Utils* | [**printLabel**](docs/Api/Utils.md#printlabel) | **POST** /labels | 
+*Carriers* | [**list**](docs/Api/Carriers.md#list) | **GET** /carriers | List all Carriers
+*Carriers* | [**retrieve**](docs/Api/Carriers.md#retrieve) | **GET** /carriers/{carrier_id_or_pk} | Retrieve a Carrier
+*Rate* | [**fetch**](docs/Api/Rate.md#fetch) | **POST** /proxy/rates | Fetch Shipment Rates
+*Shipment* | [**create**](docs/Api/Shipment.md#create) | **POST** /proxy/shipments | Create a Shipment
+*Tracking* | [**fetch**](docs/Api/Tracking.md#fetch) | **GET** /proxy/tracking/{carrier_name}/{tracking_number} | Track a Shipment
+*Utils* | [**references**](docs/Api/Utils.md#references) | **GET** /references | Get all References
+*Utils* | [**printLabel**](docs/Api/Utils.md#printlabel) | **POST** /labels | Print a Label
 
 
 ## Documentation For Models
@@ -72,6 +73,7 @@ Class | Method | HTTP request | Description
  - [Invoice](docs/Model/Invoice.md)
  - [LabelPrintingRequest](docs/Model/LabelPrintingRequest.md)
  - [Message](docs/Model/Message.md)
+ - [Options](docs/Model/Options.md)
  - [Parcel](docs/Model/Parcel.md)
  - [Payment](docs/Model/Payment.md)
  - [Rate](docs/Model/Rate.md)
@@ -94,6 +96,15 @@ Class | Method | HTTP request | Description
 - **Type**: API key
 - **API key parameter name**: Authorization
 - **Location**: HTTP header
+
+## OAuth2 password
+
+- **Type**: OAuth
+- **Flow**: password
+- **Authorization URL**: 
+- **Scopes**: 
+ - **read**: Read everything.
+ - **write**: Write everything,
 
 
 ## Author

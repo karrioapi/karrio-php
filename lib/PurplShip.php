@@ -30,8 +30,8 @@ namespace PurplShip;
 
 use GuzzleHttp\Client;
 use PurplShip\Api\Carriers;
-use PurplShip\Api\Rates;
-use PurplShip\Api\Shipments;
+use PurplShip\Api\Rate;
+use PurplShip\Api\Shipment;
 use PurplShip\Api\Tracking;
 use PurplShip\Api\Utils;
 
@@ -63,14 +63,14 @@ class PurplShip
     public $carriers;
 
     /**
-     * @var Rates
+     * @var Rate
      */
-    public $rates;
+    public $rate;
 
     /**
-     * @var Shipments
+     * @var Shipment
      */
-    public $shipments;
+    public $shipment;
 
     /**
      * @var Tracking
@@ -98,10 +98,10 @@ class PurplShip
         
         $this->apiClient = new Client();
 
-        $this->carriers = new Carriers($this->apiClient, $this->config);
-        $this->rates = new Rates($this->apiClient, $this->config);
-        $this->shipments = new Shipments($this->apiClient, $this->config);
-        $this->tracking = new Tracking($this->apiClient, $this->config);
+        $this->rate = new Rate($this->apiClient, $this->config);
         $this->utils = new Utils($this->apiClient, $this->config);
+        $this->carriers = new Carriers($this->apiClient, $this->config);
+        $this->shipment = new Shipment($this->apiClient, $this->config);
+        $this->tracking = new Tracking($this->apiClient, $this->config);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Message
+ * Options
  *
  * PHP version 5
  *
@@ -33,14 +33,15 @@ use \ArrayAccess;
 use \PurplShip\ObjectSerializer;
 
 /**
- * Message Class Doc Comment
+ * Options Class Doc Comment
  *
  * @category Class
+ * @description The options available for the shipment.  Please consult [the reference](#operation/all_references) for additional specific carriers options.
  * @package  PurplShip
  * @author   PurplShip team
  * @link     https://github.com/PurplShip/purplship-php-client
  */
-class Message implements ModelInterface, ArrayAccess
+class Options implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class Message implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Message';
+    protected static $swaggerModelName = 'Options';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +58,7 @@ class Message implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'carrier_name' => 'string',
-        'carrier_id' => 'string',
-        'message' => 'string',
-        'code' => 'string',
-        'details' => 'map[string,string]'
+        
     ];
 
     /**
@@ -70,11 +67,7 @@ class Message implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'carrier_name' => null,
-        'carrier_id' => null,
-        'message' => null,
-        'code' => null,
-        'details' => null
+        
     ];
 
     /**
@@ -104,11 +97,7 @@ class Message implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'carrier_name' => 'carrierName',
-        'carrier_id' => 'carrierId',
-        'message' => 'message',
-        'code' => 'code',
-        'details' => 'details'
+        
     ];
 
     /**
@@ -117,11 +106,7 @@ class Message implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'carrier_name' => 'setCarrierName',
-        'carrier_id' => 'setCarrierId',
-        'message' => 'setMessage',
-        'code' => 'setCode',
-        'details' => 'setDetails'
+        
     ];
 
     /**
@@ -130,11 +115,7 @@ class Message implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'carrier_name' => 'getCarrierName',
-        'carrier_id' => 'getCarrierId',
-        'message' => 'getMessage',
-        'code' => 'getCode',
-        'details' => 'getDetails'
+        
     ];
 
     /**
@@ -197,11 +178,6 @@ class Message implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['carrier_name'] = isset($data['carrier_name']) ? $data['carrier_name'] : null;
-        $this->container['carrier_id'] = isset($data['carrier_id']) ? $data['carrier_id'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['details'] = isset($data['details']) ? $data['details'] : null;
     }
 
     /**
@@ -212,28 +188,6 @@ class Message implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if ($this->container['carrier_name'] === null) {
-            $invalidProperties[] = "'carrier_name' can't be null";
-        }
-        if ((mb_strlen($this->container['carrier_name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'carrier_name', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['carrier_id'] === null) {
-            $invalidProperties[] = "'carrier_id' can't be null";
-        }
-        if ((mb_strlen($this->container['carrier_id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'carrier_id', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['message']) && (mb_strlen($this->container['message']) < 1)) {
-            $invalidProperties[] = "invalid value for 'message', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['code']) && (mb_strlen($this->container['code']) < 1)) {
-            $invalidProperties[] = "invalid value for 'code', the character length must be bigger than or equal to 1.";
-        }
 
         return $invalidProperties;
     }
@@ -249,146 +203,6 @@ class Message implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets carrier_name
-     *
-     * @return string
-     */
-    public function getCarrierName()
-    {
-        return $this->container['carrier_name'];
-    }
-
-    /**
-     * Sets carrier_name
-     *
-     * @param string $carrier_name The targeted carrier
-     *
-     * @return $this
-     */
-    public function setCarrierName($carrier_name)
-    {
-
-        if ((mb_strlen($carrier_name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $carrier_name when calling Message., must be bigger than or equal to 1.');
-        }
-
-        $this->container['carrier_name'] = $carrier_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets carrier_id
-     *
-     * @return string
-     */
-    public function getCarrierId()
-    {
-        return $this->container['carrier_id'];
-    }
-
-    /**
-     * Sets carrier_id
-     *
-     * @param string $carrier_id The targeted carrier name (unique identifier)
-     *
-     * @return $this
-     */
-    public function setCarrierId($carrier_id)
-    {
-
-        if ((mb_strlen($carrier_id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $carrier_id when calling Message., must be bigger than or equal to 1.');
-        }
-
-        $this->container['carrier_id'] = $carrier_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string $message The error or warning message
-     *
-     * @return $this
-     */
-    public function setMessage($message)
-    {
-
-        if (!is_null($message) && (mb_strlen($message) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $message when calling Message., must be bigger than or equal to 1.');
-        }
-
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string $code The message code
-     *
-     * @return $this
-     */
-    public function setCode($code)
-    {
-
-        if (!is_null($code) && (mb_strlen($code) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $code when calling Message., must be bigger than or equal to 1.');
-        }
-
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets details
-     *
-     * @return map[string,string]
-     */
-    public function getDetails()
-    {
-        return $this->container['details'];
-    }
-
-    /**
-     * Sets details
-     *
-     * @param map[string,string] $details any additional details
-     *
-     * @return $this
-     */
-    public function setDetails($details)
-    {
-        $this->container['details'] = $details;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *

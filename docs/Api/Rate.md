@@ -1,18 +1,18 @@
-# PurplShip\Shipments
+# PurplShip\Rate
 
-All URIs are relative to *https://instance.purplship.api/v1*
+All URIs are relative to *http://instance.purplship.api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create**](Shipments.md#create) | **POST** /proxy/shipments | 
+[**fetch**](Rate.md#fetch) | **POST** /proxy/rates | Fetch Shipment Rates
 
 
-# **create**
-> \PurplShip\Model\ShipmentResponse create($data)
+# **fetch**
+> \PurplShip\Model\RateResponse fetch($data)
 
+Fetch Shipment Rates
 
-
-Once a Shipment is initialized by fetching the rates, the remaining requirements might be specified  to submit the shipment to the carrier of the selected rate of your choice.
+The Shipping process begins by fetching rates for your shipment. The request returns rates required to create your shipment.
 
 ### Example
 ```php
@@ -21,15 +21,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
 $purplship = new \PurplShip\PurplShip('YOUR_API_KEY', 'https://instance.purplship.api/v1');
-
-# Prepare request data
-$data = new \PurplShip\Model\ShipmentRequest();
+$data = new \PurplShip\Model\RateRequest();
 
 try {
-    $result = $purplship->shipments->create($data);
+    $result = $purplship->rate->fetch($data);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling Shipments->create: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling Rate->fetch: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -38,15 +36,15 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**\PurplShip\Model\ShipmentRequest**](../Model/ShipmentRequest.md)|  |
+ **data** | [**\PurplShip\Model\RateRequest**](../Model/RateRequest.md)|  |
 
 ### Return type
 
-[**\PurplShip\Model\ShipmentResponse**](../Model/ShipmentResponse.md)
+[**\PurplShip\Model\RateResponse**](../Model/RateResponse.md)
 
 ### Authorization
 
-[Token](../../README.md#Token)
+[Token](../../README.md#Token), [OAuth2 password](../../README.md#oauth2-password)
 
 ### HTTP request headers
 
