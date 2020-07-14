@@ -66,7 +66,7 @@ class Rate implements ModelInterface, ArrayAccess
         'base_charge' => 'float',
         'total_charge' => 'float',
         'duties_and_taxes' => 'float',
-        'estimated_delivery' => 'string',
+        'transit_days' => 'int',
         'extra_charges' => '\PurplShip\Model\Charge[]'
     ];
 
@@ -85,7 +85,7 @@ class Rate implements ModelInterface, ArrayAccess
         'base_charge' => null,
         'total_charge' => null,
         'duties_and_taxes' => null,
-        'estimated_delivery' => null,
+        'transit_days' => null,
         'extra_charges' => null
     ];
 
@@ -125,7 +125,7 @@ class Rate implements ModelInterface, ArrayAccess
         'base_charge' => 'baseCharge',
         'total_charge' => 'totalCharge',
         'duties_and_taxes' => 'dutiesAndTaxes',
-        'estimated_delivery' => 'estimatedDelivery',
+        'transit_days' => 'transitDays',
         'extra_charges' => 'extraCharges'
     ];
 
@@ -144,7 +144,7 @@ class Rate implements ModelInterface, ArrayAccess
         'base_charge' => 'setBaseCharge',
         'total_charge' => 'setTotalCharge',
         'duties_and_taxes' => 'setDutiesAndTaxes',
-        'estimated_delivery' => 'setEstimatedDelivery',
+        'transit_days' => 'setTransitDays',
         'extra_charges' => 'setExtraCharges'
     ];
 
@@ -163,7 +163,7 @@ class Rate implements ModelInterface, ArrayAccess
         'base_charge' => 'getBaseCharge',
         'total_charge' => 'getTotalCharge',
         'duties_and_taxes' => 'getDutiesAndTaxes',
-        'estimated_delivery' => 'getEstimatedDelivery',
+        'transit_days' => 'getTransitDays',
         'extra_charges' => 'getExtraCharges'
     ];
 
@@ -236,7 +236,7 @@ class Rate implements ModelInterface, ArrayAccess
         $this->container['base_charge'] = isset($data['base_charge']) ? $data['base_charge'] : null;
         $this->container['total_charge'] = isset($data['total_charge']) ? $data['total_charge'] : null;
         $this->container['duties_and_taxes'] = isset($data['duties_and_taxes']) ? $data['duties_and_taxes'] : null;
-        $this->container['estimated_delivery'] = isset($data['estimated_delivery']) ? $data['estimated_delivery'] : null;
+        $this->container['transit_days'] = isset($data['transit_days']) ? $data['transit_days'] : null;
         $this->container['extra_charges'] = isset($data['extra_charges']) ? $data['extra_charges'] : null;
     }
 
@@ -276,10 +276,6 @@ class Rate implements ModelInterface, ArrayAccess
 
         if (!is_null($this->container['service']) && (mb_strlen($this->container['service']) < 1)) {
             $invalidProperties[] = "invalid value for 'service', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['estimated_delivery']) && (mb_strlen($this->container['estimated_delivery']) < 1)) {
-            $invalidProperties[] = "invalid value for 'estimated_delivery', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -479,7 +475,7 @@ class Rate implements ModelInterface, ArrayAccess
     /**
      * Sets base_charge
      *
-     * @param float $base_charge The rate's monetary amount of the base charge. This is the net amount of the rate before additional charges
+     * @param float $base_charge The rate's monetary amount of the base charge.<br/> This is the net amount of the rate before additional charges
      *
      * @return $this
      */
@@ -503,7 +499,7 @@ class Rate implements ModelInterface, ArrayAccess
     /**
      * Sets total_charge
      *
-     * @param float $total_charge The rate's monetary amount of the total charge. This is the gross amount of the rate after adding the additional charges
+     * @param float $total_charge The rate's monetary amount of the total charge.<br/> This is the gross amount of the rate after adding the additional charges
      *
      * @return $this
      */
@@ -539,30 +535,25 @@ class Rate implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets estimated_delivery
+     * Gets transit_days
      *
-     * @return string
+     * @return int
      */
-    public function getEstimatedDelivery()
+    public function getTransitDays()
     {
-        return $this->container['estimated_delivery'];
+        return $this->container['transit_days'];
     }
 
     /**
-     * Sets estimated_delivery
+     * Sets transit_days
      *
-     * @param string $estimated_delivery The estimated delivery date
+     * @param int $transit_days The estimated delivery transit days
      *
      * @return $this
      */
-    public function setEstimatedDelivery($estimated_delivery)
+    public function setTransitDays($transit_days)
     {
-
-        if (!is_null($estimated_delivery) && (mb_strlen($estimated_delivery) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $estimated_delivery when calling Rate., must be bigger than or equal to 1.');
-        }
-
-        $this->container['estimated_delivery'] = $estimated_delivery;
+        $this->container['transit_days'] = $transit_days;
 
         return $this;
     }
