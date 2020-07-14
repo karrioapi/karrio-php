@@ -140,9 +140,9 @@ class RateTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "estimated_delivery"
+     * Test attribute "transit_days"
      */
-    public function testPropertyEstimatedDelivery()
+    public function testPropertyTransitDays()
     {
     }
 
