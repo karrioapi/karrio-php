@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | A unique address identifier | [optional] 
+**id** | **string** | A unique identifier | [optional] 
 **postal_code** | **string** | The address postal code | [optional] 
 **city** | **string** | The address city. &lt;br/&gt; **(required to create as shipment)** | [optional] 
 **federal_tax_id** | **string** | The party frederal tax id | [optional] 

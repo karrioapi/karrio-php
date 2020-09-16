@@ -1,7 +1,7 @@
 {
     "name": "purplship/purplship-php",
-    "version": "2020.7.0",
-    "description": "PurplShip Multi-carrier Shipping API PHP client library",
+    "version": "2020.8.0",
+    "description": "Purplship Multi-carrier Shipping API PHP client library",
     "keywords": [
         "purplship",
         "php",
@@ -11,12 +11,12 @@
     "homepage": "https://github.com/purplship/purplship-php-client",
     "license": "MIT",
     "authors": [{
-        "name": "PurplShip Team",
+        "name": "Purplship Team",
         "homepage": "https://purplship.com"
     }],
     "repositories": [{
         "type": "vcs",
-        "url": "git@github.com:PurplShip/purplship-php-client.git"
+        "url": "git@github.com:Purplship/purplship-php-client.git"
     }],
     "require": {
         "php": ">=5.5",
@@ -26,14 +26,10 @@
         "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8",
         "squizlabs/php_codesniffer": "~2.6",
         "friendsofphp/php-cs-fixer": "~2.12"
     },
     "autoload": {
-        "psr-4": { "PurplShip\\": "lib/" }
-    },
-    "autoload-dev": {
-        "psr-4": { "PurplShip\\": "test/" }
+        "psr-4": { "Purplship\\": "lib/" }
     }
 }

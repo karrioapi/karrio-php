@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**shipper** | [**\PurplShip\Model\Address**](Address.md) |  | 
-**recipient** | [**\PurplShip\Model\Address**](Address.md) |  | 
-**parcel** | [**\PurplShip\Model\Parcel**](Parcel.md) |  | 
-**services** | **string[]** | The requested carrier service for the shipment.&lt;br/&gt; Please consult [the reference](../Api/Utils.md#references) for specific carriers services.  Note that this is a list because on a Multi-carrier rate request you could specify a service per carrier. | [optional] 
-**options** | [**\PurplShip\Model\Options**](Options.md) |  | [optional] 
+**shipper** | [**\Purplship\Model\Address**](Address.md) |  | 
+**recipient** | [**\Purplship\Model\Address**](Address.md) |  | 
+**parcels** | [**\Purplship\Model\Parcel[]**](Parcel.md) | The shipment&#39;s parcels | 
+**services** | **string[]** | The requested carrier service for the shipment.&lt;br/&gt; Please consult [the reference](#operation/all_references) for specific carriers services.  Note that this is a list because on a Multi-carrier rate request you could specify a service per carrier. | [optional] 
+**options** | **object** | The options available for the shipment.  Please consult [the reference](#operation/all_references) for additional specific carriers options. | [optional] 
 **reference** | **string** | The shipment reference | [optional] 
 **carrier_ids** | **string[]** | The list of configured carriers you wish to get rates from. | [optional] 
 
