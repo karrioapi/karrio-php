@@ -1,6 +1,6 @@
 <?php
 /**
- * Commodity
+ * AddressData
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * Commodity Class Doc Comment
+ * AddressData Class Doc Comment
  *
  * @category Class
  * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Commodity implements ModelInterface, ArrayAccess
+class AddressData implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Commodity implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Commodity';
+    protected static $swaggerModelName = 'AddressData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,6 @@ class Commodity implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
         'postal_code' => 'string',
         'city' => 'string',
         'federal_tax_id' => 'string',
@@ -80,7 +79,6 @@ class Commodity implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
         'postal_code' => null,
         'city' => null,
         'federal_tax_id' => null,
@@ -124,7 +122,6 @@ class Commodity implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'postal_code' => 'postalCode',
         'city' => 'city',
         'federal_tax_id' => 'federalTaxId',
@@ -147,7 +144,6 @@ class Commodity implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'postal_code' => 'setPostalCode',
         'city' => 'setCity',
         'federal_tax_id' => 'setFederalTaxId',
@@ -170,7 +166,6 @@ class Commodity implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'postal_code' => 'getPostalCode',
         'city' => 'getCity',
         'federal_tax_id' => 'getFederalTaxId',
@@ -726,7 +721,6 @@ class Commodity implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['postal_code'] = isset($data['postal_code']) ? $data['postal_code'] : null;
         $this->container['city'] = isset($data['city']) ? $data['city'] : null;
         $this->container['federal_tax_id'] = isset($data['federal_tax_id']) ? $data['federal_tax_id'] : null;
@@ -751,10 +745,6 @@ class Commodity implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 1.";
-        }
 
         if ($this->container['country_code'] === null) {
             $invalidProperties[] = "'country_code' can't be null";
@@ -781,35 +771,6 @@ class Commodity implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id A unique identifier
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-
-        if (!is_null($id) && (mb_strlen($id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling Commodity., must be bigger than or equal to 1.');
-        }
-
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets postal_code

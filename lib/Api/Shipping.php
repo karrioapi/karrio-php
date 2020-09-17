@@ -1,6 +1,6 @@
 <?php
 /**
- * Tracking
+ * Shipping
  * PHP version 5
  *
  * @category Class
@@ -40,14 +40,14 @@ use Purplship\HeaderSelector;
 use Purplship\ObjectSerializer;
 
 /**
- * Tracking Class Doc Comment
+ * Shipping Class Doc Comment
  *
  * @category Class
  * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Tracking
+class Shipping
 {
     /**
      * @var ClientInterface
@@ -88,41 +88,37 @@ class Tracking
     }
 
     /**
-     * Operation fetch
+     * Operation buyLabel
      *
-     * Track a Shipment
+     * Submit a Shipment
      *
-     * @param  string $carrier_name carrier_name (required)
-     * @param  string $tracking_number tracking_number (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
+     * @param  \Purplship\Model\ShippingRequest $data data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Model\TrackingResponse
+     * @return \Purplship\Model\ShipmentResponse
      */
-    public function fetch($carrier_name, $tracking_number, $test = 'false')
+    public function buyLabel($data)
     {
-        list($response) = $this->fetchWithHttpInfo($carrier_name, $tracking_number, $test);
+        list($response) = $this->buyLabelWithHttpInfo($data);
         return $response;
     }
 
     /**
-     * Operation fetchWithHttpInfo
+     * Operation buyLabelWithHttpInfo
      *
-     * Track a Shipment
+     * Submit a Shipment
      *
-     * @param  string $carrier_name (required)
-     * @param  string $tracking_number (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
+     * @param  \Purplship\Model\ShippingRequest $data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Model\TrackingResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\ShipmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function fetchWithHttpInfo($carrier_name, $tracking_number, $test = 'false')
+    public function buyLabelWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Model\TrackingResponse';
-        $request = $this->fetchRequest($carrier_name, $tracking_number, $test);
+        $returnType = '\Purplship\Model\ShipmentResponse';
+        $request = $this->buyLabelRequest($data);
 
         try {
             $options = $this->createHttpClientOption();
@@ -173,7 +169,7 @@ class Tracking
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Model\TrackingResponse',
+                        '\Purplship\Model\ShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -192,20 +188,18 @@ class Tracking
     }
 
     /**
-     * Operation fetchAsync
+     * Operation buyLabelAsync
      *
-     * Track a Shipment
+     * Submit a Shipment
      *
-     * @param  string $carrier_name (required)
-     * @param  string $tracking_number (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
+     * @param  \Purplship\Model\ShippingRequest $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function fetchAsync($carrier_name, $tracking_number, $test = 'false')
+    public function buyLabelAsync($data)
     {
-        return $this->fetchAsyncWithHttpInfo($carrier_name, $tracking_number, $test)
+        return $this->buyLabelAsyncWithHttpInfo($data)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -214,21 +208,19 @@ class Tracking
     }
 
     /**
-     * Operation fetchAsyncWithHttpInfo
+     * Operation buyLabelAsyncWithHttpInfo
      *
-     * Track a Shipment
+     * Submit a Shipment
      *
-     * @param  string $carrier_name (required)
-     * @param  string $tracking_number (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
+     * @param  \Purplship\Model\ShippingRequest $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function fetchAsyncWithHttpInfo($carrier_name, $tracking_number, $test = 'false')
+    public function buyLabelAsyncWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Model\TrackingResponse';
-        $request = $this->fetchRequest($carrier_name, $tracking_number, $test);
+        $returnType = '\Purplship\Model\ShipmentResponse';
+        $request = $this->buyLabelRequest($data);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -268,61 +260,36 @@ class Tracking
     }
 
     /**
-     * Create request for operation 'fetch'
+     * Create request for operation 'buyLabel'
      *
-     * @param  string $carrier_name (required)
-     * @param  string $tracking_number (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
+     * @param  \Purplship\Model\ShippingRequest $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function fetchRequest($carrier_name, $tracking_number, $test = 'false')
+    protected function buyLabelRequest($data)
     {
-        // verify the required parameter 'carrier_name' is set
-        if ($carrier_name === null || (is_array($carrier_name) && count($carrier_name) === 0)) {
+        // verify the required parameter 'data' is set
+        if ($data === null || (is_array($data) && count($data) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $carrier_name when calling fetch'
-            );
-        }
-        // verify the required parameter 'tracking_number' is set
-        if ($tracking_number === null || (is_array($tracking_number) && count($tracking_number) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $tracking_number when calling fetch'
+                'Missing the required parameter $data when calling buyLabel'
             );
         }
 
-        $resourcePath = '/proxy/tracking/{carrier_name}/{tracking_number}';
+        $resourcePath = '/proxy/shipping';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($test !== null) {
-            $queryParams['test'] = ObjectSerializer::toQueryValue($test);
-        }
 
-        // path params
-        if ($carrier_name !== null) {
-            $resourcePath = str_replace(
-                '{' . 'carrier_name' . '}',
-                ObjectSerializer::toPathValue($carrier_name),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($tracking_number !== null) {
-            $resourcePath = str_replace(
-                '{' . 'tracking_number' . '}',
-                ObjectSerializer::toPathValue($tracking_number),
-                $resourcePath
-            );
-        }
 
         // body params
         $_tempBody = null;
+        if (isset($data)) {
+            $_tempBody = $data;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -394,7 +361,7 @@ class Tracking
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
-            'GET',
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

@@ -1,6 +1,6 @@
 <?php
 /**
- * LabelPrintingRequest
+ * ShipmentPurchaseData
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * LabelPrintingRequest Class Doc Comment
+ * ShipmentPurchaseData Class Doc Comment
  *
  * @category Class
  * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class LabelPrintingRequest implements ModelInterface, ArrayAccess
+class ShipmentPurchaseData implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class LabelPrintingRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'LabelPrintingRequest';
+    protected static $swaggerModelName = 'ShipmentPurchaseData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,8 @@ class LabelPrintingRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'name' => 'string',
-        'label' => 'string'
+        'selected_rate_id' => 'string',
+        'payment' => '\Purplship\Model\Payment'
     ];
 
     /**
@@ -67,8 +67,8 @@ class LabelPrintingRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'name' => null,
-        'label' => null
+        'selected_rate_id' => null,
+        'payment' => null
     ];
 
     /**
@@ -98,8 +98,8 @@ class LabelPrintingRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'label' => 'label'
+        'selected_rate_id' => 'selectedRateId',
+        'payment' => 'payment'
     ];
 
     /**
@@ -108,8 +108,8 @@ class LabelPrintingRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'label' => 'setLabel'
+        'selected_rate_id' => 'setSelectedRateId',
+        'payment' => 'setPayment'
     ];
 
     /**
@@ -118,8 +118,8 @@ class LabelPrintingRequest implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'label' => 'getLabel'
+        'selected_rate_id' => 'getSelectedRateId',
+        'payment' => 'getPayment'
     ];
 
     /**
@@ -182,8 +182,8 @@ class LabelPrintingRequest implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        $this->container['selected_rate_id'] = isset($data['selected_rate_id']) ? $data['selected_rate_id'] : null;
+        $this->container['payment'] = isset($data['payment']) ? $data['payment'] : null;
     }
 
     /**
@@ -195,18 +195,11 @@ class LabelPrintingRequest implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['selected_rate_id'] === null) {
+            $invalidProperties[] = "'selected_rate_id' can't be null";
         }
-        if ((mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['label'] === null) {
-            $invalidProperties[] = "'label' can't be null";
-        }
-        if ((mb_strlen($this->container['label']) < 1)) {
-            $invalidProperties[] = "invalid value for 'label', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['selected_rate_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'selected_rate_id', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -225,59 +218,54 @@ class LabelPrintingRequest implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets name
+     * Gets selected_rate_id
      *
      * @return string
      */
-    public function getName()
+    public function getSelectedRateId()
     {
-        return $this->container['name'];
+        return $this->container['selected_rate_id'];
     }
 
     /**
-     * Sets name
+     * Sets selected_rate_id
      *
-     * @param string $name PDF file name.  eg: shipment-[trackingNumber]
+     * @param string $selected_rate_id The shipment selected rate.
      *
      * @return $this
      */
-    public function setName($name)
+    public function setSelectedRateId($selected_rate_id)
     {
 
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling LabelPrintingRequest., must be bigger than or equal to 1.');
+        if ((mb_strlen($selected_rate_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $selected_rate_id when calling ShipmentPurchaseData., must be bigger than or equal to 1.');
         }
 
-        $this->container['name'] = $name;
+        $this->container['selected_rate_id'] = $selected_rate_id;
 
         return $this;
     }
 
     /**
-     * Gets label
+     * Gets payment
      *
-     * @return string
+     * @return \Purplship\Model\Payment
      */
-    public function getLabel()
+    public function getPayment()
     {
-        return $this->container['label'];
+        return $this->container['payment'];
     }
 
     /**
-     * Sets label
+     * Sets payment
      *
-     * @param string $label Shipment base64 label
+     * @param \Purplship\Model\Payment $payment payment
      *
      * @return $this
      */
-    public function setLabel($label)
+    public function setPayment($payment)
     {
-
-        if ((mb_strlen($label) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $label when calling LabelPrintingRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['label'] = $label;
+        $this->container['payment'] = $payment;
 
         return $this;
     }

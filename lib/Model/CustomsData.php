@@ -1,6 +1,6 @@
 <?php
 /**
- * Doc
+ * CustomsData
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * Doc Class Doc Comment
+ * CustomsData Class Doc Comment
  *
  * @category Class
  * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Doc implements ModelInterface, ArrayAccess
+class CustomsData implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Doc implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Doc';
+    protected static $swaggerModelName = 'CustomsData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,14 @@ class Doc implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'type' => 'string',
-        'image' => 'string',
-        'format' => 'string'
+        'no_eei' => 'string',
+        'aes' => 'string',
+        'description' => 'string',
+        'terms_of_trade' => 'string',
+        'commodities' => '\Purplship\Model\Commodity[]',
+        'duty' => '\Purplship\Model\Payment',
+        'invoice' => '\Purplship\Model\Invoice',
+        'commercial_invoice' => 'bool'
     ];
 
     /**
@@ -68,9 +73,14 @@ class Doc implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'type' => null,
-        'image' => null,
-        'format' => null
+        'no_eei' => null,
+        'aes' => null,
+        'description' => null,
+        'terms_of_trade' => null,
+        'commodities' => null,
+        'duty' => null,
+        'invoice' => null,
+        'commercial_invoice' => null
     ];
 
     /**
@@ -100,9 +110,14 @@ class Doc implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'image' => 'image',
-        'format' => 'format'
+        'no_eei' => 'noEei',
+        'aes' => 'aes',
+        'description' => 'description',
+        'terms_of_trade' => 'termsOfTrade',
+        'commodities' => 'commodities',
+        'duty' => 'duty',
+        'invoice' => 'invoice',
+        'commercial_invoice' => 'commercialInvoice'
     ];
 
     /**
@@ -111,9 +126,14 @@ class Doc implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'image' => 'setImage',
-        'format' => 'setFormat'
+        'no_eei' => 'setNoEei',
+        'aes' => 'setAes',
+        'description' => 'setDescription',
+        'terms_of_trade' => 'setTermsOfTrade',
+        'commodities' => 'setCommodities',
+        'duty' => 'setDuty',
+        'invoice' => 'setInvoice',
+        'commercial_invoice' => 'setCommercialInvoice'
     ];
 
     /**
@@ -122,9 +142,14 @@ class Doc implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'image' => 'getImage',
-        'format' => 'getFormat'
+        'no_eei' => 'getNoEei',
+        'aes' => 'getAes',
+        'description' => 'getDescription',
+        'terms_of_trade' => 'getTermsOfTrade',
+        'commodities' => 'getCommodities',
+        'duty' => 'getDuty',
+        'invoice' => 'getInvoice',
+        'commercial_invoice' => 'getCommercialInvoice'
     ];
 
     /**
@@ -187,9 +212,14 @@ class Doc implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['image'] = isset($data['image']) ? $data['image'] : null;
-        $this->container['format'] = isset($data['format']) ? $data['format'] : null;
+        $this->container['no_eei'] = isset($data['no_eei']) ? $data['no_eei'] : null;
+        $this->container['aes'] = isset($data['aes']) ? $data['aes'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['terms_of_trade'] = isset($data['terms_of_trade']) ? $data['terms_of_trade'] : null;
+        $this->container['commodities'] = isset($data['commodities']) ? $data['commodities'] : null;
+        $this->container['duty'] = isset($data['duty']) ? $data['duty'] : null;
+        $this->container['invoice'] = isset($data['invoice']) ? $data['invoice'] : null;
+        $this->container['commercial_invoice'] = isset($data['commercial_invoice']) ? $data['commercial_invoice'] : null;
     }
 
     /**
@@ -201,18 +231,8 @@ class Doc implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ((mb_strlen($this->container['type']) < 1)) {
-            $invalidProperties[] = "invalid value for 'type', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['image'] === null) {
-            $invalidProperties[] = "'image' can't be null";
-        }
-        if ((mb_strlen($this->container['image']) < 1)) {
-            $invalidProperties[] = "invalid value for 'image', the character length must be bigger than or equal to 1.";
+        if (!is_null($this->container['terms_of_trade']) && (mb_strlen($this->container['terms_of_trade']) < 1)) {
+            $invalidProperties[] = "invalid value for 'terms_of_trade', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -231,83 +251,198 @@ class Doc implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets type
+     * Gets no_eei
      *
      * @return string
      */
-    public function getType()
+    public function getNoEei()
     {
-        return $this->container['type'];
+        return $this->container['no_eei'];
     }
 
     /**
-     * Sets type
+     * Sets no_eei
      *
-     * @param string $type The document type
+     * @param string $no_eei no_eei
      *
      * @return $this
      */
-    public function setType($type)
+    public function setNoEei($no_eei)
     {
-
-        if ((mb_strlen($type) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $type when calling Doc., must be bigger than or equal to 1.');
-        }
-
-        $this->container['type'] = $type;
+        $this->container['no_eei'] = $no_eei;
 
         return $this;
     }
 
     /**
-     * Gets image
+     * Gets aes
      *
      * @return string
      */
-    public function getImage()
+    public function getAes()
     {
-        return $this->container['image'];
+        return $this->container['aes'];
     }
 
     /**
-     * Sets image
+     * Sets aes
      *
-     * @param string $image encoded base64 string of the document
+     * @param string $aes aes
      *
      * @return $this
      */
-    public function setImage($image)
+    public function setAes($aes)
     {
-
-        if ((mb_strlen($image) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $image when calling Doc., must be bigger than or equal to 1.');
-        }
-
-        $this->container['image'] = $image;
+        $this->container['aes'] = $aes;
 
         return $this;
     }
 
     /**
-     * Gets format
+     * Gets description
      *
      * @return string
      */
-    public function getFormat()
+    public function getDescription()
     {
-        return $this->container['format'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets format
+     * Sets description
      *
-     * @param string $format The document format
+     * @param string $description description
      *
      * @return $this
      */
-    public function setFormat($format)
+    public function setDescription($description)
     {
-        $this->container['format'] = $format;
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets terms_of_trade
+     *
+     * @return string
+     */
+    public function getTermsOfTrade()
+    {
+        return $this->container['terms_of_trade'];
+    }
+
+    /**
+     * Sets terms_of_trade
+     *
+     * @param string $terms_of_trade The customs 'term of trade' also known as 'incoterm'
+     *
+     * @return $this
+     */
+    public function setTermsOfTrade($terms_of_trade)
+    {
+
+        if (!is_null($terms_of_trade) && (mb_strlen($terms_of_trade) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $terms_of_trade when calling CustomsData., must be bigger than or equal to 1.');
+        }
+
+        $this->container['terms_of_trade'] = $terms_of_trade;
+
+        return $this;
+    }
+
+    /**
+     * Gets commodities
+     *
+     * @return \Purplship\Model\Commodity[]
+     */
+    public function getCommodities()
+    {
+        return $this->container['commodities'];
+    }
+
+    /**
+     * Sets commodities
+     *
+     * @param \Purplship\Model\Commodity[] $commodities The parcel content items
+     *
+     * @return $this
+     */
+    public function setCommodities($commodities)
+    {
+        $this->container['commodities'] = $commodities;
+
+        return $this;
+    }
+
+    /**
+     * Gets duty
+     *
+     * @return \Purplship\Model\Payment
+     */
+    public function getDuty()
+    {
+        return $this->container['duty'];
+    }
+
+    /**
+     * Sets duty
+     *
+     * @param \Purplship\Model\Payment $duty duty
+     *
+     * @return $this
+     */
+    public function setDuty($duty)
+    {
+        $this->container['duty'] = $duty;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoice
+     *
+     * @return \Purplship\Model\Invoice
+     */
+    public function getInvoice()
+    {
+        return $this->container['invoice'];
+    }
+
+    /**
+     * Sets invoice
+     *
+     * @param \Purplship\Model\Invoice $invoice invoice
+     *
+     * @return $this
+     */
+    public function setInvoice($invoice)
+    {
+        $this->container['invoice'] = $invoice;
+
+        return $this;
+    }
+
+    /**
+     * Gets commercial_invoice
+     *
+     * @return bool
+     */
+    public function getCommercialInvoice()
+    {
+        return $this->container['commercial_invoice'];
+    }
+
+    /**
+     * Sets commercial_invoice
+     *
+     * @param bool $commercial_invoice Indicates if the shipment is commercial
+     *
+     * @return $this
+     */
+    public function setCommercialInvoice($commercial_invoice)
+    {
+        $this->container['commercial_invoice'] = $commercial_invoice;
 
         return $this;
     }

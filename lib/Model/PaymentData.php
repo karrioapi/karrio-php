@@ -1,6 +1,6 @@
 <?php
 /**
- * Payment
+ * PaymentData
  *
  * PHP version 5
  *
@@ -33,15 +33,15 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * Payment Class Doc Comment
+ * PaymentData Class Doc Comment
  *
  * @category Class
- * @description The payment details.&lt;br/&gt; Note that this is required for a Dutiable parcel shipped internationally.
+ * @description The payment details
  * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Payment implements ModelInterface, ArrayAccess
+class PaymentData implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Payment implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Payment';
+    protected static $swaggerModelName = 'PaymentData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,6 @@ class Payment implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
         'paid_by' => 'string',
         'amount' => 'float',
         'currency' => 'string',
@@ -73,7 +72,6 @@ class Payment implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
         'paid_by' => null,
         'amount' => null,
         'currency' => null,
@@ -109,7 +107,6 @@ class Payment implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'paid_by' => 'paidBy',
         'amount' => 'amount',
         'currency' => 'currency',
@@ -124,7 +121,6 @@ class Payment implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'paid_by' => 'setPaidBy',
         'amount' => 'setAmount',
         'currency' => 'setCurrency',
@@ -139,7 +135,6 @@ class Payment implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'paid_by' => 'getPaidBy',
         'amount' => 'getAmount',
         'currency' => 'getCurrency',
@@ -524,7 +519,6 @@ class Payment implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['paid_by'] = isset($data['paid_by']) ? $data['paid_by'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
         $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
@@ -541,10 +535,6 @@ class Payment implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 1.";
-        }
 
         if ($this->container['paid_by'] === null) {
             $invalidProperties[] = "'paid_by' can't be null";
@@ -582,35 +572,6 @@ class Payment implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id A unique identifier
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-
-        if (!is_null($id) && (mb_strlen($id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling Payment., must be bigger than or equal to 1.');
-        }
-
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets paid_by

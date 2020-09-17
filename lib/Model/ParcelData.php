@@ -1,6 +1,6 @@
 <?php
 /**
- * Parcel
+ * ParcelData
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * Parcel Class Doc Comment
+ * ParcelData Class Doc Comment
  *
  * @category Class
  * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Parcel implements ModelInterface, ArrayAccess
+class ParcelData implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Parcel implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Parcel';
+    protected static $swaggerModelName = 'ParcelData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,6 @@ class Parcel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
         'weight' => 'float',
         'width' => 'float',
         'height' => 'float',
@@ -77,7 +76,6 @@ class Parcel implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
         'weight' => null,
         'width' => null,
         'height' => null,
@@ -118,7 +116,6 @@ class Parcel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'weight' => 'weight',
         'width' => 'width',
         'height' => 'height',
@@ -138,7 +135,6 @@ class Parcel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'weight' => 'setWeight',
         'width' => 'setWidth',
         'height' => 'setHeight',
@@ -158,7 +154,6 @@ class Parcel implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'weight' => 'getWeight',
         'width' => 'getWidth',
         'height' => 'getHeight',
@@ -262,7 +257,6 @@ class Parcel implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['weight'] = isset($data['weight']) ? $data['weight'] : null;
         $this->container['width'] = isset($data['width']) ? $data['width'] : null;
         $this->container['height'] = isset($data['height']) ? $data['height'] : null;
@@ -284,10 +278,6 @@ class Parcel implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) < 1)) {
-            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 1.";
-        }
 
         $allowedValues = $this->getWeightUnitAllowableValues();
         if (!is_null($this->container['weight_unit']) && !in_array($this->container['weight_unit'], $allowedValues, true)) {
@@ -319,35 +309,6 @@ class Parcel implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id A unique identifier
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-
-        if (!is_null($id) && (mb_strlen($id) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $id when calling Parcel., must be bigger than or equal to 1.');
-        }
-
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets weight

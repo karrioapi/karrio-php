@@ -1,6 +1,6 @@
 <?php
 /**
- * RateRequest
+ * ShippingRequest
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * RateRequest Class Doc Comment
+ * ShippingRequest Class Doc Comment
  *
  * @category Class
  * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class RateRequest implements ModelInterface, ArrayAccess
+class ShippingRequest implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RateRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'RateRequest';
+    protected static $swaggerModelName = 'ShippingRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +57,16 @@ class RateRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'shipper' => '\Purplship\Model\Address',
-        'recipient' => '\Purplship\Model\Address',
-        'parcels' => '\Purplship\Model\Parcel[]',
-        'services' => 'string[]',
+        'shipper' => '\Purplship\Model\AddressData',
+        'recipient' => '\Purplship\Model\AddressData',
+        'parcels' => '\Purplship\Model\ParcelData[]',
         'options' => 'object',
+        'payment' => '\Purplship\Model\Payment',
+        'customs' => '\Purplship\Model\CustomsData',
+        'doc_images' => '\Purplship\Model\Doc[]',
         'reference' => 'string',
-        'carrier_ids' => 'string[]'
+        'selected_rate_id' => 'string',
+        'rates' => '\Purplship\Model\Rate[]'
     ];
 
     /**
@@ -75,10 +78,13 @@ class RateRequest implements ModelInterface, ArrayAccess
         'shipper' => null,
         'recipient' => null,
         'parcels' => null,
-        'services' => null,
         'options' => null,
+        'payment' => null,
+        'customs' => null,
+        'doc_images' => null,
         'reference' => null,
-        'carrier_ids' => null
+        'selected_rate_id' => null,
+        'rates' => null
     ];
 
     /**
@@ -111,10 +117,13 @@ class RateRequest implements ModelInterface, ArrayAccess
         'shipper' => 'shipper',
         'recipient' => 'recipient',
         'parcels' => 'parcels',
-        'services' => 'services',
         'options' => 'options',
+        'payment' => 'payment',
+        'customs' => 'customs',
+        'doc_images' => 'docImages',
         'reference' => 'reference',
-        'carrier_ids' => 'carrierIds'
+        'selected_rate_id' => 'selectedRateId',
+        'rates' => 'rates'
     ];
 
     /**
@@ -126,10 +135,13 @@ class RateRequest implements ModelInterface, ArrayAccess
         'shipper' => 'setShipper',
         'recipient' => 'setRecipient',
         'parcels' => 'setParcels',
-        'services' => 'setServices',
         'options' => 'setOptions',
+        'payment' => 'setPayment',
+        'customs' => 'setCustoms',
+        'doc_images' => 'setDocImages',
         'reference' => 'setReference',
-        'carrier_ids' => 'setCarrierIds'
+        'selected_rate_id' => 'setSelectedRateId',
+        'rates' => 'setRates'
     ];
 
     /**
@@ -141,10 +153,13 @@ class RateRequest implements ModelInterface, ArrayAccess
         'shipper' => 'getShipper',
         'recipient' => 'getRecipient',
         'parcels' => 'getParcels',
-        'services' => 'getServices',
         'options' => 'getOptions',
+        'payment' => 'getPayment',
+        'customs' => 'getCustoms',
+        'doc_images' => 'getDocImages',
         'reference' => 'getReference',
-        'carrier_ids' => 'getCarrierIds'
+        'selected_rate_id' => 'getSelectedRateId',
+        'rates' => 'getRates'
     ];
 
     /**
@@ -210,10 +225,13 @@ class RateRequest implements ModelInterface, ArrayAccess
         $this->container['shipper'] = isset($data['shipper']) ? $data['shipper'] : null;
         $this->container['recipient'] = isset($data['recipient']) ? $data['recipient'] : null;
         $this->container['parcels'] = isset($data['parcels']) ? $data['parcels'] : null;
-        $this->container['services'] = isset($data['services']) ? $data['services'] : null;
         $this->container['options'] = isset($data['options']) ? $data['options'] : null;
+        $this->container['payment'] = isset($data['payment']) ? $data['payment'] : null;
+        $this->container['customs'] = isset($data['customs']) ? $data['customs'] : null;
+        $this->container['doc_images'] = isset($data['doc_images']) ? $data['doc_images'] : null;
         $this->container['reference'] = isset($data['reference']) ? $data['reference'] : null;
-        $this->container['carrier_ids'] = isset($data['carrier_ids']) ? $data['carrier_ids'] : null;
+        $this->container['selected_rate_id'] = isset($data['selected_rate_id']) ? $data['selected_rate_id'] : null;
+        $this->container['rates'] = isset($data['rates']) ? $data['rates'] : null;
     }
 
     /**
@@ -234,6 +252,19 @@ class RateRequest implements ModelInterface, ArrayAccess
         if ($this->container['parcels'] === null) {
             $invalidProperties[] = "'parcels' can't be null";
         }
+        if ($this->container['payment'] === null) {
+            $invalidProperties[] = "'payment' can't be null";
+        }
+        if ($this->container['selected_rate_id'] === null) {
+            $invalidProperties[] = "'selected_rate_id' can't be null";
+        }
+        if ((mb_strlen($this->container['selected_rate_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'selected_rate_id', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['rates'] === null) {
+            $invalidProperties[] = "'rates' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -252,7 +283,7 @@ class RateRequest implements ModelInterface, ArrayAccess
     /**
      * Gets shipper
      *
-     * @return \Purplship\Model\Address
+     * @return \Purplship\Model\AddressData
      */
     public function getShipper()
     {
@@ -262,7 +293,7 @@ class RateRequest implements ModelInterface, ArrayAccess
     /**
      * Sets shipper
      *
-     * @param \Purplship\Model\Address $shipper shipper
+     * @param \Purplship\Model\AddressData $shipper shipper
      *
      * @return $this
      */
@@ -276,7 +307,7 @@ class RateRequest implements ModelInterface, ArrayAccess
     /**
      * Gets recipient
      *
-     * @return \Purplship\Model\Address
+     * @return \Purplship\Model\AddressData
      */
     public function getRecipient()
     {
@@ -286,7 +317,7 @@ class RateRequest implements ModelInterface, ArrayAccess
     /**
      * Sets recipient
      *
-     * @param \Purplship\Model\Address $recipient recipient
+     * @param \Purplship\Model\AddressData $recipient recipient
      *
      * @return $this
      */
@@ -300,7 +331,7 @@ class RateRequest implements ModelInterface, ArrayAccess
     /**
      * Gets parcels
      *
-     * @return \Purplship\Model\Parcel[]
+     * @return \Purplship\Model\ParcelData[]
      */
     public function getParcels()
     {
@@ -310,37 +341,13 @@ class RateRequest implements ModelInterface, ArrayAccess
     /**
      * Sets parcels
      *
-     * @param \Purplship\Model\Parcel[] $parcels The shipment's parcels
+     * @param \Purplship\Model\ParcelData[] $parcels The shipment's parcels
      *
      * @return $this
      */
     public function setParcels($parcels)
     {
         $this->container['parcels'] = $parcels;
-
-        return $this;
-    }
-
-    /**
-     * Gets services
-     *
-     * @return string[]
-     */
-    public function getServices()
-    {
-        return $this->container['services'];
-    }
-
-    /**
-     * Sets services
-     *
-     * @param string[] $services The requested carrier service for the shipment.<br/> Please consult [the reference](#operation/all_references) for specific carriers services.  Note that this is a list because on a Multi-carrier rate request you could specify a service per carrier.
-     *
-     * @return $this
-     */
-    public function setServices($services)
-    {
-        $this->container['services'] = $services;
 
         return $this;
     }
@@ -358,13 +365,85 @@ class RateRequest implements ModelInterface, ArrayAccess
     /**
      * Sets options
      *
-     * @param object $options The options available for the shipment.  Please consult [the reference](#operation/all_references) for additional specific carriers options.
+     * @param object $options The options available for the shipment.<br/> Please consult [the reference](#operation/all_references) for additional specific carriers options.
      *
      * @return $this
      */
     public function setOptions($options)
     {
         $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment
+     *
+     * @return \Purplship\Model\Payment
+     */
+    public function getPayment()
+    {
+        return $this->container['payment'];
+    }
+
+    /**
+     * Sets payment
+     *
+     * @param \Purplship\Model\Payment $payment payment
+     *
+     * @return $this
+     */
+    public function setPayment($payment)
+    {
+        $this->container['payment'] = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Gets customs
+     *
+     * @return \Purplship\Model\CustomsData
+     */
+    public function getCustoms()
+    {
+        return $this->container['customs'];
+    }
+
+    /**
+     * Sets customs
+     *
+     * @param \Purplship\Model\CustomsData $customs customs
+     *
+     * @return $this
+     */
+    public function setCustoms($customs)
+    {
+        $this->container['customs'] = $customs;
+
+        return $this;
+    }
+
+    /**
+     * Gets doc_images
+     *
+     * @return \Purplship\Model\Doc[]
+     */
+    public function getDocImages()
+    {
+        return $this->container['doc_images'];
+    }
+
+    /**
+     * Sets doc_images
+     *
+     * @param \Purplship\Model\Doc[] $doc_images The list of documents to attach for a paperless interantional trade.  eg: Invoices...
+     *
+     * @return $this
+     */
+    public function setDocImages($doc_images)
+    {
+        $this->container['doc_images'] = $doc_images;
 
         return $this;
     }
@@ -394,25 +473,54 @@ class RateRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets carrier_ids
+     * Gets selected_rate_id
      *
-     * @return string[]
+     * @return string
      */
-    public function getCarrierIds()
+    public function getSelectedRateId()
     {
-        return $this->container['carrier_ids'];
+        return $this->container['selected_rate_id'];
     }
 
     /**
-     * Sets carrier_ids
+     * Sets selected_rate_id
      *
-     * @param string[] $carrier_ids The list of configured carriers you wish to get rates from.
+     * @param string $selected_rate_id The shipment selected rate.
      *
      * @return $this
      */
-    public function setCarrierIds($carrier_ids)
+    public function setSelectedRateId($selected_rate_id)
     {
-        $this->container['carrier_ids'] = $carrier_ids;
+
+        if ((mb_strlen($selected_rate_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $selected_rate_id when calling ShippingRequest., must be bigger than or equal to 1.');
+        }
+
+        $this->container['selected_rate_id'] = $selected_rate_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets rates
+     *
+     * @return \Purplship\Model\Rate[]
+     */
+    public function getRates()
+    {
+        return $this->container['rates'];
+    }
+
+    /**
+     * Sets rates
+     *
+     * @param \Purplship\Model\Rate[] $rates The list for shipment rates fetched previously
+     *
+     * @return $this
+     */
+    public function setRates($rates)
+    {
+        $this->container['rates'] = $rates;
 
         return $this;
     }

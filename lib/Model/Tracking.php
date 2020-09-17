@@ -1,6 +1,6 @@
 <?php
 /**
- * Doc
+ * Tracking
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * Doc Class Doc Comment
+ * Tracking Class Doc Comment
  *
  * @category Class
  * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Doc implements ModelInterface, ArrayAccess
+class Tracking implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Doc implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Doc';
+    protected static $swaggerModelName = 'Tracking';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,12 @@ class Doc implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'type' => 'string',
-        'image' => 'string',
-        'format' => 'string'
+        'id' => 'string',
+        'carrier_name' => 'string',
+        'carrier_id' => 'string',
+        'tracking_number' => 'string',
+        'events' => '\Purplship\Model\TrackingEvent[]',
+        'shipment_id' => 'string'
     ];
 
     /**
@@ -68,9 +71,12 @@ class Doc implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'type' => null,
-        'image' => null,
-        'format' => null
+        'id' => null,
+        'carrier_name' => null,
+        'carrier_id' => null,
+        'tracking_number' => null,
+        'events' => null,
+        'shipment_id' => null
     ];
 
     /**
@@ -100,9 +106,12 @@ class Doc implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'image' => 'image',
-        'format' => 'format'
+        'id' => 'id',
+        'carrier_name' => 'carrierName',
+        'carrier_id' => 'carrierId',
+        'tracking_number' => 'trackingNumber',
+        'events' => 'events',
+        'shipment_id' => 'shipmentId'
     ];
 
     /**
@@ -111,9 +120,12 @@ class Doc implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'image' => 'setImage',
-        'format' => 'setFormat'
+        'id' => 'setId',
+        'carrier_name' => 'setCarrierName',
+        'carrier_id' => 'setCarrierId',
+        'tracking_number' => 'setTrackingNumber',
+        'events' => 'setEvents',
+        'shipment_id' => 'setShipmentId'
     ];
 
     /**
@@ -122,9 +134,12 @@ class Doc implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'image' => 'getImage',
-        'format' => 'getFormat'
+        'id' => 'getId',
+        'carrier_name' => 'getCarrierName',
+        'carrier_id' => 'getCarrierId',
+        'tracking_number' => 'getTrackingNumber',
+        'events' => 'getEvents',
+        'shipment_id' => 'getShipmentId'
     ];
 
     /**
@@ -187,9 +202,12 @@ class Doc implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['image'] = isset($data['image']) ? $data['image'] : null;
-        $this->container['format'] = isset($data['format']) ? $data['format'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['carrier_name'] = isset($data['carrier_name']) ? $data['carrier_name'] : null;
+        $this->container['carrier_id'] = isset($data['carrier_id']) ? $data['carrier_id'] : null;
+        $this->container['tracking_number'] = isset($data['tracking_number']) ? $data['tracking_number'] : null;
+        $this->container['events'] = isset($data['events']) ? $data['events'] : null;
+        $this->container['shipment_id'] = isset($data['shipment_id']) ? $data['shipment_id'] : null;
     }
 
     /**
@@ -201,18 +219,29 @@ class Doc implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ((mb_strlen($this->container['type']) < 1)) {
-            $invalidProperties[] = "invalid value for 'type', the character length must be bigger than or equal to 1.";
+        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['image'] === null) {
-            $invalidProperties[] = "'image' can't be null";
+        if ($this->container['carrier_name'] === null) {
+            $invalidProperties[] = "'carrier_name' can't be null";
         }
-        if ((mb_strlen($this->container['image']) < 1)) {
-            $invalidProperties[] = "invalid value for 'image', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['carrier_name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'carrier_name', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['carrier_id'] === null) {
+            $invalidProperties[] = "'carrier_id' can't be null";
+        }
+        if ((mb_strlen($this->container['carrier_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'carrier_id', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['tracking_number'] === null) {
+            $invalidProperties[] = "'tracking_number' can't be null";
+        }
+        if ((mb_strlen($this->container['tracking_number']) < 1)) {
+            $invalidProperties[] = "invalid value for 'tracking_number', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -231,83 +260,165 @@ class Doc implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets type
+     * Gets id
      *
      * @return string
      */
-    public function getType()
+    public function getId()
     {
-        return $this->container['type'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets type
+     * Sets id
      *
-     * @param string $type The document type
+     * @param string $id A unique identifier
      *
      * @return $this
      */
-    public function setType($type)
+    public function setId($id)
     {
 
-        if ((mb_strlen($type) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $type when calling Doc., must be bigger than or equal to 1.');
+        if (!is_null($id) && (mb_strlen($id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling Tracking., must be bigger than or equal to 1.');
         }
 
-        $this->container['type'] = $type;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets image
+     * Gets carrier_name
      *
      * @return string
      */
-    public function getImage()
+    public function getCarrierName()
     {
-        return $this->container['image'];
+        return $this->container['carrier_name'];
     }
 
     /**
-     * Sets image
+     * Sets carrier_name
      *
-     * @param string $image encoded base64 string of the document
+     * @param string $carrier_name The tracking carrier
      *
      * @return $this
      */
-    public function setImage($image)
+    public function setCarrierName($carrier_name)
     {
 
-        if ((mb_strlen($image) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $image when calling Doc., must be bigger than or equal to 1.');
+        if ((mb_strlen($carrier_name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $carrier_name when calling Tracking., must be bigger than or equal to 1.');
         }
 
-        $this->container['image'] = $image;
+        $this->container['carrier_name'] = $carrier_name;
 
         return $this;
     }
 
     /**
-     * Gets format
+     * Gets carrier_id
      *
      * @return string
      */
-    public function getFormat()
+    public function getCarrierId()
     {
-        return $this->container['format'];
+        return $this->container['carrier_id'];
     }
 
     /**
-     * Sets format
+     * Sets carrier_id
      *
-     * @param string $format The document format
+     * @param string $carrier_id The tracking carrier configured identifier
      *
      * @return $this
      */
-    public function setFormat($format)
+    public function setCarrierId($carrier_id)
     {
-        $this->container['format'] = $format;
+
+        if ((mb_strlen($carrier_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $carrier_id when calling Tracking., must be bigger than or equal to 1.');
+        }
+
+        $this->container['carrier_id'] = $carrier_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking_number
+     *
+     * @return string
+     */
+    public function getTrackingNumber()
+    {
+        return $this->container['tracking_number'];
+    }
+
+    /**
+     * Sets tracking_number
+     *
+     * @param string $tracking_number The shipment tracking number
+     *
+     * @return $this
+     */
+    public function setTrackingNumber($tracking_number)
+    {
+
+        if ((mb_strlen($tracking_number) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $tracking_number when calling Tracking., must be bigger than or equal to 1.');
+        }
+
+        $this->container['tracking_number'] = $tracking_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets events
+     *
+     * @return \Purplship\Model\TrackingEvent[]
+     */
+    public function getEvents()
+    {
+        return $this->container['events'];
+    }
+
+    /**
+     * Sets events
+     *
+     * @param \Purplship\Model\TrackingEvent[] $events The tracking details events
+     *
+     * @return $this
+     */
+    public function setEvents($events)
+    {
+        $this->container['events'] = $events;
+
+        return $this;
+    }
+
+    /**
+     * Gets shipment_id
+     *
+     * @return string
+     */
+    public function getShipmentId()
+    {
+        return $this->container['shipment_id'];
+    }
+
+    /**
+     * Sets shipment_id
+     *
+     * @param string $shipment_id The system shipment associated.
+     *
+     * @return $this
+     */
+    public function setShipmentId($shipment_id)
+    {
+        $this->container['shipment_id'] = $shipment_id;
 
         return $this;
     }
