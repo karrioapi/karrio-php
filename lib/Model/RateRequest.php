@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Model;
+namespace Purplship\Model;
 
 use \ArrayAccess;
-use \Purplship\Client\\ObjectSerializer;
+use \Purplship\ObjectSerializer;
 
 /**
  * RateRequest Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,9 +57,9 @@ class RateRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'shipper' => '\Purplship\Client\\Model\Address',
-        'recipient' => '\Purplship\Client\\Model\Address',
-        'parcels' => '\Purplship\Client\\Model\Parcel[]',
+        'shipper' => '\Purplship\Model\Address',
+        'recipient' => '\Purplship\Model\Address',
+        'parcels' => '\Purplship\Model\Parcel[]',
         'services' => 'string[]',
         'options' => 'object',
         'reference' => 'string',
@@ -252,7 +252,7 @@ class RateRequest implements ModelInterface, ArrayAccess
     /**
      * Gets shipper
      *
-     * @return \Purplship\Client\\Model\Address
+     * @return \Purplship\Model\Address
      */
     public function getShipper()
     {
@@ -262,7 +262,7 @@ class RateRequest implements ModelInterface, ArrayAccess
     /**
      * Sets shipper
      *
-     * @param \Purplship\Client\\Model\Address $shipper shipper
+     * @param \Purplship\Model\Address $shipper shipper
      *
      * @return $this
      */
@@ -276,7 +276,7 @@ class RateRequest implements ModelInterface, ArrayAccess
     /**
      * Gets recipient
      *
-     * @return \Purplship\Client\\Model\Address
+     * @return \Purplship\Model\Address
      */
     public function getRecipient()
     {
@@ -286,7 +286,7 @@ class RateRequest implements ModelInterface, ArrayAccess
     /**
      * Sets recipient
      *
-     * @param \Purplship\Client\\Model\Address $recipient recipient
+     * @param \Purplship\Model\Address $recipient recipient
      *
      * @return $this
      */
@@ -300,7 +300,7 @@ class RateRequest implements ModelInterface, ArrayAccess
     /**
      * Gets parcels
      *
-     * @return \Purplship\Client\\Model\Parcel[]
+     * @return \Purplship\Model\Parcel[]
      */
     public function getParcels()
     {
@@ -310,7 +310,7 @@ class RateRequest implements ModelInterface, ArrayAccess
     /**
      * Sets parcels
      *
-     * @param \Purplship\Client\\Model\Parcel[] $parcels The shipment's parcels
+     * @param \Purplship\Model\Parcel[] $parcels The shipment's parcels
      *
      * @return $this
      */

@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Api;
+namespace Purplship\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Purplship\Client\ApiException;
-use Purplship\Client\Configuration;
-use Purplship\Client\HeaderSelector;
-use Purplship\Client\ObjectSerializer;
+use Purplship\ApiException;
+use Purplship\Configuration;
+use Purplship\HeaderSelector;
+use Purplship\ObjectSerializer;
 
 /**
  * ShippingApi Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -92,11 +92,11 @@ class ShippingApi
      *
      * Buy a shipment label
      *
-     * @param  \Purplship\Client\\Model\ShippingRequest $data data (required)
+     * @param  \Purplship\Model\ShippingRequest $data data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\ShipmentResponse
+     * @return \Purplship\Model\ShipmentResponse
      */
     public function buyLabel($data)
     {
@@ -109,15 +109,15 @@ class ShippingApi
      *
      * Buy a shipment label
      *
-     * @param  \Purplship\Client\\Model\ShippingRequest $data (required)
+     * @param  \Purplship\Model\ShippingRequest $data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\ShipmentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\ShipmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function buyLabelWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Client\\Model\ShipmentResponse';
+        $returnType = '\Purplship\Model\ShipmentResponse';
         $request = $this->buyLabelRequest($data);
 
         try {
@@ -169,7 +169,7 @@ class ShippingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ShipmentResponse',
+                        '\Purplship\Model\ShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -177,7 +177,7 @@ class ShippingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -192,7 +192,7 @@ class ShippingApi
      *
      * Buy a shipment label
      *
-     * @param  \Purplship\Client\\Model\ShippingRequest $data (required)
+     * @param  \Purplship\Model\ShippingRequest $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -212,14 +212,14 @@ class ShippingApi
      *
      * Buy a shipment label
      *
-     * @param  \Purplship\Client\\Model\ShippingRequest $data (required)
+     * @param  \Purplship\Model\ShippingRequest $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function buyLabelAsyncWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Client\\Model\ShipmentResponse';
+        $returnType = '\Purplship\Model\ShipmentResponse';
         $request = $this->buyLabelRequest($data);
 
         return $this->client
@@ -262,7 +262,7 @@ class ShippingApi
     /**
      * Create request for operation 'buyLabel'
      *
-     * @param  \Purplship\Client\\Model\ShippingRequest $data (required)
+     * @param  \Purplship\Model\ShippingRequest $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

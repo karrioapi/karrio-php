@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Model;
+namespace Purplship\Model;
 
 use \ArrayAccess;
-use \Purplship\Client\\ObjectSerializer;
+use \Purplship\ObjectSerializer;
 
 /**
  * ShipmentPurchaseData Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -58,7 +58,7 @@ class ShipmentPurchaseData implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'selected_rate_id' => 'string',
-        'payment' => '\Purplship\Client\\Model\Payment'
+        'payment' => '\Purplship\Model\Payment'
     ];
 
     /**
@@ -249,7 +249,7 @@ class ShipmentPurchaseData implements ModelInterface, ArrayAccess
     /**
      * Gets payment
      *
-     * @return \Purplship\Client\\Model\Payment
+     * @return \Purplship\Model\Payment
      */
     public function getPayment()
     {
@@ -259,7 +259,7 @@ class ShipmentPurchaseData implements ModelInterface, ArrayAccess
     /**
      * Sets payment
      *
-     * @param \Purplship\Client\\Model\Payment $payment payment
+     * @param \Purplship\Model\Payment $payment payment
      *
      * @return $this
      */

@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Api;
+namespace Purplship\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Purplship\Client\ApiException;
-use Purplship\Client\Configuration;
-use Purplship\Client\HeaderSelector;
-use Purplship\Client\ObjectSerializer;
+use Purplship\ApiException;
+use Purplship\Configuration;
+use Purplship\HeaderSelector;
+use Purplship\ObjectSerializer;
 
 /**
  * RatesApi Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -92,11 +92,11 @@ class RatesApi
      *
      * Fetch Shipment Rates
      *
-     * @param  \Purplship\Client\\Model\RateRequest $data data (required)
+     * @param  \Purplship\Model\RateRequest $data data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\RateResponse
+     * @return \Purplship\Model\RateResponse
      */
     public function fetch($data)
     {
@@ -109,15 +109,15 @@ class RatesApi
      *
      * Fetch Shipment Rates
      *
-     * @param  \Purplship\Client\\Model\RateRequest $data (required)
+     * @param  \Purplship\Model\RateRequest $data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\RateResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\RateResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function fetchWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Client\\Model\RateResponse';
+        $returnType = '\Purplship\Model\RateResponse';
         $request = $this->fetchRequest($data);
 
         try {
@@ -169,7 +169,7 @@ class RatesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\RateResponse',
+                        '\Purplship\Model\RateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -177,7 +177,7 @@ class RatesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -192,7 +192,7 @@ class RatesApi
      *
      * Fetch Shipment Rates
      *
-     * @param  \Purplship\Client\\Model\RateRequest $data (required)
+     * @param  \Purplship\Model\RateRequest $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -212,14 +212,14 @@ class RatesApi
      *
      * Fetch Shipment Rates
      *
-     * @param  \Purplship\Client\\Model\RateRequest $data (required)
+     * @param  \Purplship\Model\RateRequest $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function fetchAsyncWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Client\\Model\RateResponse';
+        $returnType = '\Purplship\Model\RateResponse';
         $request = $this->fetchRequest($data);
 
         return $this->client
@@ -262,7 +262,7 @@ class RatesApi
     /**
      * Create request for operation 'fetch'
      *
-     * @param  \Purplship\Client\\Model\RateRequest $data (required)
+     * @param  \Purplship\Model\RateRequest $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

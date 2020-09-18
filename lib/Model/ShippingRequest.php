@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Model;
+namespace Purplship\Model;
 
 use \ArrayAccess;
-use \Purplship\Client\\ObjectSerializer;
+use \Purplship\ObjectSerializer;
 
 /**
  * ShippingRequest Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,16 +57,16 @@ class ShippingRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'shipper' => '\Purplship\Client\\Model\AddressData',
-        'recipient' => '\Purplship\Client\\Model\AddressData',
-        'parcels' => '\Purplship\Client\\Model\ParcelData[]',
+        'shipper' => '\Purplship\Model\AddressData',
+        'recipient' => '\Purplship\Model\AddressData',
+        'parcels' => '\Purplship\Model\ParcelData[]',
         'options' => 'object',
-        'payment' => '\Purplship\Client\\Model\Payment',
-        'customs' => '\Purplship\Client\\Model\CustomsData',
-        'doc_images' => '\Purplship\Client\\Model\Doc[]',
+        'payment' => '\Purplship\Model\Payment',
+        'customs' => '\Purplship\Model\CustomsData',
+        'doc_images' => '\Purplship\Model\Doc[]',
         'reference' => 'string',
         'selected_rate_id' => 'string',
-        'rates' => '\Purplship\Client\\Model\Rate[]'
+        'rates' => '\Purplship\Model\Rate[]'
     ];
 
     /**
@@ -283,7 +283,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Gets shipper
      *
-     * @return \Purplship\Client\\Model\AddressData
+     * @return \Purplship\Model\AddressData
      */
     public function getShipper()
     {
@@ -293,7 +293,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Sets shipper
      *
-     * @param \Purplship\Client\\Model\AddressData $shipper shipper
+     * @param \Purplship\Model\AddressData $shipper shipper
      *
      * @return $this
      */
@@ -307,7 +307,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Gets recipient
      *
-     * @return \Purplship\Client\\Model\AddressData
+     * @return \Purplship\Model\AddressData
      */
     public function getRecipient()
     {
@@ -317,7 +317,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Sets recipient
      *
-     * @param \Purplship\Client\\Model\AddressData $recipient recipient
+     * @param \Purplship\Model\AddressData $recipient recipient
      *
      * @return $this
      */
@@ -331,7 +331,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Gets parcels
      *
-     * @return \Purplship\Client\\Model\ParcelData[]
+     * @return \Purplship\Model\ParcelData[]
      */
     public function getParcels()
     {
@@ -341,7 +341,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Sets parcels
      *
-     * @param \Purplship\Client\\Model\ParcelData[] $parcels The shipment's parcels
+     * @param \Purplship\Model\ParcelData[] $parcels The shipment's parcels
      *
      * @return $this
      */
@@ -379,7 +379,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Gets payment
      *
-     * @return \Purplship\Client\\Model\Payment
+     * @return \Purplship\Model\Payment
      */
     public function getPayment()
     {
@@ -389,7 +389,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Sets payment
      *
-     * @param \Purplship\Client\\Model\Payment $payment payment
+     * @param \Purplship\Model\Payment $payment payment
      *
      * @return $this
      */
@@ -403,7 +403,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Gets customs
      *
-     * @return \Purplship\Client\\Model\CustomsData
+     * @return \Purplship\Model\CustomsData
      */
     public function getCustoms()
     {
@@ -413,7 +413,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Sets customs
      *
-     * @param \Purplship\Client\\Model\CustomsData $customs customs
+     * @param \Purplship\Model\CustomsData $customs customs
      *
      * @return $this
      */
@@ -427,7 +427,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Gets doc_images
      *
-     * @return \Purplship\Client\\Model\Doc[]
+     * @return \Purplship\Model\Doc[]
      */
     public function getDocImages()
     {
@@ -437,7 +437,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Sets doc_images
      *
-     * @param \Purplship\Client\\Model\Doc[] $doc_images The list of documents to attach for a paperless interantional trade.  eg: Invoices...
+     * @param \Purplship\Model\Doc[] $doc_images The list of documents to attach for a paperless interantional trade.  eg: Invoices...
      *
      * @return $this
      */
@@ -504,7 +504,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Gets rates
      *
-     * @return \Purplship\Client\\Model\Rate[]
+     * @return \Purplship\Model\Rate[]
      */
     public function getRates()
     {
@@ -514,7 +514,7 @@ class ShippingRequest implements ModelInterface, ArrayAccess
     /**
      * Sets rates
      *
-     * @param \Purplship\Client\\Model\Rate[] $rates The list for shipment rates fetched previously
+     * @param \Purplship\Model\Rate[] $rates The list for shipment rates fetched previously
      *
      * @return $this
      */

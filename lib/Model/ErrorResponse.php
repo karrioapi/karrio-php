@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Model;
+namespace Purplship\Model;
 
 use \ArrayAccess;
-use \Purplship\Client\\ObjectSerializer;
+use \Purplship\ObjectSerializer;
 
 /**
  * ErrorResponse Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,7 +57,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'messages' => '\Purplship\Client\\Model\Message[]'
+        'messages' => '\Purplship\Model\Message[]'
     ];
 
     /**
@@ -207,7 +207,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess
     /**
      * Gets messages
      *
-     * @return \Purplship\Client\\Model\Message[]
+     * @return \Purplship\Model\Message[]
      */
     public function getMessages()
     {
@@ -217,7 +217,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess
     /**
      * Sets messages
      *
-     * @param \Purplship\Client\\Model\Message[] $messages The list of error messages
+     * @param \Purplship\Model\Message[] $messages The list of error messages
      *
      * @return $this
      */

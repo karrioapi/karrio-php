@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Api;
+namespace Purplship\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Purplship\Client\ApiException;
-use Purplship\Client\Configuration;
-use Purplship\Client\HeaderSelector;
-use Purplship\Client\ObjectSerializer;
+use Purplship\ApiException;
+use Purplship\Configuration;
+use Purplship\HeaderSelector;
+use Purplship\ObjectSerializer;
 
 /**
  * TrackingApi Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -96,9 +96,9 @@ class TrackingApi
      * @param  string $tracking_number tracking_number (required)
      * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\TrackingResponse
+     * @return \Purplship\Model\TrackingResponse
      */
     public function fetch($carrier_name, $tracking_number, $test = 'false')
     {
@@ -115,13 +115,13 @@ class TrackingApi
      * @param  string $tracking_number (required)
      * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\TrackingResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\TrackingResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function fetchWithHttpInfo($carrier_name, $tracking_number, $test = 'false')
     {
-        $returnType = '\Purplship\Client\\Model\TrackingResponse';
+        $returnType = '\Purplship\Model\TrackingResponse';
         $request = $this->fetchRequest($carrier_name, $tracking_number, $test);
 
         try {
@@ -173,7 +173,7 @@ class TrackingApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\TrackingResponse',
+                        '\Purplship\Model\TrackingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -181,7 +181,7 @@ class TrackingApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -227,7 +227,7 @@ class TrackingApi
      */
     public function fetchAsyncWithHttpInfo($carrier_name, $tracking_number, $test = 'false')
     {
-        $returnType = '\Purplship\Client\\Model\TrackingResponse';
+        $returnType = '\Purplship\Model\TrackingResponse';
         $request = $this->fetchRequest($carrier_name, $tracking_number, $test);
 
         return $this->client

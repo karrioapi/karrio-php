@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Api;
+namespace Purplship\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Purplship\Client\ApiException;
-use Purplship\Client\Configuration;
-use Purplship\Client\HeaderSelector;
-use Purplship\Client\ObjectSerializer;
+use Purplship\ApiException;
+use Purplship\Configuration;
+use Purplship\HeaderSelector;
+use Purplship\ObjectSerializer;
 
 /**
  * AddressesApi Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -92,11 +92,11 @@ class AddressesApi
      *
      * Create an Address
      *
-     * @param  \Purplship\Client\\Model\AddressData $data data (required)
+     * @param  \Purplship\Model\AddressData $data data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\Address
+     * @return \Purplship\Model\Address
      */
     public function create($data)
     {
@@ -109,15 +109,15 @@ class AddressesApi
      *
      * Create an Address
      *
-     * @param  \Purplship\Client\\Model\AddressData $data (required)
+     * @param  \Purplship\Model\AddressData $data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\Address, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Address, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Client\\Model\Address';
+        $returnType = '\Purplship\Model\Address';
         $request = $this->createRequest($data);
 
         try {
@@ -169,7 +169,7 @@ class AddressesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\Address',
+                        '\Purplship\Model\Address',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -177,7 +177,7 @@ class AddressesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -192,7 +192,7 @@ class AddressesApi
      *
      * Create an Address
      *
-     * @param  \Purplship\Client\\Model\AddressData $data (required)
+     * @param  \Purplship\Model\AddressData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -212,14 +212,14 @@ class AddressesApi
      *
      * Create an Address
      *
-     * @param  \Purplship\Client\\Model\AddressData $data (required)
+     * @param  \Purplship\Model\AddressData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createAsyncWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Client\\Model\Address';
+        $returnType = '\Purplship\Model\Address';
         $request = $this->createRequest($data);
 
         return $this->client
@@ -262,7 +262,7 @@ class AddressesApi
     /**
      * Create request for operation 'create'
      *
-     * @param  \Purplship\Client\\Model\AddressData $data (required)
+     * @param  \Purplship\Model\AddressData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -376,9 +376,9 @@ class AddressesApi
      * @param  int $limit Number of results to return per page. (optional)
      * @param  int $offset The initial index from which to return the results. (optional)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\Address[]
+     * @return \Purplship\Model\Address[]
      */
     public function list($limit = null, $offset = null)
     {
@@ -394,13 +394,13 @@ class AddressesApi
      * @param  int $limit Number of results to return per page. (optional)
      * @param  int $offset The initial index from which to return the results. (optional)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\Address[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Address[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listWithHttpInfo($limit = null, $offset = null)
     {
-        $returnType = '\Purplship\Client\\Model\Address[]';
+        $returnType = '\Purplship\Model\Address[]';
         $request = $this->listRequest($limit, $offset);
 
         try {
@@ -452,7 +452,7 @@ class AddressesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\Address[]',
+                        '\Purplship\Model\Address[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -460,7 +460,7 @@ class AddressesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -504,7 +504,7 @@ class AddressesApi
      */
     public function listAsyncWithHttpInfo($limit = null, $offset = null)
     {
-        $returnType = '\Purplship\Client\\Model\Address[]';
+        $returnType = '\Purplship\Model\Address[]';
         $request = $this->listRequest($limit, $offset);
 
         return $this->client
@@ -660,9 +660,9 @@ class AddressesApi
      *
      * @param  string $id id (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\Address
+     * @return \Purplship\Model\Address
      */
     public function retrieve($id)
     {
@@ -677,13 +677,13 @@ class AddressesApi
      *
      * @param  string $id (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\Address, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Address, HTTP status code, HTTP response headers (array of strings)
      */
     public function retrieveWithHttpInfo($id)
     {
-        $returnType = '\Purplship\Client\\Model\Address';
+        $returnType = '\Purplship\Model\Address';
         $request = $this->retrieveRequest($id);
 
         try {
@@ -735,7 +735,7 @@ class AddressesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\Address',
+                        '\Purplship\Model\Address',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -743,7 +743,7 @@ class AddressesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -785,7 +785,7 @@ class AddressesApi
      */
     public function retrieveAsyncWithHttpInfo($id)
     {
-        $returnType = '\Purplship\Client\\Model\Address';
+        $returnType = '\Purplship\Model\Address';
         $request = $this->retrieveRequest($id);
 
         return $this->client
@@ -945,11 +945,11 @@ class AddressesApi
      * Update an Address
      *
      * @param  string $id id (required)
-     * @param  \Purplship\Client\\Model\AddressData $data data (required)
+     * @param  \Purplship\Model\AddressData $data data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\Address
+     * @return \Purplship\Model\Address
      */
     public function update($id, $data)
     {
@@ -963,15 +963,15 @@ class AddressesApi
      * Update an Address
      *
      * @param  string $id (required)
-     * @param  \Purplship\Client\\Model\AddressData $data (required)
+     * @param  \Purplship\Model\AddressData $data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\Address, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Address, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWithHttpInfo($id, $data)
     {
-        $returnType = '\Purplship\Client\\Model\Address';
+        $returnType = '\Purplship\Model\Address';
         $request = $this->updateRequest($id, $data);
 
         try {
@@ -1023,7 +1023,7 @@ class AddressesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\Address',
+                        '\Purplship\Model\Address',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1031,7 +1031,7 @@ class AddressesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1047,7 +1047,7 @@ class AddressesApi
      * Update an Address
      *
      * @param  string $id (required)
-     * @param  \Purplship\Client\\Model\AddressData $data (required)
+     * @param  \Purplship\Model\AddressData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1068,14 +1068,14 @@ class AddressesApi
      * Update an Address
      *
      * @param  string $id (required)
-     * @param  \Purplship\Client\\Model\AddressData $data (required)
+     * @param  \Purplship\Model\AddressData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function updateAsyncWithHttpInfo($id, $data)
     {
-        $returnType = '\Purplship\Client\\Model\Address';
+        $returnType = '\Purplship\Model\Address';
         $request = $this->updateRequest($id, $data);
 
         return $this->client
@@ -1119,7 +1119,7 @@ class AddressesApi
      * Create request for operation 'update'
      *
      * @param  string $id (required)
-     * @param  \Purplship\Client\\Model\AddressData $data (required)
+     * @param  \Purplship\Model\AddressData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

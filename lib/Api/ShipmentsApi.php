@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Api;
+namespace Purplship\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Purplship\Client\ApiException;
-use Purplship\Client\Configuration;
-use Purplship\Client\HeaderSelector;
-use Purplship\Client\ObjectSerializer;
+use Purplship\ApiException;
+use Purplship\Configuration;
+use Purplship\HeaderSelector;
+use Purplship\ObjectSerializer;
 
 /**
  * ShipmentsApi Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -92,11 +92,11 @@ class ShipmentsApi
      *
      * Create a Shipment
      *
-     * @param  \Purplship\Client\\Model\ShipmentData $data data (required)
+     * @param  \Purplship\Model\ShipmentData $data data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\Shipment
+     * @return \Purplship\Model\Shipment
      */
     public function create($data)
     {
@@ -109,15 +109,15 @@ class ShipmentsApi
      *
      * Create a Shipment
      *
-     * @param  \Purplship\Client\\Model\ShipmentData $data (required)
+     * @param  \Purplship\Model\ShipmentData $data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\Shipment, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Shipment, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Client\\Model\Shipment';
+        $returnType = '\Purplship\Model\Shipment';
         $request = $this->createRequest($data);
 
         try {
@@ -169,7 +169,7 @@ class ShipmentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\Shipment',
+                        '\Purplship\Model\Shipment',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -177,7 +177,7 @@ class ShipmentsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -192,7 +192,7 @@ class ShipmentsApi
      *
      * Create a Shipment
      *
-     * @param  \Purplship\Client\\Model\ShipmentData $data (required)
+     * @param  \Purplship\Model\ShipmentData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -212,14 +212,14 @@ class ShipmentsApi
      *
      * Create a Shipment
      *
-     * @param  \Purplship\Client\\Model\ShipmentData $data (required)
+     * @param  \Purplship\Model\ShipmentData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createAsyncWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Client\\Model\Shipment';
+        $returnType = '\Purplship\Model\Shipment';
         $request = $this->createRequest($data);
 
         return $this->client
@@ -262,7 +262,7 @@ class ShipmentsApi
     /**
      * Create request for operation 'create'
      *
-     * @param  \Purplship\Client\\Model\ShipmentData $data (required)
+     * @param  \Purplship\Model\ShipmentData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -376,9 +376,9 @@ class ShipmentsApi
      * @param  int $limit Number of results to return per page. (optional)
      * @param  int $offset The initial index from which to return the results. (optional)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\Shipment[]
+     * @return \Purplship\Model\Shipment[]
      */
     public function list($limit = null, $offset = null)
     {
@@ -394,13 +394,13 @@ class ShipmentsApi
      * @param  int $limit Number of results to return per page. (optional)
      * @param  int $offset The initial index from which to return the results. (optional)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\Shipment[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Shipment[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listWithHttpInfo($limit = null, $offset = null)
     {
-        $returnType = '\Purplship\Client\\Model\Shipment[]';
+        $returnType = '\Purplship\Model\Shipment[]';
         $request = $this->listRequest($limit, $offset);
 
         try {
@@ -452,7 +452,7 @@ class ShipmentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\Shipment[]',
+                        '\Purplship\Model\Shipment[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -460,7 +460,7 @@ class ShipmentsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -504,7 +504,7 @@ class ShipmentsApi
      */
     public function listAsyncWithHttpInfo($limit = null, $offset = null)
     {
-        $returnType = '\Purplship\Client\\Model\Shipment[]';
+        $returnType = '\Purplship\Model\Shipment[]';
         $request = $this->listRequest($limit, $offset);
 
         return $this->client
@@ -660,9 +660,9 @@ class ShipmentsApi
      *
      * @param  string $id id (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\Shipment
+     * @return \Purplship\Model\Shipment
      */
     public function options($id)
     {
@@ -677,13 +677,13 @@ class ShipmentsApi
      *
      * @param  string $id (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\Shipment, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Shipment, HTTP status code, HTTP response headers (array of strings)
      */
     public function optionsWithHttpInfo($id)
     {
-        $returnType = '\Purplship\Client\\Model\Shipment';
+        $returnType = '\Purplship\Model\Shipment';
         $request = $this->optionsRequest($id);
 
         try {
@@ -735,7 +735,7 @@ class ShipmentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\Shipment',
+                        '\Purplship\Model\Shipment',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -743,7 +743,7 @@ class ShipmentsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -785,7 +785,7 @@ class ShipmentsApi
      */
     public function optionsAsyncWithHttpInfo($id)
     {
-        $returnType = '\Purplship\Client\\Model\Shipment';
+        $returnType = '\Purplship\Model\Shipment';
         $request = $this->optionsRequest($id);
 
         return $this->client
@@ -945,11 +945,11 @@ class ShipmentsApi
      * Buy a Shipment
      *
      * @param  string $id id (required)
-     * @param  \Purplship\Client\\Model\ShipmentPurchaseData $data data (required)
+     * @param  \Purplship\Model\ShipmentPurchaseData $data data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\ShipmentResponse
+     * @return \Purplship\Model\ShipmentResponse
      */
     public function purchase($id, $data)
     {
@@ -963,15 +963,15 @@ class ShipmentsApi
      * Buy a Shipment
      *
      * @param  string $id (required)
-     * @param  \Purplship\Client\\Model\ShipmentPurchaseData $data (required)
+     * @param  \Purplship\Model\ShipmentPurchaseData $data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\ShipmentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\ShipmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function purchaseWithHttpInfo($id, $data)
     {
-        $returnType = '\Purplship\Client\\Model\ShipmentResponse';
+        $returnType = '\Purplship\Model\ShipmentResponse';
         $request = $this->purchaseRequest($id, $data);
 
         try {
@@ -1023,7 +1023,7 @@ class ShipmentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ShipmentResponse',
+                        '\Purplship\Model\ShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1031,7 +1031,7 @@ class ShipmentsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1047,7 +1047,7 @@ class ShipmentsApi
      * Buy a Shipment
      *
      * @param  string $id (required)
-     * @param  \Purplship\Client\\Model\ShipmentPurchaseData $data (required)
+     * @param  \Purplship\Model\ShipmentPurchaseData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1068,14 +1068,14 @@ class ShipmentsApi
      * Buy a Shipment
      *
      * @param  string $id (required)
-     * @param  \Purplship\Client\\Model\ShipmentPurchaseData $data (required)
+     * @param  \Purplship\Model\ShipmentPurchaseData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function purchaseAsyncWithHttpInfo($id, $data)
     {
-        $returnType = '\Purplship\Client\\Model\ShipmentResponse';
+        $returnType = '\Purplship\Model\ShipmentResponse';
         $request = $this->purchaseRequest($id, $data);
 
         return $this->client
@@ -1119,7 +1119,7 @@ class ShipmentsApi
      * Create request for operation 'purchase'
      *
      * @param  string $id (required)
-     * @param  \Purplship\Client\\Model\ShipmentPurchaseData $data (required)
+     * @param  \Purplship\Model\ShipmentPurchaseData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1248,9 +1248,9 @@ class ShipmentsApi
      * @param  int $limit Number of results to return per page. (optional)
      * @param  int $offset The initial index from which to return the results. (optional)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\ShipmentResponse
+     * @return \Purplship\Model\ShipmentResponse
      */
     public function rates($id, $limit = null, $offset = null)
     {
@@ -1267,13 +1267,13 @@ class ShipmentsApi
      * @param  int $limit Number of results to return per page. (optional)
      * @param  int $offset The initial index from which to return the results. (optional)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\ShipmentResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\ShipmentResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function ratesWithHttpInfo($id, $limit = null, $offset = null)
     {
-        $returnType = '\Purplship\Client\\Model\ShipmentResponse';
+        $returnType = '\Purplship\Model\ShipmentResponse';
         $request = $this->ratesRequest($id, $limit, $offset);
 
         try {
@@ -1325,7 +1325,7 @@ class ShipmentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ShipmentResponse',
+                        '\Purplship\Model\ShipmentResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1333,7 +1333,7 @@ class ShipmentsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1379,7 +1379,7 @@ class ShipmentsApi
      */
     public function ratesAsyncWithHttpInfo($id, $limit = null, $offset = null)
     {
-        $returnType = '\Purplship\Client\\Model\ShipmentResponse';
+        $returnType = '\Purplship\Model\ShipmentResponse';
         $request = $this->ratesRequest($id, $limit, $offset);
 
         return $this->client
@@ -1550,9 +1550,9 @@ class ShipmentsApi
      *
      * @param  string $id id (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\Shipment
+     * @return \Purplship\Model\Shipment
      */
     public function retrieve($id)
     {
@@ -1567,13 +1567,13 @@ class ShipmentsApi
      *
      * @param  string $id (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\Shipment, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Shipment, HTTP status code, HTTP response headers (array of strings)
      */
     public function retrieveWithHttpInfo($id)
     {
-        $returnType = '\Purplship\Client\\Model\Shipment';
+        $returnType = '\Purplship\Model\Shipment';
         $request = $this->retrieveRequest($id);
 
         try {
@@ -1625,7 +1625,7 @@ class ShipmentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\Shipment',
+                        '\Purplship\Model\Shipment',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1633,7 +1633,7 @@ class ShipmentsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1675,7 +1675,7 @@ class ShipmentsApi
      */
     public function retrieveAsyncWithHttpInfo($id)
     {
-        $returnType = '\Purplship\Client\\Model\Shipment';
+        $returnType = '\Purplship\Model\Shipment';
         $request = $this->retrieveRequest($id);
 
         return $this->client
@@ -1837,9 +1837,9 @@ class ShipmentsApi
      * @param  string $carrier_id carrier_id (required)
      * @param  string $tracking_number tracking_number (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\TrackingStatus
+     * @return \Purplship\Model\TrackingStatus
      */
     public function track($carrier_id, $tracking_number)
     {
@@ -1855,13 +1855,13 @@ class ShipmentsApi
      * @param  string $carrier_id (required)
      * @param  string $tracking_number (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\TrackingStatus, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\TrackingStatus, HTTP status code, HTTP response headers (array of strings)
      */
     public function trackWithHttpInfo($carrier_id, $tracking_number)
     {
-        $returnType = '\Purplship\Client\\Model\TrackingStatus';
+        $returnType = '\Purplship\Model\TrackingStatus';
         $request = $this->trackRequest($carrier_id, $tracking_number);
 
         try {
@@ -1913,7 +1913,7 @@ class ShipmentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\TrackingStatus',
+                        '\Purplship\Model\TrackingStatus',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1921,7 +1921,7 @@ class ShipmentsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1965,7 +1965,7 @@ class ShipmentsApi
      */
     public function trackAsyncWithHttpInfo($carrier_id, $tracking_number)
     {
-        $returnType = '\Purplship\Client\\Model\TrackingStatus';
+        $returnType = '\Purplship\Model\TrackingStatus';
         $request = $this->trackRequest($carrier_id, $tracking_number);
 
         return $this->client

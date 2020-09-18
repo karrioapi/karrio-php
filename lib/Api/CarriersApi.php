@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Api;
+namespace Purplship\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Purplship\Client\ApiException;
-use Purplship\Client\Configuration;
-use Purplship\Client\HeaderSelector;
-use Purplship\Client\ObjectSerializer;
+use Purplship\ApiException;
+use Purplship\Configuration;
+use Purplship\HeaderSelector;
+use Purplship\ObjectSerializer;
 
 /**
  * CarriersApi Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -95,9 +95,9 @@ class CarriersApi
      * @param  string $carrier_name Indicates a carrier (type) (optional)
      * @param  bool $test The test flag filter carrier configured in test mode (optional)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\CarrierSettings[]
+     * @return \Purplship\Model\CarrierSettings[]
      */
     public function list($carrier_name = null, $test = null)
     {
@@ -113,13 +113,13 @@ class CarriersApi
      * @param  string $carrier_name Indicates a carrier (type) (optional)
      * @param  bool $test The test flag filter carrier configured in test mode (optional)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\CarrierSettings[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\CarrierSettings[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listWithHttpInfo($carrier_name = null, $test = null)
     {
-        $returnType = '\Purplship\Client\\Model\CarrierSettings[]';
+        $returnType = '\Purplship\Model\CarrierSettings[]';
         $request = $this->listRequest($carrier_name, $test);
 
         try {
@@ -171,7 +171,7 @@ class CarriersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\CarrierSettings[]',
+                        '\Purplship\Model\CarrierSettings[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -179,7 +179,7 @@ class CarriersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -223,7 +223,7 @@ class CarriersApi
      */
     public function listAsyncWithHttpInfo($carrier_name = null, $test = null)
     {
-        $returnType = '\Purplship\Client\\Model\CarrierSettings[]';
+        $returnType = '\Purplship\Model\CarrierSettings[]';
         $request = $this->listRequest($carrier_name, $test);
 
         return $this->client
@@ -379,9 +379,9 @@ class CarriersApi
      *
      * @param  string $carrier_id_or_pk carrier_id_or_pk (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\CarrierSettings
+     * @return \Purplship\Model\CarrierSettings
      */
     public function retrieve($carrier_id_or_pk)
     {
@@ -396,13 +396,13 @@ class CarriersApi
      *
      * @param  string $carrier_id_or_pk (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\CarrierSettings, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\CarrierSettings, HTTP status code, HTTP response headers (array of strings)
      */
     public function retrieveWithHttpInfo($carrier_id_or_pk)
     {
-        $returnType = '\Purplship\Client\\Model\CarrierSettings';
+        $returnType = '\Purplship\Model\CarrierSettings';
         $request = $this->retrieveRequest($carrier_id_or_pk);
 
         try {
@@ -454,7 +454,7 @@ class CarriersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\CarrierSettings',
+                        '\Purplship\Model\CarrierSettings',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -462,7 +462,7 @@ class CarriersApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -504,7 +504,7 @@ class CarriersApi
      */
     public function retrieveAsyncWithHttpInfo($carrier_id_or_pk)
     {
-        $returnType = '\Purplship\Client\\Model\CarrierSettings';
+        $returnType = '\Purplship\Model\CarrierSettings';
         $request = $this->retrieveRequest($carrier_id_or_pk);
 
         return $this->client

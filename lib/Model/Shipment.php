@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Model;
+namespace Purplship\Model;
 
 use \ArrayAccess;
-use \Purplship\Client\\ObjectSerializer;
+use \Purplship\ObjectSerializer;
 
 /**
  * Shipment Class Doc Comment
  *
  * @category Class
  * @description The submitted shipment&#39;s summary
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -64,18 +64,18 @@ class Shipment implements ModelInterface, ArrayAccess
         'carrier_id' => 'string',
         'label' => 'string',
         'tracking_number' => 'string',
-        'selected_rate' => '\Purplship\Client\\Model\Rate',
+        'selected_rate' => '\Purplship\Model\Rate',
         'selected_rate_id' => 'string',
-        'rates' => '\Purplship\Client\\Model\Rate[]',
+        'rates' => '\Purplship\Model\Rate[]',
         'tracking_url' => 'string',
-        'shipper' => '\Purplship\Client\\Model\Address',
-        'recipient' => '\Purplship\Client\\Model\Address',
-        'parcels' => '\Purplship\Client\\Model\Parcel[]',
+        'shipper' => '\Purplship\Model\Address',
+        'recipient' => '\Purplship\Model\Address',
+        'parcels' => '\Purplship\Model\Parcel[]',
         'services' => 'string[]',
         'options' => 'object',
-        'payment' => '\Purplship\Client\\Model\Payment',
-        'customs' => '\Purplship\Client\\Model\Customs',
-        'doc_images' => '\Purplship\Client\\Model\Doc[]',
+        'payment' => '\Purplship\Model\Payment',
+        'customs' => '\Purplship\Model\Customs',
+        'doc_images' => '\Purplship\Model\Doc[]',
         'reference' => 'string',
         'carrier_ids' => 'string[]',
         'meta' => 'object'
@@ -524,7 +524,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Gets selected_rate
      *
-     * @return \Purplship\Client\\Model\Rate
+     * @return \Purplship\Model\Rate
      */
     public function getSelectedRate()
     {
@@ -534,7 +534,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Sets selected_rate
      *
-     * @param \Purplship\Client\\Model\Rate $selected_rate selected_rate
+     * @param \Purplship\Model\Rate $selected_rate selected_rate
      *
      * @return $this
      */
@@ -572,7 +572,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Gets rates
      *
-     * @return \Purplship\Client\\Model\Rate[]
+     * @return \Purplship\Model\Rate[]
      */
     public function getRates()
     {
@@ -582,7 +582,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Sets rates
      *
-     * @param \Purplship\Client\\Model\Rate[] $rates The list for shipment rates fetched previously
+     * @param \Purplship\Model\Rate[] $rates The list for shipment rates fetched previously
      *
      * @return $this
      */
@@ -620,7 +620,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Gets shipper
      *
-     * @return \Purplship\Client\\Model\Address
+     * @return \Purplship\Model\Address
      */
     public function getShipper()
     {
@@ -630,7 +630,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Sets shipper
      *
-     * @param \Purplship\Client\\Model\Address $shipper shipper
+     * @param \Purplship\Model\Address $shipper shipper
      *
      * @return $this
      */
@@ -644,7 +644,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Gets recipient
      *
-     * @return \Purplship\Client\\Model\Address
+     * @return \Purplship\Model\Address
      */
     public function getRecipient()
     {
@@ -654,7 +654,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Sets recipient
      *
-     * @param \Purplship\Client\\Model\Address $recipient recipient
+     * @param \Purplship\Model\Address $recipient recipient
      *
      * @return $this
      */
@@ -668,7 +668,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Gets parcels
      *
-     * @return \Purplship\Client\\Model\Parcel[]
+     * @return \Purplship\Model\Parcel[]
      */
     public function getParcels()
     {
@@ -678,7 +678,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Sets parcels
      *
-     * @param \Purplship\Client\\Model\Parcel[] $parcels The shipment's parcels
+     * @param \Purplship\Model\Parcel[] $parcels The shipment's parcels
      *
      * @return $this
      */
@@ -740,7 +740,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Gets payment
      *
-     * @return \Purplship\Client\\Model\Payment
+     * @return \Purplship\Model\Payment
      */
     public function getPayment()
     {
@@ -750,7 +750,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Sets payment
      *
-     * @param \Purplship\Client\\Model\Payment $payment payment
+     * @param \Purplship\Model\Payment $payment payment
      *
      * @return $this
      */
@@ -764,7 +764,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Gets customs
      *
-     * @return \Purplship\Client\\Model\Customs
+     * @return \Purplship\Model\Customs
      */
     public function getCustoms()
     {
@@ -774,7 +774,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Sets customs
      *
-     * @param \Purplship\Client\\Model\Customs $customs customs
+     * @param \Purplship\Model\Customs $customs customs
      *
      * @return $this
      */
@@ -788,7 +788,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Gets doc_images
      *
-     * @return \Purplship\Client\\Model\Doc[]
+     * @return \Purplship\Model\Doc[]
      */
     public function getDocImages()
     {
@@ -798,7 +798,7 @@ class Shipment implements ModelInterface, ArrayAccess
     /**
      * Sets doc_images
      *
-     * @param \Purplship\Client\\Model\Doc[] $doc_images The list of documents to attach for a paperless interantional trade.  eg: Invoices...
+     * @param \Purplship\Model\Doc[] $doc_images The list of documents to attach for a paperless interantional trade.  eg: Invoices...
      *
      * @return $this
      */

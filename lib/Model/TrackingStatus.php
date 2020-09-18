@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Model;
+namespace Purplship\Model;
 
 use \ArrayAccess;
-use \Purplship\Client\\ObjectSerializer;
+use \Purplship\ObjectSerializer;
 
 /**
  * TrackingStatus Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -61,7 +61,7 @@ class TrackingStatus implements ModelInterface, ArrayAccess
         'carrier_name' => 'string',
         'carrier_id' => 'string',
         'tracking_number' => 'string',
-        'events' => '\Purplship\Client\\Model\TrackingEvent[]',
+        'events' => '\Purplship\Model\TrackingEvent[]',
         'shipment_id' => 'string'
     ];
 
@@ -378,7 +378,7 @@ class TrackingStatus implements ModelInterface, ArrayAccess
     /**
      * Gets events
      *
-     * @return \Purplship\Client\\Model\TrackingEvent[]
+     * @return \Purplship\Model\TrackingEvent[]
      */
     public function getEvents()
     {
@@ -388,7 +388,7 @@ class TrackingStatus implements ModelInterface, ArrayAccess
     /**
      * Sets events
      *
-     * @param \Purplship\Client\\Model\TrackingEvent[] $events The tracking details events
+     * @param \Purplship\Model\TrackingEvent[] $events The tracking details events
      *
      * @return $this
      */

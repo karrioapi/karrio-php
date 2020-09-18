@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Model;
+namespace Purplship\Model;
 
 use \ArrayAccess;
-use \Purplship\Client\\ObjectSerializer;
+use \Purplship\ObjectSerializer;
 
 /**
  * Payment Class Doc Comment
  *
  * @category Class
  * @description The payment details.&lt;br/&gt; Note that this is required for a Dutiable parcel shipped internationally.
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -63,8 +63,8 @@ class Payment implements ModelInterface, ArrayAccess
         'amount' => 'float',
         'currency' => 'string',
         'account_number' => 'string',
-        'credit_card' => '\Purplship\Client\\Model\Card',
-        'contact' => '\Purplship\Client\\Model\Address'
+        'credit_card' => '\Purplship\Model\Card',
+        'contact' => '\Purplship\Model\Address'
     ];
 
     /**
@@ -729,7 +729,7 @@ class Payment implements ModelInterface, ArrayAccess
     /**
      * Gets credit_card
      *
-     * @return \Purplship\Client\\Model\Card
+     * @return \Purplship\Model\Card
      */
     public function getCreditCard()
     {
@@ -739,7 +739,7 @@ class Payment implements ModelInterface, ArrayAccess
     /**
      * Sets credit_card
      *
-     * @param \Purplship\Client\\Model\Card $credit_card credit_card
+     * @param \Purplship\Model\Card $credit_card credit_card
      *
      * @return $this
      */
@@ -753,7 +753,7 @@ class Payment implements ModelInterface, ArrayAccess
     /**
      * Gets contact
      *
-     * @return \Purplship\Client\\Model\Address
+     * @return \Purplship\Model\Address
      */
     public function getContact()
     {
@@ -763,7 +763,7 @@ class Payment implements ModelInterface, ArrayAccess
     /**
      * Sets contact
      *
-     * @param \Purplship\Client\\Model\Address $contact contact
+     * @param \Purplship\Model\Address $contact contact
      *
      * @return $this
      */

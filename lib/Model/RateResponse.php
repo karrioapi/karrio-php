@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Model;
+namespace Purplship\Model;
 
 use \ArrayAccess;
-use \Purplship\Client\\ObjectSerializer;
+use \Purplship\ObjectSerializer;
 
 /**
  * RateResponse Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,8 +57,8 @@ class RateResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'messages' => '\Purplship\Client\\Model\Message[]',
-        'rates' => '\Purplship\Client\\Model\Rate[]'
+        'messages' => '\Purplship\Model\Message[]',
+        'rates' => '\Purplship\Model\Rate[]'
     ];
 
     /**
@@ -216,7 +216,7 @@ class RateResponse implements ModelInterface, ArrayAccess
     /**
      * Gets messages
      *
-     * @return \Purplship\Client\\Model\Message[]
+     * @return \Purplship\Model\Message[]
      */
     public function getMessages()
     {
@@ -226,7 +226,7 @@ class RateResponse implements ModelInterface, ArrayAccess
     /**
      * Sets messages
      *
-     * @param \Purplship\Client\\Model\Message[] $messages The list of note, error or warning messages
+     * @param \Purplship\Model\Message[] $messages The list of note, error or warning messages
      *
      * @return $this
      */
@@ -240,7 +240,7 @@ class RateResponse implements ModelInterface, ArrayAccess
     /**
      * Gets rates
      *
-     * @return \Purplship\Client\\Model\Rate[]
+     * @return \Purplship\Model\Rate[]
      */
     public function getRates()
     {
@@ -250,7 +250,7 @@ class RateResponse implements ModelInterface, ArrayAccess
     /**
      * Sets rates
      *
-     * @param \Purplship\Client\\Model\Rate[] $rates The list of returned rates
+     * @param \Purplship\Model\Rate[] $rates The list of returned rates
      *
      * @return $this
      */

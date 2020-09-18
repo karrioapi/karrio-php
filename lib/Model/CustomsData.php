@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Model;
+namespace Purplship\Model;
 
 use \ArrayAccess;
-use \Purplship\Client\\ObjectSerializer;
+use \Purplship\ObjectSerializer;
 
 /**
  * CustomsData Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -61,9 +61,9 @@ class CustomsData implements ModelInterface, ArrayAccess
         'aes' => 'string',
         'description' => 'string',
         'terms_of_trade' => 'string',
-        'commodities' => '\Purplship\Client\\Model\Commodity[]',
-        'duty' => '\Purplship\Client\\Model\Payment',
-        'invoice' => '\Purplship\Client\\Model\Invoice',
+        'commodities' => '\Purplship\Model\Commodity[]',
+        'duty' => '\Purplship\Model\Payment',
+        'invoice' => '\Purplship\Model\Invoice',
         'commercial_invoice' => 'bool'
     ];
 
@@ -354,7 +354,7 @@ class CustomsData implements ModelInterface, ArrayAccess
     /**
      * Gets commodities
      *
-     * @return \Purplship\Client\\Model\Commodity[]
+     * @return \Purplship\Model\Commodity[]
      */
     public function getCommodities()
     {
@@ -364,7 +364,7 @@ class CustomsData implements ModelInterface, ArrayAccess
     /**
      * Sets commodities
      *
-     * @param \Purplship\Client\\Model\Commodity[] $commodities The parcel content items
+     * @param \Purplship\Model\Commodity[] $commodities The parcel content items
      *
      * @return $this
      */
@@ -378,7 +378,7 @@ class CustomsData implements ModelInterface, ArrayAccess
     /**
      * Gets duty
      *
-     * @return \Purplship\Client\\Model\Payment
+     * @return \Purplship\Model\Payment
      */
     public function getDuty()
     {
@@ -388,7 +388,7 @@ class CustomsData implements ModelInterface, ArrayAccess
     /**
      * Sets duty
      *
-     * @param \Purplship\Client\\Model\Payment $duty duty
+     * @param \Purplship\Model\Payment $duty duty
      *
      * @return $this
      */
@@ -402,7 +402,7 @@ class CustomsData implements ModelInterface, ArrayAccess
     /**
      * Gets invoice
      *
-     * @return \Purplship\Client\\Model\Invoice
+     * @return \Purplship\Model\Invoice
      */
     public function getInvoice()
     {
@@ -412,7 +412,7 @@ class CustomsData implements ModelInterface, ArrayAccess
     /**
      * Sets invoice
      *
-     * @param \Purplship\Client\\Model\Invoice $invoice invoice
+     * @param \Purplship\Model\Invoice $invoice invoice
      *
      * @return $this
      */

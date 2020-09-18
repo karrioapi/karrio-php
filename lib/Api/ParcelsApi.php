@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Api;
+namespace Purplship\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use Purplship\Client\ApiException;
-use Purplship\Client\Configuration;
-use Purplship\Client\HeaderSelector;
-use Purplship\Client\ObjectSerializer;
+use Purplship\ApiException;
+use Purplship\Configuration;
+use Purplship\HeaderSelector;
+use Purplship\ObjectSerializer;
 
 /**
  * ParcelsApi Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -92,11 +92,11 @@ class ParcelsApi
      *
      * Create a Parcel
      *
-     * @param  \Purplship\Client\\Model\ParcelData $data data (required)
+     * @param  \Purplship\Model\ParcelData $data data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\Parcel
+     * @return \Purplship\Model\Parcel
      */
     public function create($data)
     {
@@ -109,15 +109,15 @@ class ParcelsApi
      *
      * Create a Parcel
      *
-     * @param  \Purplship\Client\\Model\ParcelData $data (required)
+     * @param  \Purplship\Model\ParcelData $data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\Parcel, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Parcel, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Client\\Model\Parcel';
+        $returnType = '\Purplship\Model\Parcel';
         $request = $this->createRequest($data);
 
         try {
@@ -169,7 +169,7 @@ class ParcelsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\Parcel',
+                        '\Purplship\Model\Parcel',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -177,7 +177,7 @@ class ParcelsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -192,7 +192,7 @@ class ParcelsApi
      *
      * Create a Parcel
      *
-     * @param  \Purplship\Client\\Model\ParcelData $data (required)
+     * @param  \Purplship\Model\ParcelData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -212,14 +212,14 @@ class ParcelsApi
      *
      * Create a Parcel
      *
-     * @param  \Purplship\Client\\Model\ParcelData $data (required)
+     * @param  \Purplship\Model\ParcelData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createAsyncWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Client\\Model\Parcel';
+        $returnType = '\Purplship\Model\Parcel';
         $request = $this->createRequest($data);
 
         return $this->client
@@ -262,7 +262,7 @@ class ParcelsApi
     /**
      * Create request for operation 'create'
      *
-     * @param  \Purplship\Client\\Model\ParcelData $data (required)
+     * @param  \Purplship\Model\ParcelData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -376,9 +376,9 @@ class ParcelsApi
      * @param  int $limit Number of results to return per page. (optional)
      * @param  int $offset The initial index from which to return the results. (optional)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\Parcel[]
+     * @return \Purplship\Model\Parcel[]
      */
     public function list($limit = null, $offset = null)
     {
@@ -394,13 +394,13 @@ class ParcelsApi
      * @param  int $limit Number of results to return per page. (optional)
      * @param  int $offset The initial index from which to return the results. (optional)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\Parcel[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Parcel[], HTTP status code, HTTP response headers (array of strings)
      */
     public function listWithHttpInfo($limit = null, $offset = null)
     {
-        $returnType = '\Purplship\Client\\Model\Parcel[]';
+        $returnType = '\Purplship\Model\Parcel[]';
         $request = $this->listRequest($limit, $offset);
 
         try {
@@ -452,7 +452,7 @@ class ParcelsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\Parcel[]',
+                        '\Purplship\Model\Parcel[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -460,7 +460,7 @@ class ParcelsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -504,7 +504,7 @@ class ParcelsApi
      */
     public function listAsyncWithHttpInfo($limit = null, $offset = null)
     {
-        $returnType = '\Purplship\Client\\Model\Parcel[]';
+        $returnType = '\Purplship\Model\Parcel[]';
         $request = $this->listRequest($limit, $offset);
 
         return $this->client
@@ -660,9 +660,9 @@ class ParcelsApi
      *
      * @param  string $id id (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\Parcel
+     * @return \Purplship\Model\Parcel
      */
     public function retrieve($id)
     {
@@ -677,13 +677,13 @@ class ParcelsApi
      *
      * @param  string $id (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\Parcel, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Parcel, HTTP status code, HTTP response headers (array of strings)
      */
     public function retrieveWithHttpInfo($id)
     {
-        $returnType = '\Purplship\Client\\Model\Parcel';
+        $returnType = '\Purplship\Model\Parcel';
         $request = $this->retrieveRequest($id);
 
         try {
@@ -735,7 +735,7 @@ class ParcelsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\Parcel',
+                        '\Purplship\Model\Parcel',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -743,7 +743,7 @@ class ParcelsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -785,7 +785,7 @@ class ParcelsApi
      */
     public function retrieveAsyncWithHttpInfo($id)
     {
-        $returnType = '\Purplship\Client\\Model\Parcel';
+        $returnType = '\Purplship\Model\Parcel';
         $request = $this->retrieveRequest($id);
 
         return $this->client
@@ -945,11 +945,11 @@ class ParcelsApi
      * Update a Parcel
      *
      * @param  string $id id (required)
-     * @param  \Purplship\Client\\Model\ParcelData $data data (required)
+     * @param  \Purplship\Model\ParcelData $data data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Client\\Model\Parcel
+     * @return \Purplship\Model\Parcel
      */
     public function update($id, $data)
     {
@@ -963,15 +963,15 @@ class ParcelsApi
      * Update a Parcel
      *
      * @param  string $id (required)
-     * @param  \Purplship\Client\\Model\ParcelData $data (required)
+     * @param  \Purplship\Model\ParcelData $data (required)
      *
-     * @throws \Purplship\Client\\ApiException on non-2xx response
+     * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Client\\Model\Parcel, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Parcel, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWithHttpInfo($id, $data)
     {
-        $returnType = '\Purplship\Client\\Model\Parcel';
+        $returnType = '\Purplship\Model\Parcel';
         $request = $this->updateRequest($id, $data);
 
         try {
@@ -1023,7 +1023,7 @@ class ParcelsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\Parcel',
+                        '\Purplship\Model\Parcel',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1031,7 +1031,7 @@ class ParcelsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Client\\Model\ErrorResponse',
+                        '\Purplship\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1047,7 +1047,7 @@ class ParcelsApi
      * Update a Parcel
      *
      * @param  string $id (required)
-     * @param  \Purplship\Client\\Model\ParcelData $data (required)
+     * @param  \Purplship\Model\ParcelData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1068,14 +1068,14 @@ class ParcelsApi
      * Update a Parcel
      *
      * @param  string $id (required)
-     * @param  \Purplship\Client\\Model\ParcelData $data (required)
+     * @param  \Purplship\Model\ParcelData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function updateAsyncWithHttpInfo($id, $data)
     {
-        $returnType = '\Purplship\Client\\Model\Parcel';
+        $returnType = '\Purplship\Model\Parcel';
         $request = $this->updateRequest($id, $data);
 
         return $this->client
@@ -1119,7 +1119,7 @@ class ParcelsApi
      * Create request for operation 'update'
      *
      * @param  string $id (required)
-     * @param  \Purplship\Client\\Model\ParcelData $data (required)
+     * @param  \Purplship\Model\ParcelData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

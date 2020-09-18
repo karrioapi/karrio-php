@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Purplship\Client\Model;
+namespace Purplship\Model;
 
 use \ArrayAccess;
-use \Purplship\Client\\ObjectSerializer;
+use \Purplship\ObjectSerializer;
 
 /**
  * TrackingResponse Class Doc Comment
  *
  * @category Class
- * @package  Purplship\Client
+ * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,8 +57,8 @@ class TrackingResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'messages' => '\Purplship\Client\\Model\Message[]',
-        'tracking_details' => '\Purplship\Client\\Model\TrackingDetails'
+        'messages' => '\Purplship\Model\Message[]',
+        'tracking_details' => '\Purplship\Model\TrackingDetails'
     ];
 
     /**
@@ -213,7 +213,7 @@ class TrackingResponse implements ModelInterface, ArrayAccess
     /**
      * Gets messages
      *
-     * @return \Purplship\Client\\Model\Message[]
+     * @return \Purplship\Model\Message[]
      */
     public function getMessages()
     {
@@ -223,7 +223,7 @@ class TrackingResponse implements ModelInterface, ArrayAccess
     /**
      * Sets messages
      *
-     * @param \Purplship\Client\\Model\Message[] $messages The list of note or warning messages
+     * @param \Purplship\Model\Message[] $messages The list of note or warning messages
      *
      * @return $this
      */
@@ -237,7 +237,7 @@ class TrackingResponse implements ModelInterface, ArrayAccess
     /**
      * Gets tracking_details
      *
-     * @return \Purplship\Client\\Model\TrackingDetails
+     * @return \Purplship\Model\TrackingDetails
      */
     public function getTrackingDetails()
     {
@@ -247,7 +247,7 @@ class TrackingResponse implements ModelInterface, ArrayAccess
     /**
      * Sets tracking_details
      *
-     * @param \Purplship\Client\\Model\TrackingDetails $tracking_details tracking_details
+     * @param \Purplship\Model\TrackingDetails $tracking_details tracking_details
      *
      * @return $this
      */

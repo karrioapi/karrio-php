@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **total_charge** | **float** | The rate&#39;s monetary amount of the total charge.&lt;br/&gt; This is the gross amount of the rate after adding the additional charges | [optional] 
 **duties_and_taxes** | **float** | The monetary amount of the duties and taxes if applied | [optional] 
 **transit_days** | **int** | The estimated delivery transit days | [optional] 
-**extra_charges** | [**\Purplship\Client\Model\Charge[]**](Charge.md) | list of the rate&#39;s additional charges | [optional] 
+**extra_charges** | [**\Purplship\Model\Charge[]**](Charge.md) | list of the rate&#39;s additional charges | [optional] 
 **meta** | **object** | provider specific metadata | [optional] 
 **carrier_ref** | **string** | The system carrier configuration id | [optional] 
 
