@@ -6,7 +6,7 @@ Visit [purplship.com](https://purplship.com) to deploy your private cloud multi-
 
 ## Documentation
 
-See the full [PHP API docs](https://docs.purplship.com).
+See the full [PHP API docs](https://docs.purplship.com/#/guide).
 
 ## Requirements
 
@@ -48,6 +48,39 @@ try {
 
 ?>
 ```
+
+## Documentation For Models
+
+- [Address](docs/Address.md)
+- [AddressData](docs/AddressData.md)
+- [Card](docs/Card.md)
+- [CarrierSettings](docs/CarrierSettings.md)
+- [Charge](docs/Charge.md)
+- [Commodity](docs/Commodity.md)
+- [Customs](docs/Customs.md)
+- [CustomsData](docs/CustomsData.md)
+- [Doc](docs/Doc.md)
+- [ErrorResponse](docs/ErrorResponse.md)
+- [Invoice](docs/Invoice.md)
+- [LabelPrintingRequest](docs/LabelPrintingRequest.md)
+- [Message](docs/Message.md)
+- [Parcel](docs/Parcel.md)
+- [ParcelData](docs/ParcelData.md)
+- [Payment](docs/Payment.md)
+- [PaymentData](docs/PaymentData.md)
+- [Rate](docs/Rate.md)
+- [RateRequest](docs/RateRequest.md)
+- [RateResponse](docs/RateResponse.md)
+- [References](docs/References.md)
+- [Shipment](docs/Shipment.md)
+- [ShipmentData](docs/ShipmentData.md)
+- [ShipmentPurchaseData](docs/ShipmentPurchaseData.md)
+- [ShipmentResponse](docs/ShipmentResponse.md)
+- [ShippingRequest](docs/ShippingRequest.md)
+- [TrackingDetails](docs/TrackingDetails.md)
+- [TrackingEvent](docs/TrackingEvent.md)
+- [TrackingResponse](docs/TrackingResponse.md)
+- [TrackingStatus](docs/TrackingStatus.md)
 
 ## Author
 
