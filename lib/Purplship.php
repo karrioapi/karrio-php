@@ -29,15 +29,15 @@
 namespace Purplship;
 
 use GuzzleHttp\Client;
-use Purplship\Api\Addresses;
-use Purplship\Api\Carriers;
-use Purplship\Api\Customs;
-use Purplship\Api\Parcels;
-use Purplship\Api\Rates;
-use Purplship\Api\Shipments;
-use Purplship\Api\Shipping;
-use Purplship\Api\Tracking;
-use Purplship\Api\Utils;
+use Purplship\Api\AddressesApi;
+use Purplship\Api\CarriersApi;
+use Purplship\Api\CustomsApi;
+use Purplship\Api\ParcelsApi;
+use Purplship\Api\RatesApi;
+use Purplship\Api\ShipmentsApi;
+use Purplship\Api\ShippingApi;
+use Purplship\Api\TrackingApi;
+use Purplship\Api\UtilsApi;
 
 /**
  * Configuration Class Doc Comment
@@ -62,47 +62,47 @@ class Purplship
     protected $apiClient;
 
     /**
-     * @var Addresses
+     * @var AddressesApi
      */
     public $addresses;
 
     /**
-     * @var Carriers
+     * @var CarriersApi
      */
     public $carriers;
 
     /**
-     * @var Customs
+     * @var CustomsApi
      */
     public $customs;
 
     /**
-     * @var Parcels
+     * @var ParcelsApi
      */
     public $parcels;
 
     /**
-     * @var Rates
+     * @var RatesApi
      */
     public $rates;
 
     /**
-     * @var Shipments
+     * @var ShipmentsApi
      */
     public $shipments;
 
     /**
-     * @var Shipping
+     * @var ShippingApi
      */
     public $shipping;
 
     /**
-     * @var Tracking
+     * @var TrackingApi
      */
     public $tracking;
 
     /**
-     * @var Utils
+     * @var UtilsApi
      */
     public $utils;
 
@@ -122,14 +122,14 @@ class Purplship
         
         $this->apiClient = new Client();
 
-        $this->addresses = new Addresses($this->apiClient, $this->config);
-        $this->carriers = new Carriers($this->apiClient, $this->config);
-        $this->customs = new Customs($this->apiClient, $this->config);
-        $this->parcels = new Parcels($this->apiClient, $this->config);
-        $this->rates = new Rates($this->apiClient, $this->config);
-        $this->shipments = new Shipments($this->apiClient, $this->config);
-        $this->shipping = new Shipping($this->apiClient, $this->config);
-        $this->tracking = new Tracking($this->apiClient, $this->config);
-        $this->utils = new Utils($this->apiClient, $this->config);
+        $this->addresses = new AddressesApi($this->apiClient, $this->config);
+        $this->carriers = new CarriersApi($this->apiClient, $this->config);
+        $this->customs = new CustomsApi($this->apiClient, $this->config);
+        $this->parcels = new ParcelsApi($this->apiClient, $this->config);
+        $this->rates = new RatesApi($this->apiClient, $this->config);
+        $this->shipments = new ShipmentsApi($this->apiClient, $this->config);
+        $this->shipping = new ShippingApi($this->apiClient, $this->config);
+        $this->tracking = new TrackingApi($this->apiClient, $this->config);
+        $this->utils = new UtilsApi($this->apiClient, $this->config);
     }
 }
