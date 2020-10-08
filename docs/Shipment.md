@@ -15,9 +15,9 @@ Name | Type | Description | Notes
 **tracking_url** | **string** | The shipment tracking url | [optional] 
 **shipper** | [**\Purplship\Model\Address**](Address.md) |  | 
 **recipient** | [**\Purplship\Model\Address**](Address.md) |  | 
-**parcels** | [**\Purplship\Model\Parcel[]**](Parcel.md) | The shipment&#39;s parcels | 
-**services** | **string[]** | The requested carrier service for the shipment.  Please consult the reference for specific carriers services.&lt;br/&gt; Note that this is a list because on a Multi-carrier rate request you could specify a service per carrier. | [optional] 
-**options** | **object** | The options available for the shipment.&lt;br/&gt; Please consult the reference for additional specific carriers options. | [optional] 
+**parcels** | [**\Purplship\Model\Parcel[]**](Parcel.md) | The shipment&#x27;s parcels | 
+**services** | **string[]** | The requested carrier service for the shipment.  Please consult [the reference](#operation/all_references) for specific carriers services.&lt;br/&gt; Note that this is a list because on a Multi-carrier rate request you could specify a service per carrier. | [optional] 
+**options** | **object** | The options available for the shipment.&lt;br/&gt; Please consult [the reference](#operation/all_references) for additional specific carriers options. | [optional] 
 **payment** | [**\Purplship\Model\Payment**](Payment.md) |  | [optional] 
 **customs** | [**\Purplship\Model\Customs**](Customs.md) |  | [optional] 
 **doc_images** | [**\Purplship\Model\Doc[]**](Doc.md) | The list of documents to attach for a paperless interantional trade.  eg: Invoices... | [optional] 
@@ -26,5 +26,4 @@ Name | Type | Description | Notes
 **meta** | **object** | provider specific metadata | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 

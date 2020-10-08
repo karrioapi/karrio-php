@@ -5,8 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **shipper** | [**\Purplship\Model\AddressData**](AddressData.md) |  | 
 **recipient** | [**\Purplship\Model\AddressData**](AddressData.md) |  | 
-**parcels** | [**\Purplship\Model\ParcelData[]**](ParcelData.md) | The shipment&#39;s parcels | 
-**options** | **object** | The options available for the shipment.&lt;br/&gt; Please consult the reference for additional specific carriers options. | [optional] 
+**parcels** | [**\Purplship\Model\ParcelData[]**](ParcelData.md) | The shipment&#x27;s parcels | 
+**options** | **object** | The options available for the shipment.&lt;br/&gt; Please consult [the reference](#operation/all_references) for additional specific carriers options. | [optional] 
 **payment** | [**\Purplship\Model\Payment**](Payment.md) |  | 
 **customs** | [**\Purplship\Model\CustomsData**](CustomsData.md) |  | [optional] 
 **doc_images** | [**\Purplship\Model\Doc[]**](Doc.md) | The list of documents to attach for a paperless interantional trade.  eg: Invoices... | [optional] 
@@ -15,5 +15,4 @@ Name | Type | Description | Notes
 **rates** | [**\Purplship\Model\Rate[]**](Rate.md) | The list for shipment rates fetched previously | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 
