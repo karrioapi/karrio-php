@@ -20,3 +20,4 @@ Name | Type | Description | Notes
 **address_line2** | **string** | The address line with suite number | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
