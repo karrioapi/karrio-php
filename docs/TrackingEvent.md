@@ -1,6 +1,7 @@
 # TrackingEvent
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **date** | **string** | The tracking event&#x27;s date | 

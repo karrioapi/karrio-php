@@ -33,6 +33,7 @@ use Purplship\Api\AddressesApi;
 use Purplship\Api\CarriersApi;
 use Purplship\Api\CustomsApi;
 use Purplship\Api\ParcelsApi;
+use Purplship\Api\PickupsApi;
 use Purplship\Api\RatesApi;
 use Purplship\Api\ShipmentsApi;
 use Purplship\Api\ShippingApi;
@@ -82,6 +83,11 @@ class Purplship
     public $parcels;
 
     /**
+     * @var PickupsApi
+     */
+    public $pickups;
+
+    /**
      * @var RatesApi
      */
     public $rates;
@@ -126,6 +132,7 @@ class Purplship
         $this->carriers = new CarriersApi($this->apiClient, $this->config);
         $this->customs = new CustomsApi($this->apiClient, $this->config);
         $this->parcels = new ParcelsApi($this->apiClient, $this->config);
+        $this->pickups = new PickupsApi($this->apiClient, $this->config);
         $this->rates = new RatesApi($this->apiClient, $this->config);
         $this->shipments = new ShipmentsApi($this->apiClient, $this->config);
         $this->shipping = new ShippingApi($this->apiClient, $this->config);
