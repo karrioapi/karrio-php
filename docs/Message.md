@@ -1,6 +1,7 @@
 # Message
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **carrier_name** | **string** | The targeted carrier | 

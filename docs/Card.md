@@ -1,6 +1,7 @@
 # Card
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** | The credit card type | 

@@ -1,6 +1,7 @@
 # PaymentData
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **paid_by** | **string** | The payment payer | 

@@ -1,6 +1,7 @@
 # ShipmentResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **messages** | [**\Purplship\Model\Message[]**](Message.md) | The list of note or warning messages | [optional] 

@@ -1,6 +1,7 @@
 # CarrierSettings
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | A unique address identifier | 
