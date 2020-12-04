@@ -99,7 +99,9 @@ class ShippingApi
      */
     public function buyLabel($body)
     {
-        list($response) = $this->buyLabelWithHttpInfo($body);
+        list($response) = $this->buyLabelWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\ShippingRequest($body) : $body
+        );
         return $response;
     }
 
@@ -371,7 +373,8 @@ class ShippingApi
      */
     public function voidLabel($body, $carrier_name, $test = 'false')
     {
-        list($response) = $this->voidLabelWithHttpInfo($body, $carrier_name, $test);
+        list($response) = $this->voidLabelWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\ShipmentCancelRequest($body) : $body, $carrier_name, $test);
         return $response;
     }
 

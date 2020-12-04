@@ -101,7 +101,7 @@ class PickupsApi
      */
     public function cancel($body, $carrier_name, $test = 'false')
     {
-        list($response) = $this->cancelWithHttpInfo($body, $carrier_name, $test);
+        list($response) = $this->cancelWithHttpInfo(is_array($body) ? new \Purplship\Model\PickupCancelRequest($body) : $body, $carrier_name, $test);
         return $response;
     }
 
@@ -399,7 +399,8 @@ class PickupsApi
      */
     public function schedule($body, $carrier_name, $test = 'false')
     {
-        list($response) = $this->scheduleWithHttpInfo($body, $carrier_name, $test);
+        list($response) = $this->scheduleWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\PickupRequest($body) : $body, $carrier_name, $test);
         return $response;
     }
 
@@ -697,7 +698,8 @@ class PickupsApi
      */
     public function update($body, $carrier_name, $test = 'false')
     {
-        list($response) = $this->updateWithHttpInfo($body, $carrier_name, $test);
+        list($response) = $this->updateWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\PickupUpdateRequest($body) : $body, $carrier_name, $test);
         return $response;
     }
 

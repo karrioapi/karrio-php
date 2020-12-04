@@ -99,7 +99,7 @@ class ParcelsApi
      */
     public function create($body)
     {
-        list($response) = $this->createWithHttpInfo($body);
+        list($response) = $this->createWithHttpInfo(is_array($body) ? new \Purplship\Model\ParcelData($body) : $body);
         return $response;
     }
 
@@ -919,7 +919,7 @@ class ParcelsApi
      */
     public function update($body, $id)
     {
-        list($response) = $this->updateWithHttpInfo($body, $id);
+        list($response) = $this->updateWithHttpInfo(is_array($body) ? new \Purplship\Model\ParcelData($body) : $body, $id);
         return $response;
     }
 

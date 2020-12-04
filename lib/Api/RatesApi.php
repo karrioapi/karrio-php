@@ -99,7 +99,9 @@ class RatesApi
      */
     public function fetch($body)
     {
-        list($response) = $this->fetchWithHttpInfo($body);
+        list($response) = $this->fetchWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\RateRequest($body) : $body
+        );
         return $response;
     }
 
