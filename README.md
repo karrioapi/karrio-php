@@ -63,6 +63,7 @@ try {
 - [ErrorResponse](docs/ErrorResponse.md)
 - [LabelPrintingRequest](docs/LabelPrintingRequest.md)
 - [Message](docs/Message.md)
+- [Operation](docs/Operation.md)
 - [OperationConfirmation](docs/OperationConfirmation.md)
 - [OperationResponse](docs/OperationResponse.md)
 - [Parcel](docs/Parcel.md)
