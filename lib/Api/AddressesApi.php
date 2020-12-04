@@ -99,7 +99,9 @@ class AddressesApi
      */
     public function create($body)
     {
-        list($response) = $this->createWithHttpInfo($body);
+        list($response) = $this->createWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\AddressData($body) : $body
+        );
         return $response;
     }
 
@@ -919,7 +921,8 @@ class AddressesApi
      */
     public function update($body, $id)
     {
-        list($response) = $this->updateWithHttpInfo($body, $id);
+        list($response) = $this->updateWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\AddressData($body) : $body, $id);
         return $response;
     }
 

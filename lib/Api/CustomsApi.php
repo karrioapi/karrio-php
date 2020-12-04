@@ -117,7 +117,7 @@ class CustomsApi
     public function createWithHttpInfo($body)
     {
         $returnType = '\Purplship\Model\Customs';
-        $request = $this->createRequest($body);
+        $request = $this->createRequest(is_array($body) ? new \Purplship\Model\CustomsData($body) : $body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1194,7 +1194,7 @@ class CustomsApi
      */
     public function update($body, $id)
     {
-        list($response) = $this->updateWithHttpInfo($body, $id);
+        list($response) = $this->updateWithHttpInfo(is_array($body) ? new \Purplship\Model\CustomsData($body) : $body, $id);
         return $response;
     }
 

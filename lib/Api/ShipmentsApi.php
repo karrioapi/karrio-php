@@ -100,7 +100,8 @@ class ShipmentsApi
      */
     public function addCustoms($body, $id)
     {
-        list($response) = $this->addCustomsWithHttpInfo($body, $id);
+        list($response) = $this->addCustomsWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\CustomsData($body) : $body, $id);
         return $response;
     }
 
@@ -664,7 +665,8 @@ class ShipmentsApi
      */
     public function cancelPickup($body, $id)
     {
-        list($response) = $this->cancelPickupWithHttpInfo($body, $id);
+        list($response) = $this->cancelPickupWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\PickupCancelData($body) : $body, $id);
         return $response;
     }
 
@@ -952,7 +954,9 @@ class ShipmentsApi
      */
     public function create($body)
     {
-        list($response) = $this->createWithHttpInfo($body);
+        list($response) = $this->createWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\ShipmentData($body) : $body
+        );
         return $response;
     }
 
@@ -1771,7 +1775,8 @@ class ShipmentsApi
      */
     public function purchase($body, $id)
     {
-        list($response) = $this->purchaseWithHttpInfo($body, $id);
+        list($response) = $this->purchaseWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\ShipmentPurchaseData($body) : $body, $id);
         return $response;
     }
 
@@ -2886,7 +2891,8 @@ class ShipmentsApi
      */
     public function schedulePickup($body, $carrier_name, $test = 'false')
     {
-        list($response) = $this->schedulePickupWithHttpInfo($body, $carrier_name, $test);
+        list($response) = $this->schedulePickupWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\PickupData($body) : $body, $carrier_name, $test);
         return $response;
     }
 
@@ -4049,7 +4055,8 @@ class ShipmentsApi
      */
     public function updatePickup($body, $id)
     {
-        list($response) = $this->updatePickupWithHttpInfo($body, $id);
+        list($response) = $this->updatePickupWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\PickupUpdateData($body) : $body, $id);
         return $response;
     }
 

@@ -99,7 +99,9 @@ class UtilsApi
      */
     public function printLabel($body)
     {
-        $this->printLabelWithHttpInfo($body);
+        $this->printLabelWithHttpInfo(
+            is_array($body) ? new \Purplship\Model\LabelPrintingRequest($body) : $body
+        );
     }
 
     /**
