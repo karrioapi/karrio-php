@@ -1,6 +1,6 @@
 <?php
 /**
- * Card
+ * Operation
  *
  * PHP version 5
  *
@@ -32,15 +32,14 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * Card Class Doc Comment
+ * Operation Class Doc Comment
  *
  * @category Class
- * @description The payment credit card for payment by card
  * @package  Purplship
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Card implements ModelInterface, ArrayAccess
+class Operation implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +48,7 @@ class Card implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Card';
+    protected static $swaggerModelName = 'Operation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,13 +56,8 @@ class Card implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'type' => 'string',
-'number' => 'string',
-'expiry_month' => 'string',
-'expiry_year' => 'string',
-'security_code' => 'string',
-'name' => 'string',
-'postal_code' => 'string'    ];
+        'operation' => 'string',
+'success' => 'bool'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -71,13 +65,8 @@ class Card implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'type' => null,
-'number' => null,
-'expiry_month' => null,
-'expiry_year' => null,
-'security_code' => null,
-'name' => null,
-'postal_code' => null    ];
+        'operation' => null,
+'success' => null    ];
 
     /**
      * Array of property to type mappings. Used for (de)serialization
@@ -106,13 +95,8 @@ class Card implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-'number' => 'number',
-'expiry_month' => 'expiry_month',
-'expiry_year' => 'expiry_year',
-'security_code' => 'security_code',
-'name' => 'name',
-'postal_code' => 'postal_code'    ];
+        'operation' => 'operation',
+'success' => 'success'    ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
@@ -120,13 +104,8 @@ class Card implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-'number' => 'setNumber',
-'expiry_month' => 'setExpiryMonth',
-'expiry_year' => 'setExpiryYear',
-'security_code' => 'setSecurityCode',
-'name' => 'setName',
-'postal_code' => 'setPostalCode'    ];
+        'operation' => 'setOperation',
+'success' => 'setSuccess'    ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
@@ -134,13 +113,8 @@ class Card implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-'number' => 'getNumber',
-'expiry_month' => 'getExpiryMonth',
-'expiry_year' => 'getExpiryYear',
-'security_code' => 'getSecurityCode',
-'name' => 'getName',
-'postal_code' => 'getPostalCode'    ];
+        'operation' => 'getOperation',
+'success' => 'getSuccess'    ];
 
     /**
      * Array of attributes where the key is the local name,
@@ -200,13 +174,8 @@ class Card implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['number'] = isset($data['number']) ? $data['number'] : null;
-        $this->container['expiry_month'] = isset($data['expiry_month']) ? $data['expiry_month'] : null;
-        $this->container['expiry_year'] = isset($data['expiry_year']) ? $data['expiry_year'] : null;
-        $this->container['security_code'] = isset($data['security_code']) ? $data['security_code'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['postal_code'] = isset($data['postal_code']) ? $data['postal_code'] : null;
+        $this->container['operation'] = isset($data['operation']) ? $data['operation'] : null;
+        $this->container['success'] = isset($data['success']) ? $data['success'] : null;
     }
 
     /**
@@ -218,20 +187,11 @@ class Card implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['operation'] === null) {
+            $invalidProperties[] = "'operation' can't be null";
         }
-        if ($this->container['number'] === null) {
-            $invalidProperties[] = "'number' can't be null";
-        }
-        if ($this->container['expiry_month'] === null) {
-            $invalidProperties[] = "'expiry_month' can't be null";
-        }
-        if ($this->container['expiry_year'] === null) {
-            $invalidProperties[] = "'expiry_year' can't be null";
-        }
-        if ($this->container['security_code'] === null) {
-            $invalidProperties[] = "'security_code' can't be null";
+        if ($this->container['success'] === null) {
+            $invalidProperties[] = "'success' can't be null";
         }
         return $invalidProperties;
     }
@@ -249,169 +209,49 @@ class Card implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets type
+     * Gets operation
      *
      * @return string
      */
-    public function getType()
+    public function getOperation()
     {
-        return $this->container['type'];
+        return $this->container['operation'];
     }
 
     /**
-     * Sets type
+     * Sets operation
      *
-     * @param string $type The credit card type
+     * @param string $operation Operation performed
      *
      * @return $this
      */
-    public function setType($type)
+    public function setOperation($operation)
     {
-        $this->container['type'] = $type;
+        $this->container['operation'] = $operation;
 
         return $this;
     }
 
     /**
-     * Gets number
+     * Gets success
      *
-     * @return string
+     * @return bool
      */
-    public function getNumber()
+    public function getSuccess()
     {
-        return $this->container['number'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets number
+     * Sets success
      *
-     * @param string $number The credit card number
+     * @param bool $success Specify whether the operation was successful
      *
      * @return $this
      */
-    public function setNumber($number)
+    public function setSuccess($success)
     {
-        $this->container['number'] = $number;
-
-        return $this;
-    }
-
-    /**
-     * Gets expiry_month
-     *
-     * @return string
-     */
-    public function getExpiryMonth()
-    {
-        return $this->container['expiry_month'];
-    }
-
-    /**
-     * Sets expiry_month
-     *
-     * @param string $expiry_month The credit card expiry month (MM)
-     *
-     * @return $this
-     */
-    public function setExpiryMonth($expiry_month)
-    {
-        $this->container['expiry_month'] = $expiry_month;
-
-        return $this;
-    }
-
-    /**
-     * Gets expiry_year
-     *
-     * @return string
-     */
-    public function getExpiryYear()
-    {
-        return $this->container['expiry_year'];
-    }
-
-    /**
-     * Sets expiry_year
-     *
-     * @param string $expiry_year The credit card expiry year (YYYY)
-     *
-     * @return $this
-     */
-    public function setExpiryYear($expiry_year)
-    {
-        $this->container['expiry_year'] = $expiry_year;
-
-        return $this;
-    }
-
-    /**
-     * Gets security_code
-     *
-     * @return string
-     */
-    public function getSecurityCode()
-    {
-        return $this->container['security_code'];
-    }
-
-    /**
-     * Sets security_code
-     *
-     * @param string $security_code The credit card security code often at the back (000)
-     *
-     * @return $this
-     */
-    public function setSecurityCode($security_code)
-    {
-        $this->container['security_code'] = $security_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name The name inscribed on the credit card
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets postal_code
-     *
-     * @return string
-     */
-    public function getPostalCode()
-    {
-        return $this->container['postal_code'];
-    }
-
-    /**
-     * Sets postal_code
-     *
-     * @param string $postal_code The credit card registration address postal code
-     *
-     * @return $this
-     */
-    public function setPostalCode($postal_code)
-    {
-        $this->container['postal_code'] = $postal_code;
+        $this->container['success'] = $success;
 
         return $this;
     }
