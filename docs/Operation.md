@@ -1,11 +1,10 @@
-# Doc
+# Operation
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** | The document type |
-**image** | **string** | encoded base64 string of the document |
-**format** | **string** | The document format | [optional]
+**operation** | **string** | Operation performed |
+**success** | **bool** | Specify whether the operation was successful |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
