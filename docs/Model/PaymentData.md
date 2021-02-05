@@ -1,0 +1,13 @@
+# PaymentData
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**paid_by** | **string** | The payment payer | 
+**amount** | **float** | The payment amount if known | [optional] 
+**currency** | **string** | The payment amount currency | 
+**account_number** | **string** | The selected rate carrier payer account number | [optional] 
+**contact** | [**\Purplship\Purplship\Model\Address**](Address.md) |  | [optional] 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
