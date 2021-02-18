@@ -4,8 +4,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **pickup_date** | **string** | The expected pickup date  Date Format: &#x60;YYYY-MM-DD&#x60; | 
-**address** | [**\Purplship\Purplship\Model\Address**](Address.md) |  | 
-**parcels** | [**\Purplship\Purplship\Model\Parcel[]**](Parcel.md) | The shipment parcels to pickup. | 
+**address** | [**\Purplship\Model\Address**](Address.md) |  | 
+**parcels** | [**\Purplship\Model\Parcel[]**](Parcel.md) | The shipment parcels to pickup. | 
 **confirmation_number** | **string** | pickup identification number | 
 **ready_time** | **string** | The ready time for pickup.  Time Format: &#x60;HH:MM&#x60; | 
 **closing_time** | **string** | The closing or late time of the pickup  Time Format: &#x60;HH:MM&#x60; | 
