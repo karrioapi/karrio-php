@@ -8,11 +8,11 @@ Name | Type | Description | Notes
 **carrier_id** | **string** | The pickup carrier configured name | 
 **confirmation_number** | **string** | The pickup confirmation identifier | 
 **pickup_date** | **string** | The pickup date | [optional] 
-**pickup_charge** | [**\Purplship\Purplship\Model\Charge**](Charge.md) |  | [optional] 
+**pickup_charge** | [**\Purplship\Model\Charge**](Charge.md) |  | [optional] 
 **ready_time** | **string** | The pickup expected ready time | [optional] 
 **closing_time** | **string** | The pickup expected closing or late time | [optional] 
-**address** | [**\Purplship\Purplship\Model\Address**](Address.md) |  | 
-**parcels** | [**\Purplship\Purplship\Model\Parcel[]**](Parcel.md) | The shipment parcels to pickup. | 
+**address** | [**\Purplship\Model\Address**](Address.md) |  | 
+**parcels** | [**\Purplship\Model\Parcel[]**](Parcel.md) | The shipment parcels to pickup. | 
 **instruction** | **string** | The pickup instruction.  eg: Handle with care. | [optional] 
 **package_location** | **string** | The package(s) location.  eg: Behind the entrance door. | [optional] 
 **options** | **object** | Advanced carrier specific pickup options | [optional] 

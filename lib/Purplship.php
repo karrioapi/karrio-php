@@ -36,7 +36,7 @@ use Purplship\Api\ParcelsApi;
 use Purplship\Api\PickupsApi;
 use Purplship\Api\ProxyApi;
 use Purplship\Api\ShipmentsApi;
-use Purplship\Api\TrackingApi;
+use Purplship\Api\TrackersApi;
 use Purplship\Api\UtilsApi;
 
 /**
@@ -97,9 +97,9 @@ class Purplship
     public $shipments;
 
     /**
-     * @var TrackingApi
+     * @var TrackersApi
      */
-    public $tracking;
+    public $trackers;
 
     /**
      * @var UtilsApi
@@ -129,7 +129,7 @@ class Purplship
         $this->pickups = new PickupsApi($this->apiClient, $this->config);
         $this->proxy = new ProxyApi($this->apiClient, $this->config);
         $this->shipments = new ShipmentsApi($this->apiClient, $this->config);
-        $this->tracking = new TrackingApi($this->apiClient, $this->config);
+        $this->trackers = new TrackersApi($this->apiClient, $this->config);
         $this->utils = new UtilsApi($this->apiClient, $this->config);
     }
 }

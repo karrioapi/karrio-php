@@ -7,8 +7,9 @@ Name | Type | Description | Notes
 **carrier_name** | **string** | The tracking carrier | 
 **carrier_id** | **string** | The tracking carrier configured identifier | 
 **tracking_number** | **string** | The shipment tracking number | 
-**events** | [**\Purplship\Purplship\Model\TrackingEvent[]**](TrackingEvent.md) | The tracking details events | [optional] 
-**test_mode** | **bool** | Specified whether it was created with a carrier in test mode | 
+**events** | [**\Purplship\Model\TrackingEvent[]**](TrackingEvent.md) | The tracking details events | [optional] 
+**delivered** | **bool** | Specified whether the related shipment was delivered | [optional] 
+**test_mode** | **bool** | Specified whether the object was created with a carrier in test mode | 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

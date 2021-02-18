@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **confirmation_number** | **string** | The pickup confirmation identifier | 
-**address** | [**\Purplship\Purplship\Model\AddressData**](AddressData.md) |  | [optional] 
+**address** | [**\Purplship\Model\AddressData**](AddressData.md) |  | [optional] 
 **pickup_date** | **string** | The pickup date  Date Format: &#x60;YYYY-MM-DD&#x60; | [optional] 
 **reason** | **string** | The reason of the pickup cancellation | [optional] 
 

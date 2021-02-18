@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **state_code** | **string** | The address state code | [optional] 
 **suburb** | **string** | The address suburb if known | [optional] 
 **residential** | **bool** | Indicate if the address is residential or commercial (enterprise) | [optional] [default to false]
-**address_line1** | **string** | The address line with street number &lt;br/&gt; **(required for shipment purchase)** | [optional] 
+**address_line1** | **string** | The address line with street number **(required for shipment purchase)** | [optional] 
 **address_line2** | **string** | The address line with suite number | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
