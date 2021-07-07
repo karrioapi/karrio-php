@@ -1,6 +1,6 @@
 <?php
 /**
- * PickupsApi
+ * WebhooksApi
  * PHP version 7.2
  *
  * @category Class
@@ -40,14 +40,14 @@ use Purplship\HeaderSelector;
 use Purplship\ObjectSerializer;
 
 /**
- * PickupsApi Class Doc Comment
+ * WebhooksApi Class Doc Comment
  *
  * @category Class
  * @package  Purplship
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class PickupsApi
+class WebhooksApi
 {
     /**
      * @var ClientInterface
@@ -116,38 +116,37 @@ class PickupsApi
     }
 
     /**
-     * Operation cancel
+     * Operation create
      *
-     * Cancel a pickup
+     * Create a webhook
      *
-     * @param  string $id id (required)
-     * @param  \Purplship\Model\PickupCancelData $data data (required)
+     * @param  \Purplship\Model\WebhookData $data data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Model\OperationConfirmation|\Purplship\Model\ErrorResponse
+     * @return \Purplship\Model\Webhook|\Purplship\Model\ErrorResponse
      */
-    public function cancel($id, $data)
+    public function create($data)
     {
-        list($response) = $this->cancelWithHttpInfo($id, $data);
+        list($response) = $this->createWithHttpInfo(
+            is_array($data) ? new \Purplship\Model\WebhookData($data) : $data);
         return $response;
     }
 
     /**
-     * Operation cancelWithHttpInfo
+     * Operation createWithHttpInfo
      *
-     * Cancel a pickup
+     * Create a webhook
      *
-     * @param  string $id (required)
-     * @param  \Purplship\Model\PickupCancelData $data (required)
+     * @param  \Purplship\Model\WebhookData $data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Model\OperationConfirmation|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Webhook|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function cancelWithHttpInfo($id, $data)
+    public function createWithHttpInfo($data)
     {
-        $request = $this->cancelRequest($id, $data);
+        $request = $this->createRequest($data);
 
         try {
             $options = $this->createHttpClientOption();
@@ -179,14 +178,14 @@ class PickupsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Purplship\Model\OperationConfirmation' === '\SplFileObject') {
+                    if ('\Purplship\Model\Webhook' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\OperationConfirmation', []),
+                        ObjectSerializer::deserialize($content, '\Purplship\Model\Webhook', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -204,7 +203,7 @@ class PickupsApi
                     ];
             }
 
-            $returnType = '\Purplship\Model\OperationConfirmation';
+            $returnType = '\Purplship\Model\Webhook';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -222,7 +221,7 @@ class PickupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Model\OperationConfirmation',
+                        '\Purplship\Model\Webhook',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -241,19 +240,18 @@ class PickupsApi
     }
 
     /**
-     * Operation cancelAsync
+     * Operation createAsync
      *
-     * Cancel a pickup
+     * Create a webhook
      *
-     * @param  string $id (required)
-     * @param  \Purplship\Model\PickupCancelData $data (required)
+     * @param  \Purplship\Model\WebhookData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelAsync($id, $data)
+    public function createAsync($data)
     {
-        return $this->cancelAsyncWithHttpInfo($id, $data)
+        return $this->createAsyncWithHttpInfo($data)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -262,20 +260,19 @@ class PickupsApi
     }
 
     /**
-     * Operation cancelAsyncWithHttpInfo
+     * Operation createAsyncWithHttpInfo
      *
-     * Cancel a pickup
+     * Create a webhook
      *
-     * @param  string $id (required)
-     * @param  \Purplship\Model\PickupCancelData $data (required)
+     * @param  \Purplship\Model\WebhookData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelAsyncWithHttpInfo($id, $data)
+    public function createAsyncWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Model\OperationConfirmation';
-        $request = $this->cancelRequest($id, $data);
+        $returnType = '\Purplship\Model\Webhook';
+        $request = $this->createRequest($data);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -311,30 +308,23 @@ class PickupsApi
     }
 
     /**
-     * Create request for operation 'cancel'
+     * Create request for operation 'create'
      *
-     * @param  string $id (required)
-     * @param  \Purplship\Model\PickupCancelData $data (required)
+     * @param  \Purplship\Model\WebhookData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function cancelRequest($id, $data)
+    public function createRequest($data)
     {
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling cancel'
-            );
-        }
         // verify the required parameter 'data' is set
         if ($data === null || (is_array($data) && count($data) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $data when calling cancel'
+                'Missing the required parameter $data when calling create'
             );
         }
 
-        $resourcePath = '/v1/pickups/{id}/cancel';
+        $resourcePath = '/v1/webhooks';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -343,14 +333,6 @@ class PickupsApi
 
 
 
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
 
 
         if ($multipart) {
@@ -424,38 +406,38 @@ class PickupsApi
     /**
      * Operation list
      *
-     * List shipment pickups
+     * List all webhooks
      *
-     * @param  bool $test_mode test_mode (optional)
      * @param  int $limit Number of results to return per page. (optional)
      * @param  int $offset The initial index from which to return the results. (optional)
+     * @param  bool $test_mode This flag filter out webhooks created in test or live mode (optional)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Model\PickupList|\Purplship\Model\ErrorResponse
+     * @return \Purplship\Model\WebhookList|\Purplship\Model\ErrorResponse
      */
-    public function list($test_mode = null, $limit = null, $offset = null)
+    public function list($limit = null, $offset = null, $test_mode = null)
     {
-        list($response) = $this->listWithHttpInfo($test_mode, $limit, $offset);
+        list($response) = $this->listWithHttpInfo($limit, $offset, $test_mode);
         return $response;
     }
 
     /**
      * Operation listWithHttpInfo
      *
-     * List shipment pickups
+     * List all webhooks
      *
-     * @param  bool $test_mode (optional)
      * @param  int $limit Number of results to return per page. (optional)
      * @param  int $offset The initial index from which to return the results. (optional)
+     * @param  bool $test_mode This flag filter out webhooks created in test or live mode (optional)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Model\PickupList|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\WebhookList|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listWithHttpInfo($test_mode = null, $limit = null, $offset = null)
+    public function listWithHttpInfo($limit = null, $offset = null, $test_mode = null)
     {
-        $request = $this->listRequest($test_mode, $limit, $offset);
+        $request = $this->listRequest($limit, $offset, $test_mode);
 
         try {
             $options = $this->createHttpClientOption();
@@ -487,14 +469,14 @@ class PickupsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Purplship\Model\PickupList' === '\SplFileObject') {
+                    if ('\Purplship\Model\WebhookList' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\PickupList', []),
+                        ObjectSerializer::deserialize($content, '\Purplship\Model\WebhookList', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -512,7 +494,7 @@ class PickupsApi
                     ];
             }
 
-            $returnType = '\Purplship\Model\PickupList';
+            $returnType = '\Purplship\Model\WebhookList';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -530,7 +512,7 @@ class PickupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Model\PickupList',
+                        '\Purplship\Model\WebhookList',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -551,18 +533,18 @@ class PickupsApi
     /**
      * Operation listAsync
      *
-     * List shipment pickups
+     * List all webhooks
      *
-     * @param  bool $test_mode (optional)
      * @param  int $limit Number of results to return per page. (optional)
      * @param  int $offset The initial index from which to return the results. (optional)
+     * @param  bool $test_mode This flag filter out webhooks created in test or live mode (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAsync($test_mode = null, $limit = null, $offset = null)
+    public function listAsync($limit = null, $offset = null, $test_mode = null)
     {
-        return $this->listAsyncWithHttpInfo($test_mode, $limit, $offset)
+        return $this->listAsyncWithHttpInfo($limit, $offset, $test_mode)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -573,19 +555,19 @@ class PickupsApi
     /**
      * Operation listAsyncWithHttpInfo
      *
-     * List shipment pickups
+     * List all webhooks
      *
-     * @param  bool $test_mode (optional)
      * @param  int $limit Number of results to return per page. (optional)
      * @param  int $offset The initial index from which to return the results. (optional)
+     * @param  bool $test_mode This flag filter out webhooks created in test or live mode (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAsyncWithHttpInfo($test_mode = null, $limit = null, $offset = null)
+    public function listAsyncWithHttpInfo($limit = null, $offset = null, $test_mode = null)
     {
-        $returnType = '\Purplship\Model\PickupList';
-        $request = $this->listRequest($test_mode, $limit, $offset);
+        $returnType = '\Purplship\Model\WebhookList';
+        $request = $this->listRequest($limit, $offset, $test_mode);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -623,34 +605,23 @@ class PickupsApi
     /**
      * Create request for operation 'list'
      *
-     * @param  bool $test_mode (optional)
      * @param  int $limit Number of results to return per page. (optional)
      * @param  int $offset The initial index from which to return the results. (optional)
+     * @param  bool $test_mode This flag filter out webhooks created in test or live mode (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listRequest($test_mode = null, $limit = null, $offset = null)
+    public function listRequest($limit = null, $offset = null, $test_mode = null)
     {
 
-        $resourcePath = '/v1/pickups';
+        $resourcePath = '/v1/webhooks';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($test_mode !== null) {
-            if('form' === 'form' && is_array($test_mode)) {
-                foreach($test_mode as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['test_mode'] = $test_mode;
-            }
-        }
         // query params
         if ($limit !== null) {
             if('form' === 'form' && is_array($limit)) {
@@ -671,6 +642,17 @@ class PickupsApi
             }
             else {
                 $queryParams['offset'] = $offset;
+            }
+        }
+        // query params
+        if ($test_mode !== null) {
+            if('form' === 'form' && is_array($test_mode)) {
+                foreach($test_mode as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['test_mode'] = $test_mode;
             }
         }
 
@@ -740,15 +722,304 @@ class PickupsApi
     }
 
     /**
-     * Operation retrieve
+     * Operation remove
      *
-     * Retrieve a pickup
+     * Remove a webhook
      *
      * @param  string $id id (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Model\Pickup|\Purplship\Model\ErrorResponse
+     * @return \Purplship\Model\Operation|\Purplship\Model\ErrorResponse
+     */
+    public function remove($id)
+    {
+        list($response) = $this->removeWithHttpInfo($id);
+        return $response;
+    }
+
+    /**
+     * Operation removeWithHttpInfo
+     *
+     * Remove a webhook
+     *
+     * @param  string $id (required)
+     *
+     * @throws \Purplship\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Purplship\Model\Operation|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeWithHttpInfo($id)
+    {
+        $request = $this->removeRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\Purplship\Model\Operation' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Purplship\Model\Operation', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Purplship\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Purplship\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\Purplship\Model\Operation';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Purplship\Model\Operation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Purplship\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeAsync
+     *
+     * Remove a webhook
+     *
+     * @param  string $id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAsync($id)
+    {
+        return $this->removeAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeAsyncWithHttpInfo
+     *
+     * Remove a webhook
+     *
+     * @param  string $id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeAsyncWithHttpInfo($id)
+    {
+        $returnType = '\Purplship\Model\Operation';
+        $request = $this->removeRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'remove'
+     *
+     * @param  string $id (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeRequest($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling remove'
+            );
+        }
+
+        $resourcePath = '/v1/webhooks/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation retrieve
+     *
+     * Retrieve a webhook
+     *
+     * @param  string $id id (required)
+     *
+     * @throws \Purplship\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Purplship\Model\Webhook|\Purplship\Model\ErrorResponse
      */
     public function retrieve($id)
     {
@@ -759,13 +1030,13 @@ class PickupsApi
     /**
      * Operation retrieveWithHttpInfo
      *
-     * Retrieve a pickup
+     * Retrieve a webhook
      *
      * @param  string $id (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Model\Pickup|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Webhook|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function retrieveWithHttpInfo($id)
     {
@@ -801,14 +1072,14 @@ class PickupsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Purplship\Model\Pickup' === '\SplFileObject') {
+                    if ('\Purplship\Model\Webhook' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\Pickup', []),
+                        ObjectSerializer::deserialize($content, '\Purplship\Model\Webhook', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -826,7 +1097,7 @@ class PickupsApi
                     ];
             }
 
-            $returnType = '\Purplship\Model\Pickup';
+            $returnType = '\Purplship\Model\Webhook';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -844,7 +1115,7 @@ class PickupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Model\Pickup',
+                        '\Purplship\Model\Webhook',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -865,7 +1136,7 @@ class PickupsApi
     /**
      * Operation retrieveAsync
      *
-     * Retrieve a pickup
+     * Retrieve a webhook
      *
      * @param  string $id (required)
      *
@@ -885,7 +1156,7 @@ class PickupsApi
     /**
      * Operation retrieveAsyncWithHttpInfo
      *
-     * Retrieve a pickup
+     * Retrieve a webhook
      *
      * @param  string $id (required)
      *
@@ -894,7 +1165,7 @@ class PickupsApi
      */
     public function retrieveAsyncWithHttpInfo($id)
     {
-        $returnType = '\Purplship\Model\Pickup';
+        $returnType = '\Purplship\Model\Webhook';
         $request = $this->retrieveRequest($id);
 
         return $this->client
@@ -947,7 +1218,7 @@ class PickupsApi
             );
         }
 
-        $resourcePath = '/v1/pickups/{id}';
+        $resourcePath = '/v1/webhooks/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1029,41 +1300,39 @@ class PickupsApi
     }
 
     /**
-     * Operation schedule
+     * Operation test
      *
-     * Schedule a pickup
+     * Test a webhook
      *
-     * @param  string $carrier_name carrier_name (required)
-     * @param  \Purplship\Model\PickupData $data data (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
+     * @param  string $id id (required)
+     * @param  \Purplship\Model\WebhookTestRequest $data data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Model\Pickup|\Purplship\Model\ErrorResponse
+     * @return \Purplship\Model\Operation|\Purplship\Model\ErrorResponse
      */
-    public function schedule($carrier_name, $data, $test = false)
+    public function test($id, $data)
     {
-        list($response) = $this->scheduleWithHttpInfo(
-            $carrier_name, is_array($data) ? new \Purplship\Model\PickupData($data) : $data, $test);
+        list($response) = $this->testWithHttpInfo(
+            $id, is_array($data) ? new \Purplship\Model\WebhookTestRequest($data) : $data);
         return $response;
     }
 
     /**
-     * Operation scheduleWithHttpInfo
+     * Operation testWithHttpInfo
      *
-     * Schedule a pickup
+     * Test a webhook
      *
-     * @param  string $carrier_name (required)
-     * @param  \Purplship\Model\PickupData $data (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
+     * @param  string $id (required)
+     * @param  \Purplship\Model\WebhookTestRequest $data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Model\Pickup|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Operation|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function scheduleWithHttpInfo($carrier_name, $data, $test = false)
+    public function testWithHttpInfo($id, $data)
     {
-        $request = $this->scheduleRequest($carrier_name, $data, $test);
+        $request = $this->testRequest($id, $data);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1095,14 +1364,14 @@ class PickupsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Purplship\Model\Pickup' === '\SplFileObject') {
+                    if ('\Purplship\Model\Operation' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\Pickup', []),
+                        ObjectSerializer::deserialize($content, '\Purplship\Model\Operation', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1120,7 +1389,7 @@ class PickupsApi
                     ];
             }
 
-            $returnType = '\Purplship\Model\Pickup';
+            $returnType = '\Purplship\Model\Operation';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1138,7 +1407,7 @@ class PickupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Model\Pickup',
+                        '\Purplship\Model\Operation',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1157,20 +1426,19 @@ class PickupsApi
     }
 
     /**
-     * Operation scheduleAsync
+     * Operation testAsync
      *
-     * Schedule a pickup
+     * Test a webhook
      *
-     * @param  string $carrier_name (required)
-     * @param  \Purplship\Model\PickupData $data (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
+     * @param  string $id (required)
+     * @param  \Purplship\Model\WebhookTestRequest $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scheduleAsync($carrier_name, $data, $test = false)
+    public function testAsync($id, $data)
     {
-        return $this->scheduleAsyncWithHttpInfo($carrier_name, $data, $test)
+        return $this->testAsyncWithHttpInfo($id, $data)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1179,21 +1447,20 @@ class PickupsApi
     }
 
     /**
-     * Operation scheduleAsyncWithHttpInfo
+     * Operation testAsyncWithHttpInfo
      *
-     * Schedule a pickup
+     * Test a webhook
      *
-     * @param  string $carrier_name (required)
-     * @param  \Purplship\Model\PickupData $data (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
+     * @param  string $id (required)
+     * @param  \Purplship\Model\WebhookTestRequest $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function scheduleAsyncWithHttpInfo($carrier_name, $data, $test = false)
+    public function testAsyncWithHttpInfo($id, $data)
     {
-        $returnType = '\Purplship\Model\Pickup';
-        $request = $this->scheduleRequest($carrier_name, $data, $test);
+        $returnType = '\Purplship\Model\Operation';
+        $request = $this->testRequest($id, $data);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1229,55 +1496,43 @@ class PickupsApi
     }
 
     /**
-     * Create request for operation 'schedule'
+     * Create request for operation 'test'
      *
-     * @param  string $carrier_name (required)
-     * @param  \Purplship\Model\PickupData $data (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
+     * @param  string $id (required)
+     * @param  \Purplship\Model\WebhookTestRequest $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function scheduleRequest($carrier_name, $data, $test = false)
+    public function testRequest($id, $data)
     {
-        // verify the required parameter 'carrier_name' is set
-        if ($carrier_name === null || (is_array($carrier_name) && count($carrier_name) === 0)) {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $carrier_name when calling schedule'
+                'Missing the required parameter $id when calling test'
             );
         }
         // verify the required parameter 'data' is set
         if ($data === null || (is_array($data) && count($data) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $data when calling schedule'
+                'Missing the required parameter $data when calling test'
             );
         }
 
-        $resourcePath = '/v1/pickups/{carrier_name}/schedule';
+        $resourcePath = '/v1/webhooks/{id}/test';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($test !== null) {
-            if('form' === 'form' && is_array($test)) {
-                foreach($test as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['test'] = $test;
-            }
-        }
 
 
         // path params
-        if ($carrier_name !== null) {
+        if ($id !== null) {
             $resourcePath = str_replace(
-                '{' . 'carrier_name' . '}',
-                ObjectSerializer::toPathValue($carrier_name),
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
                 $resourcePath
             );
         }
@@ -1354,33 +1609,33 @@ class PickupsApi
     /**
      * Operation update
      *
-     * Update a pickup
+     * Update a webhook
      *
      * @param  string $id id (required)
-     * @param  \Purplship\Model\PickupUpdateData $data data (required)
+     * @param  \Purplship\Model\WebhookData $data data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Model\OperationConfirmation|\Purplship\Model\ErrorResponse
+     * @return \Purplship\Model\Webhook|\Purplship\Model\ErrorResponse
      */
     public function update($id, $data)
     {
         list($response) = $this->updateWithHttpInfo(
-            $id, is_array($data) ? new \Purplship\Model\PickupUpdateData($data) : $data);
+            $id, is_array($data) ? new \Purplship\Model\WebhookData($data) : $data);
         return $response;
     }
 
     /**
      * Operation updateWithHttpInfo
      *
-     * Update a pickup
+     * Update a webhook
      *
      * @param  string $id (required)
-     * @param  \Purplship\Model\PickupUpdateData $data (required)
+     * @param  \Purplship\Model\WebhookData $data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Model\OperationConfirmation|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\Webhook|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWithHttpInfo($id, $data)
     {
@@ -1416,14 +1671,14 @@ class PickupsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Purplship\Model\OperationConfirmation' === '\SplFileObject') {
+                    if ('\Purplship\Model\Webhook' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\OperationConfirmation', []),
+                        ObjectSerializer::deserialize($content, '\Purplship\Model\Webhook', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1441,7 +1696,7 @@ class PickupsApi
                     ];
             }
 
-            $returnType = '\Purplship\Model\OperationConfirmation';
+            $returnType = '\Purplship\Model\Webhook';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1459,7 +1714,7 @@ class PickupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Model\OperationConfirmation',
+                        '\Purplship\Model\Webhook',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1480,10 +1735,10 @@ class PickupsApi
     /**
      * Operation updateAsync
      *
-     * Update a pickup
+     * Update a webhook
      *
      * @param  string $id (required)
-     * @param  \Purplship\Model\PickupUpdateData $data (required)
+     * @param  \Purplship\Model\WebhookData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1501,17 +1756,17 @@ class PickupsApi
     /**
      * Operation updateAsyncWithHttpInfo
      *
-     * Update a pickup
+     * Update a webhook
      *
      * @param  string $id (required)
-     * @param  \Purplship\Model\PickupUpdateData $data (required)
+     * @param  \Purplship\Model\WebhookData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function updateAsyncWithHttpInfo($id, $data)
     {
-        $returnType = '\Purplship\Model\OperationConfirmation';
+        $returnType = '\Purplship\Model\Webhook';
         $request = $this->updateRequest($id, $data);
 
         return $this->client
@@ -1551,7 +1806,7 @@ class PickupsApi
      * Create request for operation 'update'
      *
      * @param  string $id (required)
-     * @param  \Purplship\Model\PickupUpdateData $data (required)
+     * @param  \Purplship\Model\WebhookData $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1571,7 +1826,7 @@ class PickupsApi
             );
         }
 
-        $resourcePath = '/v1/pickups/{id}';
+        $resourcePath = '/v1/webhooks/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

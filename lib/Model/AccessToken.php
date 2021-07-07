@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorResponse
+ * AccessToken
  *
  * PHP version 7.2
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * ErrorResponse Class Doc Comment
+ * AccessToken Class Doc Comment
  *
  * @category Class
  * @package  Purplship
@@ -43,7 +43,7 @@ use \Purplship\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class AccessToken implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorResponse';
+    protected static $openAPIModelName = 'AccessToken';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'messages' => '\Purplship\Model\Message[]'
+        'access' => 'string'
     ];
 
     /**
@@ -71,7 +71,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'messages' => null
+        'access' => null
     ];
 
     /**
@@ -101,7 +101,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'messages' => 'messages'
+        'access' => 'access'
     ];
 
     /**
@@ -110,7 +110,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'messages' => 'setMessages'
+        'access' => 'setAccess'
     ];
 
     /**
@@ -119,7 +119,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'messages' => 'getMessages'
+        'access' => 'getAccess'
     ];
 
     /**
@@ -179,7 +179,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['messages'] = $data['messages'] ?? null;
+        $this->container['access'] = $data['access'] ?? null;
     }
 
     /**
@@ -190,6 +190,13 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if ($this->container['access'] === null) {
+            $invalidProperties[] = "'access' can't be null";
+        }
+        if ((mb_strlen($this->container['access']) < 1)) {
+            $invalidProperties[] = "invalid value for 'access', the character length must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -207,25 +214,30 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets messages
+     * Gets access
      *
-     * @return \Purplship\Model\Message[]|null
+     * @return string
      */
-    public function getMessages()
+    public function getAccess()
     {
-        return $this->container['messages'];
+        return $this->container['access'];
     }
 
     /**
-     * Sets messages
+     * Sets access
      *
-     * @param \Purplship\Model\Message[]|null $messages The list of error messages
+     * @param string $access access
      *
      * @return self
      */
-    public function setMessages($messages)
+    public function setAccess($access)
     {
-        $this->container['messages'] = $messages;
+
+        if ((mb_strlen($access) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $access when calling AccessToken., must be bigger than or equal to 1.');
+        }
+
+        $this->container['access'] = $access;
 
         return $this;
     }

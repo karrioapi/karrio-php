@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorResponse
+ * TokenVerify
  *
  * PHP version 7.2
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * ErrorResponse Class Doc Comment
+ * TokenVerify Class Doc Comment
  *
  * @category Class
  * @package  Purplship
@@ -43,7 +43,7 @@ use \Purplship\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class TokenVerify implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorResponse';
+    protected static $openAPIModelName = 'TokenVerify';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'messages' => '\Purplship\Model\Message[]'
+        'token' => 'string'
     ];
 
     /**
@@ -71,7 +71,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'messages' => null
+        'token' => null
     ];
 
     /**
@@ -101,7 +101,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'messages' => 'messages'
+        'token' => 'token'
     ];
 
     /**
@@ -110,7 +110,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'messages' => 'setMessages'
+        'token' => 'setToken'
     ];
 
     /**
@@ -119,7 +119,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'messages' => 'getMessages'
+        'token' => 'getToken'
     ];
 
     /**
@@ -179,7 +179,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['messages'] = $data['messages'] ?? null;
+        $this->container['token'] = $data['token'] ?? null;
     }
 
     /**
@@ -190,6 +190,13 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if ($this->container['token'] === null) {
+            $invalidProperties[] = "'token' can't be null";
+        }
+        if ((mb_strlen($this->container['token']) < 1)) {
+            $invalidProperties[] = "invalid value for 'token', the character length must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -207,25 +214,30 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets messages
+     * Gets token
      *
-     * @return \Purplship\Model\Message[]|null
+     * @return string
      */
-    public function getMessages()
+    public function getToken()
     {
-        return $this->container['messages'];
+        return $this->container['token'];
     }
 
     /**
-     * Sets messages
+     * Sets token
      *
-     * @param \Purplship\Model\Message[]|null $messages The list of error messages
+     * @param string $token token
      *
      * @return self
      */
-    public function setMessages($messages)
+    public function setToken($token)
     {
-        $this->container['messages'] = $messages;
+
+        if ((mb_strlen($token) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $token when calling TokenVerify., must be bigger than or equal to 1.');
+        }
+
+        $this->container['token'] = $token;
 
         return $this;
     }

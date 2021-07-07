@@ -29,6 +29,7 @@
 namespace Purplship;
 
 use GuzzleHttp\Client;
+use Purplship\Api\APIApi;
 use Purplship\Api\AddressesApi;
 use Purplship\Api\CarriersApi;
 use Purplship\Api\CustomsApi;
@@ -37,7 +38,7 @@ use Purplship\Api\PickupsApi;
 use Purplship\Api\ProxyApi;
 use Purplship\Api\ShipmentsApi;
 use Purplship\Api\TrackersApi;
-use Purplship\Api\UtilsApi;
+use Purplship\Api\WebhooksApi;
 
 /**
  * Configuration Class Doc Comment
@@ -60,6 +61,11 @@ class Purplship
      * @var Client
      */
     protected $apiClient;
+
+    /**
+     * @var APIApi
+     */
+    public $api;
 
     /**
      * @var AddressesApi
@@ -102,9 +108,9 @@ class Purplship
     public $trackers;
 
     /**
-     * @var UtilsApi
+     * @var WebhooksApi
      */
-    public $utils;
+    public $webhooks;
 
     /**
      * @param string $apiKey
@@ -122,6 +128,7 @@ class Purplship
         
         $this->apiClient = new Client();
 
+        $this->api = new APIApi($this->apiClient, $this->config);
         $this->addresses = new AddressesApi($this->apiClient, $this->config);
         $this->carriers = new CarriersApi($this->apiClient, $this->config);
         $this->customs = new CustomsApi($this->apiClient, $this->config);
@@ -130,6 +137,6 @@ class Purplship
         $this->proxy = new ProxyApi($this->apiClient, $this->config);
         $this->shipments = new ShipmentsApi($this->apiClient, $this->config);
         $this->trackers = new TrackersApi($this->apiClient, $this->config);
-        $this->utils = new UtilsApi($this->apiClient, $this->config);
+        $this->webhooks = new WebhooksApi($this->apiClient, $this->config);
     }
 }

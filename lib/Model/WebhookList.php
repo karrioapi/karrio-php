@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorResponse
+ * WebhookList
  *
  * PHP version 7.2
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * ErrorResponse Class Doc Comment
+ * WebhookList Class Doc Comment
  *
  * @category Class
  * @package  Purplship
@@ -43,7 +43,7 @@ use \Purplship\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookList implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorResponse';
+    protected static $openAPIModelName = 'WebhookList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'messages' => '\Purplship\Model\Message[]'
+        'next' => 'string',
+        'previous' => 'string',
+        'results' => '\Purplship\Model\Webhook[]'
     ];
 
     /**
@@ -71,7 +73,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'messages' => null
+        'next' => 'uri',
+        'previous' => 'uri',
+        'results' => null
     ];
 
     /**
@@ -101,7 +105,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'messages' => 'messages'
+        'next' => 'next',
+        'previous' => 'previous',
+        'results' => 'results'
     ];
 
     /**
@@ -110,7 +116,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'messages' => 'setMessages'
+        'next' => 'setNext',
+        'previous' => 'setPrevious',
+        'results' => 'setResults'
     ];
 
     /**
@@ -119,7 +127,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'messages' => 'getMessages'
+        'next' => 'getNext',
+        'previous' => 'getPrevious',
+        'results' => 'getResults'
     ];
 
     /**
@@ -179,7 +189,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['messages'] = $data['messages'] ?? null;
+        $this->container['next'] = $data['next'] ?? null;
+        $this->container['previous'] = $data['previous'] ?? null;
+        $this->container['results'] = $data['results'] ?? null;
     }
 
     /**
@@ -191,6 +203,17 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['next']) && (mb_strlen($this->container['next']) < 1)) {
+            $invalidProperties[] = "invalid value for 'next', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['previous']) && (mb_strlen($this->container['previous']) < 1)) {
+            $invalidProperties[] = "invalid value for 'previous', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['results'] === null) {
+            $invalidProperties[] = "'results' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -207,25 +230,83 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets messages
+     * Gets next
      *
-     * @return \Purplship\Model\Message[]|null
+     * @return string|null
      */
-    public function getMessages()
+    public function getNext()
     {
-        return $this->container['messages'];
+        return $this->container['next'];
     }
 
     /**
-     * Sets messages
+     * Sets next
      *
-     * @param \Purplship\Model\Message[]|null $messages The list of error messages
+     * @param string|null $next next
      *
      * @return self
      */
-    public function setMessages($messages)
+    public function setNext($next)
     {
-        $this->container['messages'] = $messages;
+
+        if (!is_null($next) && (mb_strlen($next) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $next when calling WebhookList., must be bigger than or equal to 1.');
+        }
+
+        $this->container['next'] = $next;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous
+     *
+     * @return string|null
+     */
+    public function getPrevious()
+    {
+        return $this->container['previous'];
+    }
+
+    /**
+     * Sets previous
+     *
+     * @param string|null $previous previous
+     *
+     * @return self
+     */
+    public function setPrevious($previous)
+    {
+
+        if (!is_null($previous) && (mb_strlen($previous) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $previous when calling WebhookList., must be bigger than or equal to 1.');
+        }
+
+        $this->container['previous'] = $previous;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \Purplship\Model\Webhook[]
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \Purplship\Model\Webhook[] $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        $this->container['results'] = $results;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * PickupsApi
+ * APIApi
  * PHP version 7.2
  *
  * @category Class
@@ -40,14 +40,14 @@ use Purplship\HeaderSelector;
 use Purplship\ObjectSerializer;
 
 /**
- * PickupsApi Class Doc Comment
+ * APIApi Class Doc Comment
  *
  * @category Class
  * @package  Purplship
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class PickupsApi
+class APIApi
 {
     /**
      * @var ClientInterface
@@ -116,38 +116,36 @@ class PickupsApi
     }
 
     /**
-     * Operation cancel
+     * Operation authenticate
      *
-     * Cancel a pickup
+     * Obtain auth token pair
      *
-     * @param  string $id id (required)
-     * @param  \Purplship\Model\PickupCancelData $data data (required)
+     * @param  \Purplship\Model\TokenObtainPair $data data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Model\OperationConfirmation|\Purplship\Model\ErrorResponse
+     * @return \Purplship\Model\TokenPair
      */
-    public function cancel($id, $data)
+    public function authenticate($data)
     {
-        list($response) = $this->cancelWithHttpInfo($id, $data);
+        list($response) = $this->authenticateWithHttpInfo($data);
         return $response;
     }
 
     /**
-     * Operation cancelWithHttpInfo
+     * Operation authenticateWithHttpInfo
      *
-     * Cancel a pickup
+     * Obtain auth token pair
      *
-     * @param  string $id (required)
-     * @param  \Purplship\Model\PickupCancelData $data (required)
+     * @param  \Purplship\Model\TokenObtainPair $data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Model\OperationConfirmation|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\TokenPair, HTTP status code, HTTP response headers (array of strings)
      */
-    public function cancelWithHttpInfo($id, $data)
+    public function authenticateWithHttpInfo($data)
     {
-        $request = $this->cancelRequest($id, $data);
+        $request = $this->authenticateRequest($data);
 
         try {
             $options = $this->createHttpClientOption();
@@ -178,33 +176,21 @@ class PickupsApi
             }
 
             switch($statusCode) {
-                case 200:
-                    if ('\Purplship\Model\OperationConfirmation' === '\SplFileObject') {
+                case 201:
+                    if ('\Purplship\Model\TokenPair' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\OperationConfirmation', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\Purplship\Model\ErrorResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Purplship\Model\TokenPair', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Purplship\Model\OperationConfirmation';
+            $returnType = '\Purplship\Model\TokenPair';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -219,18 +205,10 @@ class PickupsApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Model\OperationConfirmation',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Purplship\Model\ErrorResponse',
+                        '\Purplship\Model\TokenPair',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -241,19 +219,18 @@ class PickupsApi
     }
 
     /**
-     * Operation cancelAsync
+     * Operation authenticateAsync
      *
-     * Cancel a pickup
+     * Obtain auth token pair
      *
-     * @param  string $id (required)
-     * @param  \Purplship\Model\PickupCancelData $data (required)
+     * @param  \Purplship\Model\TokenObtainPair $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelAsync($id, $data)
+    public function authenticateAsync($data)
     {
-        return $this->cancelAsyncWithHttpInfo($id, $data)
+        return $this->authenticateAsyncWithHttpInfo($data)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -262,20 +239,19 @@ class PickupsApi
     }
 
     /**
-     * Operation cancelAsyncWithHttpInfo
+     * Operation authenticateAsyncWithHttpInfo
      *
-     * Cancel a pickup
+     * Obtain auth token pair
      *
-     * @param  string $id (required)
-     * @param  \Purplship\Model\PickupCancelData $data (required)
+     * @param  \Purplship\Model\TokenObtainPair $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cancelAsyncWithHttpInfo($id, $data)
+    public function authenticateAsyncWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Model\OperationConfirmation';
-        $request = $this->cancelRequest($id, $data);
+        $returnType = '\Purplship\Model\TokenPair';
+        $request = $this->authenticateRequest($data);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -311,30 +287,23 @@ class PickupsApi
     }
 
     /**
-     * Create request for operation 'cancel'
+     * Create request for operation 'authenticate'
      *
-     * @param  string $id (required)
-     * @param  \Purplship\Model\PickupCancelData $data (required)
+     * @param  \Purplship\Model\TokenObtainPair $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function cancelRequest($id, $data)
+    public function authenticateRequest($data)
     {
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling cancel'
-            );
-        }
         // verify the required parameter 'data' is set
         if ($data === null || (is_array($data) && count($data) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $data when calling cancel'
+                'Missing the required parameter $data when calling authenticate'
             );
         }
 
-        $resourcePath = '/v1/pickups/{id}/cancel';
+        $resourcePath = '/api/token';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -343,14 +312,6 @@ class PickupsApi
 
 
 
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
 
 
         if ($multipart) {
@@ -422,40 +383,34 @@ class PickupsApi
     }
 
     /**
-     * Operation list
+     * Operation data
      *
-     * List shipment pickups
+     * Data References
      *
-     * @param  bool $test_mode test_mode (optional)
-     * @param  int $limit Number of results to return per page. (optional)
-     * @param  int $offset The initial index from which to return the results. (optional)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Model\PickupList|\Purplship\Model\ErrorResponse
+     * @return \Purplship\Model\References
      */
-    public function list($test_mode = null, $limit = null, $offset = null)
+    public function data()
     {
-        list($response) = $this->listWithHttpInfo($test_mode, $limit, $offset);
+        list($response) = $this->dataWithHttpInfo();
         return $response;
     }
 
     /**
-     * Operation listWithHttpInfo
+     * Operation dataWithHttpInfo
      *
-     * List shipment pickups
+     * Data References
      *
-     * @param  bool $test_mode (optional)
-     * @param  int $limit Number of results to return per page. (optional)
-     * @param  int $offset The initial index from which to return the results. (optional)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Model\PickupList|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\References, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listWithHttpInfo($test_mode = null, $limit = null, $offset = null)
+    public function dataWithHttpInfo()
     {
-        $request = $this->listRequest($test_mode, $limit, $offset);
+        $request = $this->dataRequest();
 
         try {
             $options = $this->createHttpClientOption();
@@ -487,32 +442,20 @@ class PickupsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Purplship\Model\PickupList' === '\SplFileObject') {
+                    if ('\Purplship\Model\References' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\PickupList', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\Purplship\Model\ErrorResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Purplship\Model\References', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Purplship\Model\PickupList';
+            $returnType = '\Purplship\Model\References';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -530,15 +473,7 @@ class PickupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Model\PickupList',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Purplship\Model\ErrorResponse',
+                        '\Purplship\Model\References',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -549,20 +484,17 @@ class PickupsApi
     }
 
     /**
-     * Operation listAsync
+     * Operation dataAsync
      *
-     * List shipment pickups
+     * Data References
      *
-     * @param  bool $test_mode (optional)
-     * @param  int $limit Number of results to return per page. (optional)
-     * @param  int $offset The initial index from which to return the results. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAsync($test_mode = null, $limit = null, $offset = null)
+    public function dataAsync()
     {
-        return $this->listAsyncWithHttpInfo($test_mode, $limit, $offset)
+        return $this->dataAsyncWithHttpInfo()
             ->then(
                 function ($response) {
                     return $response[0];
@@ -571,21 +503,18 @@ class PickupsApi
     }
 
     /**
-     * Operation listAsyncWithHttpInfo
+     * Operation dataAsyncWithHttpInfo
      *
-     * List shipment pickups
+     * Data References
      *
-     * @param  bool $test_mode (optional)
-     * @param  int $limit Number of results to return per page. (optional)
-     * @param  int $offset The initial index from which to return the results. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAsyncWithHttpInfo($test_mode = null, $limit = null, $offset = null)
+    public function dataAsyncWithHttpInfo()
     {
-        $returnType = '\Purplship\Model\PickupList';
-        $request = $this->listRequest($test_mode, $limit, $offset);
+        $returnType = '\Purplship\Model\References';
+        $request = $this->dataRequest();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -621,58 +550,22 @@ class PickupsApi
     }
 
     /**
-     * Create request for operation 'list'
+     * Create request for operation 'data'
      *
-     * @param  bool $test_mode (optional)
-     * @param  int $limit Number of results to return per page. (optional)
-     * @param  int $offset The initial index from which to return the results. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listRequest($test_mode = null, $limit = null, $offset = null)
+    public function dataRequest()
     {
 
-        $resourcePath = '/v1/pickups';
+        $resourcePath = '/v1/references';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($test_mode !== null) {
-            if('form' === 'form' && is_array($test_mode)) {
-                foreach($test_mode as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['test_mode'] = $test_mode;
-            }
-        }
-        // query params
-        if ($limit !== null) {
-            if('form' === 'form' && is_array($limit)) {
-                foreach($limit as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['limit'] = $limit;
-            }
-        }
-        // query params
-        if ($offset !== null) {
-            if('form' === 'form' && is_array($offset)) {
-                foreach($offset as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['offset'] = $offset;
-            }
-        }
 
 
 
@@ -740,36 +633,36 @@ class PickupsApi
     }
 
     /**
-     * Operation retrieve
+     * Operation refreshToken
      *
-     * Retrieve a pickup
+     * Refresh auth token
      *
-     * @param  string $id id (required)
+     * @param  \Purplship\Model\TokenRefresh $data data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Model\Pickup|\Purplship\Model\ErrorResponse
+     * @return \Purplship\Model\AccessToken
      */
-    public function retrieve($id)
+    public function refreshToken($data)
     {
-        list($response) = $this->retrieveWithHttpInfo($id);
+        list($response) = $this->refreshTokenWithHttpInfo($data);
         return $response;
     }
 
     /**
-     * Operation retrieveWithHttpInfo
+     * Operation refreshTokenWithHttpInfo
      *
-     * Retrieve a pickup
+     * Refresh auth token
      *
-     * @param  string $id (required)
+     * @param  \Purplship\Model\TokenRefresh $data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Model\Pickup|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Purplship\Model\AccessToken, HTTP status code, HTTP response headers (array of strings)
      */
-    public function retrieveWithHttpInfo($id)
+    public function refreshTokenWithHttpInfo($data)
     {
-        $request = $this->retrieveRequest($id);
+        $request = $this->refreshTokenRequest($data);
 
         try {
             $options = $this->createHttpClientOption();
@@ -801,32 +694,20 @@ class PickupsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Purplship\Model\Pickup' === '\SplFileObject') {
+                    if ('\Purplship\Model\AccessToken' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\Pickup', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\Purplship\Model\ErrorResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, '\Purplship\Model\AccessToken', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Purplship\Model\Pickup';
+            $returnType = '\Purplship\Model\AccessToken';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -844,15 +725,7 @@ class PickupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Model\Pickup',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Purplship\Model\ErrorResponse',
+                        '\Purplship\Model\AccessToken',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -863,18 +736,18 @@ class PickupsApi
     }
 
     /**
-     * Operation retrieveAsync
+     * Operation refreshTokenAsync
      *
-     * Retrieve a pickup
+     * Refresh auth token
      *
-     * @param  string $id (required)
+     * @param  \Purplship\Model\TokenRefresh $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retrieveAsync($id)
+    public function refreshTokenAsync($data)
     {
-        return $this->retrieveAsyncWithHttpInfo($id)
+        return $this->refreshTokenAsyncWithHttpInfo($data)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -883,19 +756,19 @@ class PickupsApi
     }
 
     /**
-     * Operation retrieveAsyncWithHttpInfo
+     * Operation refreshTokenAsyncWithHttpInfo
      *
-     * Retrieve a pickup
+     * Refresh auth token
      *
-     * @param  string $id (required)
+     * @param  \Purplship\Model\TokenRefresh $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function retrieveAsyncWithHttpInfo($id)
+    public function refreshTokenAsyncWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Model\Pickup';
-        $request = $this->retrieveRequest($id);
+        $returnType = '\Purplship\Model\AccessToken';
+        $request = $this->refreshTokenRequest($data);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -931,356 +804,31 @@ class PickupsApi
     }
 
     /**
-     * Create request for operation 'retrieve'
+     * Create request for operation 'refreshToken'
      *
-     * @param  string $id (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function retrieveRequest($id)
-    {
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling retrieve'
-            );
-        }
-
-        $resourcePath = '/v1/pickups/{id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation schedule
-     *
-     * Schedule a pickup
-     *
-     * @param  string $carrier_name carrier_name (required)
-     * @param  \Purplship\Model\PickupData $data data (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
-     *
-     * @throws \Purplship\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Purplship\Model\Pickup|\Purplship\Model\ErrorResponse
-     */
-    public function schedule($carrier_name, $data, $test = false)
-    {
-        list($response) = $this->scheduleWithHttpInfo(
-            $carrier_name, is_array($data) ? new \Purplship\Model\PickupData($data) : $data, $test);
-        return $response;
-    }
-
-    /**
-     * Operation scheduleWithHttpInfo
-     *
-     * Schedule a pickup
-     *
-     * @param  string $carrier_name (required)
-     * @param  \Purplship\Model\PickupData $data (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
-     *
-     * @throws \Purplship\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Purplship\Model\Pickup|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function scheduleWithHttpInfo($carrier_name, $data, $test = false)
-    {
-        $request = $this->scheduleRequest($carrier_name, $data, $test);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\Purplship\Model\Pickup' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\Pickup', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\Purplship\Model\ErrorResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\ErrorResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\Purplship\Model\Pickup';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Purplship\Model\Pickup',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Purplship\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation scheduleAsync
-     *
-     * Schedule a pickup
-     *
-     * @param  string $carrier_name (required)
-     * @param  \Purplship\Model\PickupData $data (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function scheduleAsync($carrier_name, $data, $test = false)
-    {
-        return $this->scheduleAsyncWithHttpInfo($carrier_name, $data, $test)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation scheduleAsyncWithHttpInfo
-     *
-     * Schedule a pickup
-     *
-     * @param  string $carrier_name (required)
-     * @param  \Purplship\Model\PickupData $data (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function scheduleAsyncWithHttpInfo($carrier_name, $data, $test = false)
-    {
-        $returnType = '\Purplship\Model\Pickup';
-        $request = $this->scheduleRequest($carrier_name, $data, $test);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'schedule'
-     *
-     * @param  string $carrier_name (required)
-     * @param  \Purplship\Model\PickupData $data (required)
-     * @param  bool $test The test flag indicates whether to use a carrier configured for test. (optional, default to false)
+     * @param  \Purplship\Model\TokenRefresh $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function scheduleRequest($carrier_name, $data, $test = false)
+    public function refreshTokenRequest($data)
     {
-        // verify the required parameter 'carrier_name' is set
-        if ($carrier_name === null || (is_array($carrier_name) && count($carrier_name) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $carrier_name when calling schedule'
-            );
-        }
         // verify the required parameter 'data' is set
         if ($data === null || (is_array($data) && count($data) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $data when calling schedule'
+                'Missing the required parameter $data when calling refreshToken'
             );
         }
 
-        $resourcePath = '/v1/pickups/{carrier_name}/schedule';
+        $resourcePath = '/api/token/refresh';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        if ($test !== null) {
-            if('form' === 'form' && is_array($test)) {
-                foreach($test as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['test'] = $test;
-            }
-        }
 
 
-        // path params
-        if ($carrier_name !== null) {
-            $resourcePath = str_replace(
-                '{' . 'carrier_name' . '}',
-                ObjectSerializer::toPathValue($carrier_name),
-                $resourcePath
-            );
-        }
 
 
         if ($multipart) {
@@ -1352,39 +900,36 @@ class PickupsApi
     }
 
     /**
-     * Operation update
+     * Operation verifyToken
      *
-     * Update a pickup
+     * Verify auth token
      *
-     * @param  string $id id (required)
-     * @param  \Purplship\Model\PickupUpdateData $data data (required)
+     * @param  \Purplship\Model\TokenVerify $data data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Purplship\Model\OperationConfirmation|\Purplship\Model\ErrorResponse
+     * @return array<string,object>
      */
-    public function update($id, $data)
+    public function verifyToken($data)
     {
-        list($response) = $this->updateWithHttpInfo(
-            $id, is_array($data) ? new \Purplship\Model\PickupUpdateData($data) : $data);
+        list($response) = $this->verifyTokenWithHttpInfo($data);
         return $response;
     }
 
     /**
-     * Operation updateWithHttpInfo
+     * Operation verifyTokenWithHttpInfo
      *
-     * Update a pickup
+     * Verify auth token
      *
-     * @param  string $id (required)
-     * @param  \Purplship\Model\PickupUpdateData $data (required)
+     * @param  \Purplship\Model\TokenVerify $data (required)
      *
      * @throws \Purplship\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Purplship\Model\OperationConfirmation|\Purplship\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of array<string,object>, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($id, $data)
+    public function verifyTokenWithHttpInfo($data)
     {
-        $request = $this->updateRequest($id, $data);
+        $request = $this->verifyTokenRequest($data);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1416,32 +961,20 @@ class PickupsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Purplship\Model\OperationConfirmation' === '\SplFileObject') {
+                    if ('array<string,object>' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\OperationConfirmation', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\Purplship\Model\ErrorResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\Purplship\Model\ErrorResponse', []),
+                        ObjectSerializer::deserialize($content, 'array<string,object>', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Purplship\Model\OperationConfirmation';
+            $returnType = 'array<string,object>';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1459,15 +992,7 @@ class PickupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Purplship\Model\OperationConfirmation',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Purplship\Model\ErrorResponse',
+                        'array<string,object>',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1478,19 +1003,18 @@ class PickupsApi
     }
 
     /**
-     * Operation updateAsync
+     * Operation verifyTokenAsync
      *
-     * Update a pickup
+     * Verify auth token
      *
-     * @param  string $id (required)
-     * @param  \Purplship\Model\PickupUpdateData $data (required)
+     * @param  \Purplship\Model\TokenVerify $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($id, $data)
+    public function verifyTokenAsync($data)
     {
-        return $this->updateAsyncWithHttpInfo($id, $data)
+        return $this->verifyTokenAsyncWithHttpInfo($data)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1499,20 +1023,19 @@ class PickupsApi
     }
 
     /**
-     * Operation updateAsyncWithHttpInfo
+     * Operation verifyTokenAsyncWithHttpInfo
      *
-     * Update a pickup
+     * Verify auth token
      *
-     * @param  string $id (required)
-     * @param  \Purplship\Model\PickupUpdateData $data (required)
+     * @param  \Purplship\Model\TokenVerify $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($id, $data)
+    public function verifyTokenAsyncWithHttpInfo($data)
     {
-        $returnType = '\Purplship\Model\OperationConfirmation';
-        $request = $this->updateRequest($id, $data);
+        $returnType = 'array<string,object>';
+        $request = $this->verifyTokenRequest($data);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1548,30 +1071,23 @@ class PickupsApi
     }
 
     /**
-     * Create request for operation 'update'
+     * Create request for operation 'verifyToken'
      *
-     * @param  string $id (required)
-     * @param  \Purplship\Model\PickupUpdateData $data (required)
+     * @param  \Purplship\Model\TokenVerify $data (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($id, $data)
+    public function verifyTokenRequest($data)
     {
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling update'
-            );
-        }
         // verify the required parameter 'data' is set
         if ($data === null || (is_array($data) && count($data) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $data when calling update'
+                'Missing the required parameter $data when calling verifyToken'
             );
         }
 
-        $resourcePath = '/v1/pickups/{id}';
+        $resourcePath = '/api/token/verify';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1580,14 +1096,6 @@ class PickupsApi
 
 
 
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
 
 
         if ($multipart) {
@@ -1651,7 +1159,7 @@ class PickupsApi
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
-            'PATCH',
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
