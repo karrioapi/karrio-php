@@ -1,6 +1,6 @@
 <?php
 /**
- * ParcelData
+ * CommodityData
  *
  * PHP version 7.2
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * ParcelData Class Doc Comment
+ * CommodityData Class Doc Comment
  *
  * @category Class
  * @package  Purplship
@@ -43,7 +43,7 @@ use \Purplship\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
+class CommodityData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ParcelData';
+    protected static $openAPIModelName = 'CommodityData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,16 +61,13 @@ class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'weight' => 'float',
-        'width' => 'float',
-        'height' => 'float',
-        'length' => 'float',
-        'packaging_type' => 'string',
-        'package_preset' => 'string',
-        'description' => 'string',
-        'content' => 'string',
-        'is_document' => 'bool',
         'weight_unit' => 'string',
-        'dimension_unit' => 'string'
+        'description' => 'string',
+        'quantity' => 'int',
+        'sku' => 'string',
+        'value_amount' => 'float',
+        'value_currency' => 'string',
+        'origin_country' => 'string'
     ];
 
     /**
@@ -82,16 +79,13 @@ class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'weight' => null,
-        'width' => null,
-        'height' => null,
-        'length' => null,
-        'packaging_type' => null,
-        'package_preset' => null,
-        'description' => null,
-        'content' => null,
-        'is_document' => null,
         'weight_unit' => null,
-        'dimension_unit' => null
+        'description' => null,
+        'quantity' => null,
+        'sku' => null,
+        'value_amount' => null,
+        'value_currency' => null,
+        'origin_country' => null
     ];
 
     /**
@@ -122,16 +116,13 @@ class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'weight' => 'weight',
-        'width' => 'width',
-        'height' => 'height',
-        'length' => 'length',
-        'packaging_type' => 'packaging_type',
-        'package_preset' => 'package_preset',
-        'description' => 'description',
-        'content' => 'content',
-        'is_document' => 'is_document',
         'weight_unit' => 'weight_unit',
-        'dimension_unit' => 'dimension_unit'
+        'description' => 'description',
+        'quantity' => 'quantity',
+        'sku' => 'sku',
+        'value_amount' => 'value_amount',
+        'value_currency' => 'value_currency',
+        'origin_country' => 'origin_country'
     ];
 
     /**
@@ -141,16 +132,13 @@ class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'weight' => 'setWeight',
-        'width' => 'setWidth',
-        'height' => 'setHeight',
-        'length' => 'setLength',
-        'packaging_type' => 'setPackagingType',
-        'package_preset' => 'setPackagePreset',
-        'description' => 'setDescription',
-        'content' => 'setContent',
-        'is_document' => 'setIsDocument',
         'weight_unit' => 'setWeightUnit',
-        'dimension_unit' => 'setDimensionUnit'
+        'description' => 'setDescription',
+        'quantity' => 'setQuantity',
+        'sku' => 'setSku',
+        'value_amount' => 'setValueAmount',
+        'value_currency' => 'setValueCurrency',
+        'origin_country' => 'setOriginCountry'
     ];
 
     /**
@@ -160,16 +148,13 @@ class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'weight' => 'getWeight',
-        'width' => 'getWidth',
-        'height' => 'getHeight',
-        'length' => 'getLength',
-        'packaging_type' => 'getPackagingType',
-        'package_preset' => 'getPackagePreset',
-        'description' => 'getDescription',
-        'content' => 'getContent',
-        'is_document' => 'getIsDocument',
         'weight_unit' => 'getWeightUnit',
-        'dimension_unit' => 'getDimensionUnit'
+        'description' => 'getDescription',
+        'quantity' => 'getQuantity',
+        'sku' => 'getSku',
+        'value_amount' => 'getValueAmount',
+        'value_currency' => 'getValueCurrency',
+        'origin_country' => 'getOriginCountry'
     ];
 
     /**
@@ -215,8 +200,6 @@ class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
 
     const WEIGHT_UNIT_KG = 'KG';
     const WEIGHT_UNIT_LB = 'LB';
-    const DIMENSION_UNIT_CM = 'CM';
-    const DIMENSION_UNIT_IN = 'IN';
 
     /**
      * Gets allowable values of the enum
@@ -228,19 +211,6 @@ class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
         return [
             self::WEIGHT_UNIT_KG,
             self::WEIGHT_UNIT_LB,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDimensionUnitAllowableValues()
-    {
-        return [
-            self::DIMENSION_UNIT_CM,
-            self::DIMENSION_UNIT_IN,
         ];
     }
 
@@ -260,16 +230,13 @@ class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['weight'] = $data['weight'] ?? null;
-        $this->container['width'] = $data['width'] ?? null;
-        $this->container['height'] = $data['height'] ?? null;
-        $this->container['length'] = $data['length'] ?? null;
-        $this->container['packaging_type'] = $data['packaging_type'] ?? null;
-        $this->container['package_preset'] = $data['package_preset'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['content'] = $data['content'] ?? null;
-        $this->container['is_document'] = $data['is_document'] ?? false;
         $this->container['weight_unit'] = $data['weight_unit'] ?? null;
-        $this->container['dimension_unit'] = $data['dimension_unit'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['quantity'] = $data['quantity'] ?? null;
+        $this->container['sku'] = $data['sku'] ?? null;
+        $this->container['value_amount'] = $data['value_amount'] ?? null;
+        $this->container['value_currency'] = $data['value_currency'] ?? null;
+        $this->container['origin_country'] = $data['origin_country'] ?? null;
     }
 
     /**
@@ -292,15 +259,6 @@ class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'weight_unit', must be one of '%s'",
                 $this->container['weight_unit'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getDimensionUnitAllowableValues();
-        if (!is_null($this->container['dimension_unit']) && !in_array($this->container['dimension_unit'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'dimension_unit', must be one of '%s'",
-                $this->container['dimension_unit'],
                 implode("', '", $allowedValues)
             );
         }
@@ -333,205 +291,13 @@ class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight
      *
-     * @param float $weight The parcel's weight
+     * @param float $weight The commodity's weight
      *
      * @return self
      */
     public function setWeight($weight)
     {
         $this->container['weight'] = $weight;
-
-        return $this;
-    }
-
-    /**
-     * Gets width
-     *
-     * @return float|null
-     */
-    public function getWidth()
-    {
-        return $this->container['width'];
-    }
-
-    /**
-     * Sets width
-     *
-     * @param float|null $width The parcel's width
-     *
-     * @return self
-     */
-    public function setWidth($width)
-    {
-        $this->container['width'] = $width;
-
-        return $this;
-    }
-
-    /**
-     * Gets height
-     *
-     * @return float|null
-     */
-    public function getHeight()
-    {
-        return $this->container['height'];
-    }
-
-    /**
-     * Sets height
-     *
-     * @param float|null $height The parcel's height
-     *
-     * @return self
-     */
-    public function setHeight($height)
-    {
-        $this->container['height'] = $height;
-
-        return $this;
-    }
-
-    /**
-     * Gets length
-     *
-     * @return float|null
-     */
-    public function getLength()
-    {
-        return $this->container['length'];
-    }
-
-    /**
-     * Sets length
-     *
-     * @param float|null $length The parcel's length
-     *
-     * @return self
-     */
-    public function setLength($length)
-    {
-        $this->container['length'] = $length;
-
-        return $this;
-    }
-
-    /**
-     * Gets packaging_type
-     *
-     * @return string|null
-     */
-    public function getPackagingType()
-    {
-        return $this->container['packaging_type'];
-    }
-
-    /**
-     * Sets packaging_type
-     *
-     * @param string|null $packaging_type The parcel's packaging type.  **Note that the packaging is optional when using a package preset**  values: <br/>- **envelope**<br/>- **pak**<br/>- **tube**<br/>- **pallet**<br/>- **small_box**<br/>- **medium_box**<br/>- **your_packaging**  For specific carriers packaging type, please consult [the reference](#operation/references).
-     *
-     * @return self
-     */
-    public function setPackagingType($packaging_type)
-    {
-        $this->container['packaging_type'] = $packaging_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets package_preset
-     *
-     * @return string|null
-     */
-    public function getPackagePreset()
-    {
-        return $this->container['package_preset'];
-    }
-
-    /**
-     * Sets package_preset
-     *
-     * @param string|null $package_preset The parcel's package preset.  For specific carriers package preset, please consult [the reference](#operation/references).
-     *
-     * @return self
-     */
-    public function setPackagePreset($package_preset)
-    {
-        $this->container['package_preset'] = $package_preset;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description The parcel's description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets content
-     *
-     * @return string|null
-     */
-    public function getContent()
-    {
-        return $this->container['content'];
-    }
-
-    /**
-     * Sets content
-     *
-     * @param string|null $content The parcel's content description
-     *
-     * @return self
-     */
-    public function setContent($content)
-    {
-        $this->container['content'] = $content;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_document
-     *
-     * @return bool|null
-     */
-    public function getIsDocument()
-    {
-        return $this->container['is_document'];
-    }
-
-    /**
-     * Sets is_document
-     *
-     * @param bool|null $is_document Indicates if the parcel is composed of documents only
-     *
-     * @return self
-     */
-    public function setIsDocument($is_document)
-    {
-        $this->container['is_document'] = $is_document;
 
         return $this;
     }
@@ -549,7 +315,7 @@ class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets weight_unit
      *
-     * @param string $weight_unit The parcel's weight unit
+     * @param string $weight_unit The commodity's weight unit
      *
      * @return self
      */
@@ -571,35 +337,145 @@ class ParcelData implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets dimension_unit
+     * Gets description
      *
      * @return string|null
      */
-    public function getDimensionUnit()
+    public function getDescription()
     {
-        return $this->container['dimension_unit'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets dimension_unit
+     * Sets description
      *
-     * @param string|null $dimension_unit The parcel's dimension unit
+     * @param string|null $description A description of the commodity
      *
      * @return self
      */
-    public function setDimensionUnit($dimension_unit)
+    public function setDescription($description)
     {
-        $allowedValues = $this->getDimensionUnitAllowableValues();
-        if (!is_null($dimension_unit) && !in_array($dimension_unit, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'dimension_unit', must be one of '%s'",
-                    $dimension_unit,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['dimension_unit'] = $dimension_unit;
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity
+     *
+     * @return int|null
+     */
+    public function getQuantity()
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity
+     *
+     * @param int|null $quantity The commodity's quantity (number or item)
+     *
+     * @return self
+     */
+    public function setQuantity($quantity)
+    {
+        $this->container['quantity'] = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Gets sku
+     *
+     * @return string|null
+     */
+    public function getSku()
+    {
+        return $this->container['sku'];
+    }
+
+    /**
+     * Sets sku
+     *
+     * @param string|null $sku The commodity's sku number
+     *
+     * @return self
+     */
+    public function setSku($sku)
+    {
+        $this->container['sku'] = $sku;
+
+        return $this;
+    }
+
+    /**
+     * Gets value_amount
+     *
+     * @return float|null
+     */
+    public function getValueAmount()
+    {
+        return $this->container['value_amount'];
+    }
+
+    /**
+     * Sets value_amount
+     *
+     * @param float|null $value_amount The monetary value of the commodity
+     *
+     * @return self
+     */
+    public function setValueAmount($value_amount)
+    {
+        $this->container['value_amount'] = $value_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets value_currency
+     *
+     * @return string|null
+     */
+    public function getValueCurrency()
+    {
+        return $this->container['value_currency'];
+    }
+
+    /**
+     * Sets value_currency
+     *
+     * @param string|null $value_currency The currency of the commodity value amount
+     *
+     * @return self
+     */
+    public function setValueCurrency($value_currency)
+    {
+        $this->container['value_currency'] = $value_currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets origin_country
+     *
+     * @return string|null
+     */
+    public function getOriginCountry()
+    {
+        return $this->container['origin_country'];
+    }
+
+    /**
+     * Sets origin_country
+     *
+     * @param string|null $origin_country The origin or manufacture country
+     *
+     * @return self
+     */
+    public function setOriginCountry($origin_country)
+    {
+        $this->container['origin_country'] = $origin_country;
 
         return $this;
     }

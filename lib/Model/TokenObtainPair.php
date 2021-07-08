@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorResponse
+ * TokenObtainPair
  *
  * PHP version 7.2
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * ErrorResponse Class Doc Comment
+ * TokenObtainPair Class Doc Comment
  *
  * @category Class
  * @package  Purplship
@@ -43,7 +43,7 @@ use \Purplship\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class TokenObtainPair implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorResponse';
+    protected static $openAPIModelName = 'TokenObtainPair';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'messages' => '\Purplship\Model\Message[]'
+        'email' => 'string',
+        'password' => 'string',
+        'org_id' => 'string'
     ];
 
     /**
@@ -71,7 +73,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'messages' => null
+        'email' => null,
+        'password' => null,
+        'org_id' => null
     ];
 
     /**
@@ -101,7 +105,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'messages' => 'messages'
+        'email' => 'email',
+        'password' => 'password',
+        'org_id' => 'org_id'
     ];
 
     /**
@@ -110,7 +116,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'messages' => 'setMessages'
+        'email' => 'setEmail',
+        'password' => 'setPassword',
+        'org_id' => 'setOrgId'
     ];
 
     /**
@@ -119,7 +127,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'messages' => 'getMessages'
+        'email' => 'getEmail',
+        'password' => 'getPassword',
+        'org_id' => 'getOrgId'
     ];
 
     /**
@@ -179,7 +189,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['messages'] = $data['messages'] ?? null;
+        $this->container['email'] = $data['email'] ?? null;
+        $this->container['password'] = $data['password'] ?? null;
+        $this->container['org_id'] = $data['org_id'] ?? null;
     }
 
     /**
@@ -190,6 +202,24 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if ($this->container['email'] === null) {
+            $invalidProperties[] = "'email' can't be null";
+        }
+        if ((mb_strlen($this->container['email']) < 1)) {
+            $invalidProperties[] = "invalid value for 'email', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['password'] === null) {
+            $invalidProperties[] = "'password' can't be null";
+        }
+        if ((mb_strlen($this->container['password']) < 1)) {
+            $invalidProperties[] = "invalid value for 'password', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['org_id']) && (mb_strlen($this->container['org_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'org_id', the character length must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -207,25 +237,88 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets messages
+     * Gets email
      *
-     * @return \Purplship\Model\Message[]|null
+     * @return string
      */
-    public function getMessages()
+    public function getEmail()
     {
-        return $this->container['messages'];
+        return $this->container['email'];
     }
 
     /**
-     * Sets messages
+     * Sets email
      *
-     * @param \Purplship\Model\Message[]|null $messages The list of error messages
+     * @param string $email email
      *
      * @return self
      */
-    public function setMessages($messages)
+    public function setEmail($email)
     {
-        $this->container['messages'] = $messages;
+
+        if ((mb_strlen($email) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $email when calling TokenObtainPair., must be bigger than or equal to 1.');
+        }
+
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->container['password'];
+    }
+
+    /**
+     * Sets password
+     *
+     * @param string $password password
+     *
+     * @return self
+     */
+    public function setPassword($password)
+    {
+
+        if ((mb_strlen($password) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $password when calling TokenObtainPair., must be bigger than or equal to 1.');
+        }
+
+        $this->container['password'] = $password;
+
+        return $this;
+    }
+
+    /**
+     * Gets org_id
+     *
+     * @return string|null
+     */
+    public function getOrgId()
+    {
+        return $this->container['org_id'];
+    }
+
+    /**
+     * Sets org_id
+     *
+     * @param string|null $org_id **should be specified only in a multi-org deployment.**  Note the first org related to the user is selected by default.
+     *
+     * @return self
+     */
+    public function setOrgId($org_id)
+    {
+
+        if (!is_null($org_id) && (mb_strlen($org_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $org_id when calling TokenObtainPair., must be bigger than or equal to 1.');
+        }
+
+        $this->container['org_id'] = $org_id;
 
         return $this;
     }

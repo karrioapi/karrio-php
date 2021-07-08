@@ -1,12 +1,12 @@
-# Purplship PHP Client
+# purplship PHP Client
 
-Purplship is a Multi-carrier Shipping API that simplifies the integration of logistic carrier services.
+purplship is a Multi-carrier Shipping API that simplifies the integration of logistic carrier services.
 
 Visit [purplship.com](https://purplship.com) to deploy your private cloud multi-carrier shipping API.
 
 ## Documentation
 
-See the full [PHP API docs](https://docs.purplship.com/#/v2020.12/guides/reference?id=reference).
+See the full [PHP API docs](https://docs.purplship.com).
 
 ## Requirements
 
@@ -37,7 +37,7 @@ Please follow the [installation procedure](#installation--usage) and then run th
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
-$purplship = new \Purplship\Purplship('YOUR_API_KEY', 'https://instance.purplship.api/v1');
+$purplship = new \purplship\purplship('YOUR_API_KEY', 'https://instance.purplship.api/v1');
 
 try {
     $result = $purplship->carriers->list();
@@ -98,4 +98,4 @@ try {
 
 ## Author
 
-Purplship Team | hello@purplship.com | [purplship.com](https://purplship.com)
+purplship Team | hello@purplship.com | [purplship.com](https://purplship.com)

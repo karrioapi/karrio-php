@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorResponse
+ * WebhookTestRequest
  *
  * PHP version 7.2
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * ErrorResponse Class Doc Comment
+ * WebhookTestRequest Class Doc Comment
  *
  * @category Class
  * @package  Purplship
@@ -43,7 +43,7 @@ use \Purplship\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookTestRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorResponse';
+    protected static $openAPIModelName = 'WebhookTestRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'messages' => '\Purplship\Model\Message[]'
+        'payload' => 'object'
     ];
 
     /**
@@ -71,7 +71,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'messages' => null
+        'payload' => null
     ];
 
     /**
@@ -101,7 +101,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'messages' => 'messages'
+        'payload' => 'payload'
     ];
 
     /**
@@ -110,7 +110,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'messages' => 'setMessages'
+        'payload' => 'setPayload'
     ];
 
     /**
@@ -119,7 +119,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'messages' => 'getMessages'
+        'payload' => 'getPayload'
     ];
 
     /**
@@ -179,7 +179,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['messages'] = $data['messages'] ?? null;
+        $this->container['payload'] = $data['payload'] ?? null;
     }
 
     /**
@@ -191,6 +191,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['payload'] === null) {
+            $invalidProperties[] = "'payload' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -207,25 +210,25 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets messages
+     * Gets payload
      *
-     * @return \Purplship\Model\Message[]|null
+     * @return object
      */
-    public function getMessages()
+    public function getPayload()
     {
-        return $this->container['messages'];
+        return $this->container['payload'];
     }
 
     /**
-     * Sets messages
+     * Sets payload
      *
-     * @param \Purplship\Model\Message[]|null $messages The list of error messages
+     * @param object $payload payload
      *
      * @return self
      */
-    public function setMessages($messages)
+    public function setPayload($payload)
     {
-        $this->container['messages'] = $messages;
+        $this->container['payload'] = $payload;
 
         return $this;
     }

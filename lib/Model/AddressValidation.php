@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorResponse
+ * AddressValidation
  *
  * PHP version 7.2
  *
@@ -33,9 +33,10 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * ErrorResponse Class Doc Comment
+ * AddressValidation Class Doc Comment
  *
  * @category Class
+ * @description Specify address validation result
  * @package  Purplship
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +44,7 @@ use \Purplship\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class AddressValidation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +53,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorResponse';
+    protected static $openAPIModelName = 'AddressValidation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +61,8 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'messages' => '\Purplship\Model\Message[]'
+        'success' => 'bool',
+        'meta' => 'object'
     ];
 
     /**
@@ -71,7 +73,8 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'messages' => null
+        'success' => null,
+        'meta' => null
     ];
 
     /**
@@ -101,7 +104,8 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'messages' => 'messages'
+        'success' => 'success',
+        'meta' => 'meta'
     ];
 
     /**
@@ -110,7 +114,8 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'messages' => 'setMessages'
+        'success' => 'setSuccess',
+        'meta' => 'setMeta'
     ];
 
     /**
@@ -119,7 +124,8 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'messages' => 'getMessages'
+        'success' => 'getSuccess',
+        'meta' => 'getMeta'
     ];
 
     /**
@@ -179,7 +185,8 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['messages'] = $data['messages'] ?? null;
+        $this->container['success'] = $data['success'] ?? null;
+        $this->container['meta'] = $data['meta'] ?? null;
     }
 
     /**
@@ -191,6 +198,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['success'] === null) {
+            $invalidProperties[] = "'success' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -207,25 +217,49 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets messages
+     * Gets success
      *
-     * @return \Purplship\Model\Message[]|null
+     * @return bool
      */
-    public function getMessages()
+    public function getSuccess()
     {
-        return $this->container['messages'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets messages
+     * Sets success
      *
-     * @param \Purplship\Model\Message[]|null $messages The list of error messages
+     * @param bool $success True if the address is valid
      *
      * @return self
      */
-    public function setMessages($messages)
+    public function setSuccess($success)
     {
-        $this->container['messages'] = $messages;
+        $this->container['success'] = $success;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return object|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param object|null $meta validation service details
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        $this->container['meta'] = $meta;
 
         return $this;
     }

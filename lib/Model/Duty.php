@@ -1,6 +1,6 @@
 <?php
 /**
- * Payment
+ * Duty
  *
  * PHP version 7.2
  *
@@ -33,10 +33,10 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * Payment Class Doc Comment
+ * Duty Class Doc Comment
  *
  * @category Class
- * @description The payment details
+ * @description The payment details.&lt;br/&gt; Note that this is required for a Dutiable parcel shipped internationally.
  * @package  Purplship
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +44,7 @@ use \Purplship\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
+class Duty implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -53,7 +53,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Payment';
+    protected static $openAPIModelName = 'Duty';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -63,7 +63,9 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'paid_by' => 'string',
         'currency' => 'string',
-        'account_number' => 'string'
+        'declared_value' => 'float',
+        'account_number' => 'string',
+        'bill_to' => '\Purplship\Model\Address'
     ];
 
     /**
@@ -76,7 +78,9 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'paid_by' => null,
         'currency' => null,
-        'account_number' => null
+        'declared_value' => null,
+        'account_number' => null,
+        'bill_to' => null
     ];
 
     /**
@@ -108,7 +112,9 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'paid_by' => 'paid_by',
         'currency' => 'currency',
-        'account_number' => 'account_number'
+        'declared_value' => 'declared_value',
+        'account_number' => 'account_number',
+        'bill_to' => 'bill_to'
     ];
 
     /**
@@ -119,7 +125,9 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'paid_by' => 'setPaidBy',
         'currency' => 'setCurrency',
-        'account_number' => 'setAccountNumber'
+        'declared_value' => 'setDeclaredValue',
+        'account_number' => 'setAccountNumber',
+        'bill_to' => 'setBillTo'
     ];
 
     /**
@@ -130,7 +138,9 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'paid_by' => 'getPaidBy',
         'currency' => 'getCurrency',
-        'account_number' => 'getAccountNumber'
+        'declared_value' => 'getDeclaredValue',
+        'account_number' => 'getAccountNumber',
+        'bill_to' => 'getBillTo'
     ];
 
     /**
@@ -504,9 +514,11 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['paid_by'] = $data['paid_by'] ?? PAID_BY_SENDER;
+        $this->container['paid_by'] = $data['paid_by'] ?? null;
         $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['declared_value'] = $data['declared_value'] ?? null;
         $this->container['account_number'] = $data['account_number'] ?? null;
+        $this->container['bill_to'] = $data['bill_to'] ?? null;
     }
 
     /**
@@ -564,7 +576,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets paid_by
      *
-     * @param string|null $paid_by The payor type
+     * @param string|null $paid_by The duty payer
      *
      * @return self
      */
@@ -598,7 +610,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param string|null $currency The payment amount currency
+     * @param string|null $currency The declared value currency
      *
      * @return self
      */
@@ -620,6 +632,30 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets declared_value
+     *
+     * @return float|null
+     */
+    public function getDeclaredValue()
+    {
+        return $this->container['declared_value'];
+    }
+
+    /**
+     * Sets declared_value
+     *
+     * @param float|null $declared_value The package declared value
+     *
+     * @return self
+     */
+    public function setDeclaredValue($declared_value)
+    {
+        $this->container['declared_value'] = $declared_value;
+
+        return $this;
+    }
+
+    /**
      * Gets account_number
      *
      * @return string|null
@@ -632,13 +668,37 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets account_number
      *
-     * @param string|null $account_number The payor account number
+     * @param string|null $account_number The duty payment account number
      *
      * @return self
      */
     public function setAccountNumber($account_number)
     {
         $this->container['account_number'] = $account_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets bill_to
+     *
+     * @return \Purplship\Model\Address|null
+     */
+    public function getBillTo()
+    {
+        return $this->container['bill_to'];
+    }
+
+    /**
+     * Sets bill_to
+     *
+     * @param \Purplship\Model\Address|null $bill_to bill_to
+     *
+     * @return self
+     */
+    public function setBillTo($bill_to)
+    {
+        $this->container['bill_to'] = $bill_to;
 
         return $this;
     }

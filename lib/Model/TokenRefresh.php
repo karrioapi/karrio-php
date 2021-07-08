@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorResponse
+ * TokenRefresh
  *
  * PHP version 7.2
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * ErrorResponse Class Doc Comment
+ * TokenRefresh Class Doc Comment
  *
  * @category Class
  * @package  Purplship
@@ -43,7 +43,7 @@ use \Purplship\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class TokenRefresh implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorResponse';
+    protected static $openAPIModelName = 'TokenRefresh';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'messages' => '\Purplship\Model\Message[]'
+        'refresh' => 'string'
     ];
 
     /**
@@ -71,7 +71,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'messages' => null
+        'refresh' => null
     ];
 
     /**
@@ -101,7 +101,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'messages' => 'messages'
+        'refresh' => 'refresh'
     ];
 
     /**
@@ -110,7 +110,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'messages' => 'setMessages'
+        'refresh' => 'setRefresh'
     ];
 
     /**
@@ -119,7 +119,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'messages' => 'getMessages'
+        'refresh' => 'getRefresh'
     ];
 
     /**
@@ -179,7 +179,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['messages'] = $data['messages'] ?? null;
+        $this->container['refresh'] = $data['refresh'] ?? null;
     }
 
     /**
@@ -190,6 +190,13 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if ($this->container['refresh'] === null) {
+            $invalidProperties[] = "'refresh' can't be null";
+        }
+        if ((mb_strlen($this->container['refresh']) < 1)) {
+            $invalidProperties[] = "invalid value for 'refresh', the character length must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -207,25 +214,30 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets messages
+     * Gets refresh
      *
-     * @return \Purplship\Model\Message[]|null
+     * @return string
      */
-    public function getMessages()
+    public function getRefresh()
     {
-        return $this->container['messages'];
+        return $this->container['refresh'];
     }
 
     /**
-     * Sets messages
+     * Sets refresh
      *
-     * @param \Purplship\Model\Message[]|null $messages The list of error messages
+     * @param string $refresh refresh
      *
      * @return self
      */
-    public function setMessages($messages)
+    public function setRefresh($refresh)
     {
-        $this->container['messages'] = $messages;
+
+        if ((mb_strlen($refresh) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $refresh when calling TokenRefresh., must be bigger than or equal to 1.');
+        }
+
+        $this->container['refresh'] = $refresh;
 
         return $this;
     }

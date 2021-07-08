@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorResponse
+ * Webhook
  *
  * PHP version 7.2
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * ErrorResponse Class Doc Comment
+ * Webhook Class Doc Comment
  *
  * @category Class
  * @package  Purplship
@@ -43,7 +43,7 @@ use \Purplship\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorResponse';
+    protected static $openAPIModelName = 'Webhook';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,13 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'messages' => '\Purplship\Model\Message[]'
+        'url' => 'string',
+        'description' => 'string',
+        'enabled_events' => 'string[]',
+        'test_mode' => 'bool',
+        'disabled' => 'bool',
+        'id' => 'string',
+        'last_event_at' => '\DateTime'
     ];
 
     /**
@@ -71,7 +77,13 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'messages' => null
+        'url' => 'uri',
+        'description' => null,
+        'enabled_events' => null,
+        'test_mode' => null,
+        'disabled' => null,
+        'id' => null,
+        'last_event_at' => 'date-time'
     ];
 
     /**
@@ -101,7 +113,13 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'messages' => 'messages'
+        'url' => 'url',
+        'description' => 'description',
+        'enabled_events' => 'enabled_events',
+        'test_mode' => 'test_mode',
+        'disabled' => 'disabled',
+        'id' => 'id',
+        'last_event_at' => 'last_event_at'
     ];
 
     /**
@@ -110,7 +128,13 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'messages' => 'setMessages'
+        'url' => 'setUrl',
+        'description' => 'setDescription',
+        'enabled_events' => 'setEnabledEvents',
+        'test_mode' => 'setTestMode',
+        'disabled' => 'setDisabled',
+        'id' => 'setId',
+        'last_event_at' => 'setLastEventAt'
     ];
 
     /**
@@ -119,7 +143,13 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'messages' => 'getMessages'
+        'url' => 'getUrl',
+        'description' => 'getDescription',
+        'enabled_events' => 'getEnabledEvents',
+        'test_mode' => 'getTestMode',
+        'disabled' => 'getDisabled',
+        'id' => 'getId',
+        'last_event_at' => 'getLastEventAt'
     ];
 
     /**
@@ -163,6 +193,29 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    const ENABLED_EVENTS_ALL = 'all';
+    const ENABLED_EVENTS_SHIPMENT_PURCHASED = 'shipment.purchased';
+    const ENABLED_EVENTS_SHIPMENT_CANCELLED = 'shipment.cancelled';
+    const ENABLED_EVENTS_SHIPMENT_FULFILLED = 'shipment.fulfilled';
+    const ENABLED_EVENTS_TRACKER_CREATED = 'tracker.created';
+    const ENABLED_EVENTS_TRACKER_UPDATED = 'tracker.updated';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getEnabledEventsAllowableValues()
+    {
+        return [
+            self::ENABLED_EVENTS_ALL,
+            self::ENABLED_EVENTS_SHIPMENT_PURCHASED,
+            self::ENABLED_EVENTS_SHIPMENT_CANCELLED,
+            self::ENABLED_EVENTS_SHIPMENT_FULFILLED,
+            self::ENABLED_EVENTS_TRACKER_CREATED,
+            self::ENABLED_EVENTS_TRACKER_UPDATED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -179,7 +232,13 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['messages'] = $data['messages'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['enabled_events'] = $data['enabled_events'] ?? null;
+        $this->container['test_mode'] = $data['test_mode'] ?? null;
+        $this->container['disabled'] = $data['disabled'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['last_event_at'] = $data['last_event_at'] ?? null;
     }
 
     /**
@@ -190,6 +249,23 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
+        if ((mb_strlen($this->container['url']) < 1)) {
+            $invalidProperties[] = "invalid value for 'url', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['enabled_events'] === null) {
+            $invalidProperties[] = "'enabled_events' can't be null";
+        }
+        if ($this->container['test_mode'] === null) {
+            $invalidProperties[] = "'test_mode' can't be null";
+        }
+        if (!is_null($this->container['id']) && (mb_strlen($this->container['id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -207,25 +283,188 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets messages
+     * Gets url
      *
-     * @return \Purplship\Model\Message[]|null
+     * @return string
      */
-    public function getMessages()
+    public function getUrl()
     {
-        return $this->container['messages'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets messages
+     * Sets url
      *
-     * @param \Purplship\Model\Message[]|null $messages The list of error messages
+     * @param string $url The URL of the webhook endpoint.
      *
      * @return self
      */
-    public function setMessages($messages)
+    public function setUrl($url)
     {
-        $this->container['messages'] = $messages;
+
+        if ((mb_strlen($url) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $url when calling Webhook., must be bigger than or equal to 1.');
+        }
+
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description An optional description of what the webhook is used for.
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets enabled_events
+     *
+     * @return string[]
+     */
+    public function getEnabledEvents()
+    {
+        return $this->container['enabled_events'];
+    }
+
+    /**
+     * Sets enabled_events
+     *
+     * @param string[] $enabled_events The list of events to enable for this endpoint.
+     *
+     * @return self
+     */
+    public function setEnabledEvents($enabled_events)
+    {
+        $allowedValues = $this->getEnabledEventsAllowableValues();
+        if (array_diff($enabled_events, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'enabled_events', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['enabled_events'] = $enabled_events;
+
+        return $this;
+    }
+
+    /**
+     * Gets test_mode
+     *
+     * @return bool
+     */
+    public function getTestMode()
+    {
+        return $this->container['test_mode'];
+    }
+
+    /**
+     * Sets test_mode
+     *
+     * @param bool $test_mode Specified whether it was created with a carrier in test mode
+     *
+     * @return self
+     */
+    public function setTestMode($test_mode)
+    {
+        $this->container['test_mode'] = $test_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets disabled
+     *
+     * @return bool|null
+     */
+    public function getDisabled()
+    {
+        return $this->container['disabled'];
+    }
+
+    /**
+     * Sets disabled
+     *
+     * @param bool|null $disabled Indicates that the webhook is disabled
+     *
+     * @return self
+     */
+    public function setDisabled($disabled)
+    {
+        $this->container['disabled'] = $disabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id A unique identifier
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+
+        if (!is_null($id) && (mb_strlen($id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling Webhook., must be bigger than or equal to 1.');
+        }
+
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_event_at
+     *
+     * @return \DateTime|null
+     */
+    public function getLastEventAt()
+    {
+        return $this->container['last_event_at'];
+    }
+
+    /**
+     * Sets last_event_at
+     *
+     * @param \DateTime|null $last_event_at The datetime of the last event sent.
+     *
+     * @return self
+     */
+    public function setLastEventAt($last_event_at)
+    {
+        $this->container['last_event_at'] = $last_event_at;
 
         return $this;
     }
