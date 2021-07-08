@@ -37,7 +37,7 @@ Please follow the [installation procedure](#installation--usage) and then run th
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
-$purplship = new \purplship\purplship('YOUR_API_KEY', 'https://instance.purplship.api/v1');
+$purplship = new \Purplship\Purplship('YOUR_API_KEY', 'https://instance.purplship.api');
 
 try {
     $result = $purplship->carriers->list();
