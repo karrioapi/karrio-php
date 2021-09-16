@@ -1,14 +1,11 @@
-# Payment
+# # Payment
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | A unique identifier | [optional] 
-**paid_by** | **string** | The payment payer | [optional] [default to 'sender']
-**amount** | **float** | The payment amount if known | [optional] 
-**currency** | **string** | The payment amount currency | 
-**account_number** | **string** | The selected rate carrier payer account number | [optional] 
-**contact** | [**\Purplship\Model\Address**](Address.md) |  | [optional] 
+**paid_by** | **string** | The payor type | [optional] [default to PAID_BY_SENDER]
+**currency** | **string** | The payment amount currency | [optional]
+**account_number** | **string** | The payor account number | [optional]
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -119,7 +119,7 @@ class Purplship
      */
     public function __construct(
         string $apiKey = null,
-        string $host = null,
+        string $host = "https://cloud.purplship.com",
         string $apiKeyPrefix = "Token"
     ) {
         $this->config = Configuration::getDefaultConfiguration();
