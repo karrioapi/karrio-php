@@ -24,3 +24,5 @@
 /app/Config/database.php
 /vendors/*
 .DS_Store
+
+/codegen
