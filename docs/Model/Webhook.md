@@ -10,6 +10,6 @@ Name | Type | Description | Notes
 **test_mode** | **bool** | Specified whether it was created with a carrier in test mode |
 **disabled** | **bool** | Indicates that the webhook is disabled | [optional]
 **id** | **string** | A unique identifier | [optional]
-**last_event_at** | [**\DateTime**](\DateTime.md) | The datetime of the last event sent. | [optional]
+**last_event_at** | **\DateTime** | The datetime of the last event sent. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | A unique identifier | [optional]
-**status** | **string** | The current Shipment status | [optional] [default to STATUS_CREATED]
+**status** | **string** | The current Shipment status | [optional] [default to 'created']
 **carrier_name** | **string** | The shipment carrier | [optional]
 **carrier_id** | **string** | The shipment carrier configured identifier | [optional]
 **label** | **string** | The shipment label in base64 string | [optional]

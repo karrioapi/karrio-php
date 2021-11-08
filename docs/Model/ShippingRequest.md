@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **payment** | [**\Purplship\Model\Payment**](Payment.md) |  |
 **customs** | [**\Purplship\Model\CustomsData**](CustomsData.md) |  | [optional]
 **reference** | **string** | The shipment reference | [optional]
-**label_type** | **string** | The shipment label file type. | [optional] [default to LABEL_TYPE_PDF]
+**label_type** | **string** | The shipment label file type. | [optional] [default to 'PDF']
 **selected_rate_id** | **string** | The shipment selected rate. |
 **rates** | [**\Purplship\Model\Rate[]**](Rate.md) | The list for shipment rates fetched previously |
 

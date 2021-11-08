@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **events** | [**\Purplship\Model\TrackingEvent[]**](TrackingEvent.md) | The tracking details events | [optional]
 **delivered** | **bool** | Specified whether the related shipment was delivered | [optional]
 **test_mode** | **bool** | Specified whether the object was created with a carrier in test mode |
-**status** | **string** | The current tracking status | [optional] [default to STATUS_CREATED]
+**status** | **string** | The current tracking status | [optional] [default to 'created']
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

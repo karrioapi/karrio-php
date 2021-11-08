@@ -6,6 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app_name** | **string** |  |
 **app_version** | **string** |  |
+**app_website** | **string** |  |
+**multi_organizations** | **bool** |  |
+**address_auto_complete** | **object** |  |
 **countries** | **object** |  |
 **currencies** | **object** |  |
 **carriers** | **object** |  |

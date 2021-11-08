@@ -4,7 +4,7 @@ if [[ "$*" == *shell* ]]; then
 elif [[ "$*" == *gen:cli* ]]; then
 	mkdir -p "./codegen"
 	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
-		-i https://raw.githubusercontent.com/purplship/purplship-server/main/schemas/openapi.json \
+		-i https://raw.githubusercontent.com/purplship/purplship/main/server/schemas/openapi.json \
 		-g php \
 		-o /local/codegen/php \
         --additional-properties=invokerPackage=Purplship \

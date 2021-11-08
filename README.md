@@ -6,7 +6,7 @@ Visit [purplship.com](https://purplship.com) to deploy your private cloud multi-
 
 ## Documentation
 
-See the full [PHP API docs](https://docs.purplship.com).
+See the full [PHP API docs](https://next.purplship.com/docs/reference).
 
 ## Requirements
 
@@ -51,7 +51,6 @@ try {
 
 ## Documentation For Models
 
-- [AccessToken](docs/Model/AccessToken.md)
 - [Address](docs/Model/Address.md)
 - [AddressData](docs/Model/AddressData.md)
 - [AddressList](docs/Model/AddressList.md)
