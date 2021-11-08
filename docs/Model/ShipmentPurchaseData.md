@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **selected_rate_id** | **string** | The shipment selected rate. |
-**label_type** | **string** | The shipment label file type. | [optional] [default to LABEL_TYPE_PDF]
+**label_type** | **string** | The shipment label file type. | [optional] [default to 'PDF']
 **payment** | [**\Purplship\Model\Payment**](Payment.md) |  | [optional]
 **reference** | **string** | The shipment reference | [optional]
 
