@@ -199,11 +199,9 @@ class TrackingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    const STATUS_CREATED = 'created';
-    const STATUS_PURCHASED = 'purchased';
-    const STATUS_CANCELLED = 'cancelled';
-    const STATUS_SHIPPED = 'shipped';
+    const STATUS_PENDING = 'pending';
     const STATUS_IN_TRANSIT = 'in-transit';
+    const STATUS_INCIDENT = 'incident';
     const STATUS_DELIVERED = 'delivered';
 
     /**
@@ -214,11 +212,9 @@ class TrackingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_CREATED,
-            self::STATUS_PURCHASED,
-            self::STATUS_CANCELLED,
-            self::STATUS_SHIPPED,
+            self::STATUS_PENDING,
             self::STATUS_IN_TRANSIT,
+            self::STATUS_INCIDENT,
             self::STATUS_DELIVERED,
         ];
     }
@@ -245,7 +241,7 @@ class TrackingStatus implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['events'] = $data['events'] ?? null;
         $this->container['delivered'] = $data['delivered'] ?? null;
         $this->container['test_mode'] = $data['test_mode'] ?? null;
-        $this->container['status'] = $data['status'] ?? 'created';
+        $this->container['status'] = $data['status'] ?? 'pending';
     }
 
     /**
