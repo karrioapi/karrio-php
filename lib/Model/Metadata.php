@@ -1,6 +1,6 @@
 <?php
 /**
- * TokenVerify
+ * Metadata
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Purplship\ObjectSerializer;
 
 /**
- * TokenVerify Class Doc Comment
+ * Metadata Class Doc Comment
  *
  * @category Class
  * @package  Purplship
@@ -43,7 +43,7 @@ use \Purplship\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class TokenVerify implements ModelInterface, ArrayAccess, \JsonSerializable
+class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class TokenVerify implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TokenVerify';
+    protected static $openAPIModelName = 'Metadata';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,13 @@ class TokenVerify implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'token' => 'string'
+        'app_name' => 'string',
+        'app_version' => 'string',
+        'app_website' => 'string',
+        'multi_organizations' => 'bool',
+        'admin' => 'string',
+        'openapi' => 'string',
+        'graphql' => 'string'
     ];
 
     /**
@@ -71,7 +77,13 @@ class TokenVerify implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'token' => null
+        'app_name' => null,
+        'app_version' => null,
+        'app_website' => null,
+        'multi_organizations' => null,
+        'admin' => null,
+        'openapi' => null,
+        'graphql' => null
     ];
 
     /**
@@ -101,7 +113,13 @@ class TokenVerify implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'token' => 'token'
+        'app_name' => 'APP_NAME',
+        'app_version' => 'APP_VERSION',
+        'app_website' => 'APP_WEBSITE',
+        'multi_organizations' => 'MULTI_ORGANIZATIONS',
+        'admin' => 'ADMIN',
+        'openapi' => 'OPENAPI',
+        'graphql' => 'GRAPHQL'
     ];
 
     /**
@@ -110,7 +128,13 @@ class TokenVerify implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'token' => 'setToken'
+        'app_name' => 'setAppName',
+        'app_version' => 'setAppVersion',
+        'app_website' => 'setAppWebsite',
+        'multi_organizations' => 'setMultiOrganizations',
+        'admin' => 'setAdmin',
+        'openapi' => 'setOpenapi',
+        'graphql' => 'setGraphql'
     ];
 
     /**
@@ -119,7 +143,13 @@ class TokenVerify implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'token' => 'getToken'
+        'app_name' => 'getAppName',
+        'app_version' => 'getAppVersion',
+        'app_website' => 'getAppWebsite',
+        'multi_organizations' => 'getMultiOrganizations',
+        'admin' => 'getAdmin',
+        'openapi' => 'getOpenapi',
+        'graphql' => 'getGraphql'
     ];
 
     /**
@@ -179,7 +209,13 @@ class TokenVerify implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['token'] = $data['token'] ?? null;
+        $this->container['app_name'] = $data['app_name'] ?? null;
+        $this->container['app_version'] = $data['app_version'] ?? null;
+        $this->container['app_website'] = $data['app_website'] ?? null;
+        $this->container['multi_organizations'] = $data['multi_organizations'] ?? null;
+        $this->container['admin'] = $data['admin'] ?? null;
+        $this->container['openapi'] = $data['openapi'] ?? null;
+        $this->container['graphql'] = $data['graphql'] ?? null;
     }
 
     /**
@@ -191,11 +227,49 @@ class TokenVerify implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['token'] === null) {
-            $invalidProperties[] = "'token' can't be null";
+        if ($this->container['app_name'] === null) {
+            $invalidProperties[] = "'app_name' can't be null";
         }
-        if ((mb_strlen($this->container['token']) < 1)) {
-            $invalidProperties[] = "invalid value for 'token', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['app_name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'app_name', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['app_version'] === null) {
+            $invalidProperties[] = "'app_version' can't be null";
+        }
+        if ((mb_strlen($this->container['app_version']) < 1)) {
+            $invalidProperties[] = "invalid value for 'app_version', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['app_website'] === null) {
+            $invalidProperties[] = "'app_website' can't be null";
+        }
+        if ((mb_strlen($this->container['app_website']) < 1)) {
+            $invalidProperties[] = "invalid value for 'app_website', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['multi_organizations'] === null) {
+            $invalidProperties[] = "'multi_organizations' can't be null";
+        }
+        if ($this->container['admin'] === null) {
+            $invalidProperties[] = "'admin' can't be null";
+        }
+        if ((mb_strlen($this->container['admin']) < 1)) {
+            $invalidProperties[] = "invalid value for 'admin', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['openapi'] === null) {
+            $invalidProperties[] = "'openapi' can't be null";
+        }
+        if ((mb_strlen($this->container['openapi']) < 1)) {
+            $invalidProperties[] = "invalid value for 'openapi', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['graphql'] === null) {
+            $invalidProperties[] = "'graphql' can't be null";
+        }
+        if ((mb_strlen($this->container['graphql']) < 1)) {
+            $invalidProperties[] = "invalid value for 'graphql', the character length must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -214,30 +288,199 @@ class TokenVerify implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets token
+     * Gets app_name
      *
      * @return string
      */
-    public function getToken()
+    public function getAppName()
     {
-        return $this->container['token'];
+        return $this->container['app_name'];
     }
 
     /**
-     * Sets token
+     * Sets app_name
      *
-     * @param string $token token
+     * @param string $app_name app_name
      *
      * @return self
      */
-    public function setToken($token)
+    public function setAppName($app_name)
     {
 
-        if ((mb_strlen($token) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $token when calling TokenVerify., must be bigger than or equal to 1.');
+        if ((mb_strlen($app_name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $app_name when calling Metadata., must be bigger than or equal to 1.');
         }
 
-        $this->container['token'] = $token;
+        $this->container['app_name'] = $app_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets app_version
+     *
+     * @return string
+     */
+    public function getAppVersion()
+    {
+        return $this->container['app_version'];
+    }
+
+    /**
+     * Sets app_version
+     *
+     * @param string $app_version app_version
+     *
+     * @return self
+     */
+    public function setAppVersion($app_version)
+    {
+
+        if ((mb_strlen($app_version) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $app_version when calling Metadata., must be bigger than or equal to 1.');
+        }
+
+        $this->container['app_version'] = $app_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets app_website
+     *
+     * @return string
+     */
+    public function getAppWebsite()
+    {
+        return $this->container['app_website'];
+    }
+
+    /**
+     * Sets app_website
+     *
+     * @param string $app_website app_website
+     *
+     * @return self
+     */
+    public function setAppWebsite($app_website)
+    {
+
+        if ((mb_strlen($app_website) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $app_website when calling Metadata., must be bigger than or equal to 1.');
+        }
+
+        $this->container['app_website'] = $app_website;
+
+        return $this;
+    }
+
+    /**
+     * Gets multi_organizations
+     *
+     * @return bool
+     */
+    public function getMultiOrganizations()
+    {
+        return $this->container['multi_organizations'];
+    }
+
+    /**
+     * Sets multi_organizations
+     *
+     * @param bool $multi_organizations multi_organizations
+     *
+     * @return self
+     */
+    public function setMultiOrganizations($multi_organizations)
+    {
+        $this->container['multi_organizations'] = $multi_organizations;
+
+        return $this;
+    }
+
+    /**
+     * Gets admin
+     *
+     * @return string
+     */
+    public function getAdmin()
+    {
+        return $this->container['admin'];
+    }
+
+    /**
+     * Sets admin
+     *
+     * @param string $admin admin
+     *
+     * @return self
+     */
+    public function setAdmin($admin)
+    {
+
+        if ((mb_strlen($admin) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $admin when calling Metadata., must be bigger than or equal to 1.');
+        }
+
+        $this->container['admin'] = $admin;
+
+        return $this;
+    }
+
+    /**
+     * Gets openapi
+     *
+     * @return string
+     */
+    public function getOpenapi()
+    {
+        return $this->container['openapi'];
+    }
+
+    /**
+     * Sets openapi
+     *
+     * @param string $openapi openapi
+     *
+     * @return self
+     */
+    public function setOpenapi($openapi)
+    {
+
+        if ((mb_strlen($openapi) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $openapi when calling Metadata., must be bigger than or equal to 1.');
+        }
+
+        $this->container['openapi'] = $openapi;
+
+        return $this;
+    }
+
+    /**
+     * Gets graphql
+     *
+     * @return string
+     */
+    public function getGraphql()
+    {
+        return $this->container['graphql'];
+    }
+
+    /**
+     * Sets graphql
+     *
+     * @param string $graphql graphql
+     *
+     * @return self
+     */
+    public function setGraphql($graphql)
+    {
+
+        if ((mb_strlen($graphql) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $graphql when calling Metadata., must be bigger than or equal to 1.');
+        }
+
+        $this->container['graphql'] = $graphql;
 
         return $this;
     }
