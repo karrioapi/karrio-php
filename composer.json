@@ -1,6 +1,6 @@
 {
     "name": "purplship/purplship-php",
-    "version": "2021.10.1",
+    "version": "2021.11",
     "description": "purplship Multi-carrier Shipping API PHP client library",
     "keywords": [
         "purplship",
@@ -14,7 +14,7 @@
         "dhl-api"
     ],
     "homepage": "https://github.com/purplship/purplship-php-client",
-    "license": "MIT",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "purplship",
