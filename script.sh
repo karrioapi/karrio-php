@@ -4,11 +4,11 @@ if [[ "$*" == *shell* ]]; then
 elif [[ "$*" == *gen:cli* ]]; then
 	mkdir -p "./codegen"
 	docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli generate \
-		-i https://raw.githubusercontent.com/purplship/purplship/main/server/schemas/openapi.json \
+		-i https://raw.githubusercontent.com/karrioapi/karrio/main/server/schemas/openapi.json \
 		-g php \
 		-o /local/codegen/php \
-        --additional-properties=invokerPackage=Purplship \
-        --additional-properties=packageName=Purplship \
+        --additional-properties=invokerPackage=Karrio \
+        --additional-properties=packageName=Karrio \
         --additional-properties=ensureUniqueParams=true \
         --additional-properties=prependFormOrBodyParameters=true
 

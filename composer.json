@@ -1,9 +1,9 @@
 {
-    "name": "purplship/purplship-php",
-    "version": "2021.11",
-    "description": "purplship Multi-carrier Shipping API PHP client library",
+    "name": "karrio/karrio-php",
+    "version": "2022.3.0",
+    "description": "karrio Multi-carrier Shipping API PHP client library",
     "keywords": [
-        "purplship",
+        "karrio",
         "php",
         "sdk",
         "api",
@@ -13,18 +13,18 @@
         "ups-api",
         "dhl-api"
     ],
-    "homepage": "https://github.com/purplship/purplship-php-client",
+    "homepage": "https://github.com/karrioapi/karrio-php",
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "purplship",
-            "homepage": "https://purplship.com"
+            "name": "karrio",
+            "homepage": "https://karrio.io"
         }
     ],
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:purplship/purplship-php-client.git"
+            "url": "git@github.com:karrioapi/karrio-php.git"
         }
     ],
     "require": {
@@ -33,7 +33,7 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "guzzlehttp/guzzle": "^7.3",
-        "guzzlehttp/psr7": "^2.0"
+        "guzzlehttp/psr7": "^1.7 || ^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0 || ^9.0",
@@ -41,7 +41,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Purplship\\": "lib/"
+            "Karrio\\": "lib/"
         }
     }
 }

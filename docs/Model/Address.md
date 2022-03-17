@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **address_line1** | **string** | The address line with street number &lt;br/&gt; **(required for shipment purchase)** | [optional]
 **address_line2** | **string** | The address line with suite number | [optional]
 **validate_location** | **bool** | Indicate if the address should be validated | [optional] [default to false]
-**validation** | [**\Purplship\Model\AddressValidation**](AddressValidation.md) |  | [optional]
+**object_type** | **string** | Specifies the object type | [optional] [default to 'address']
+**validation** | [**\Karrio\Model\AddressValidation**](AddressValidation.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

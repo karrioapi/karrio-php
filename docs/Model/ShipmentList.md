@@ -6,6 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **next** | **string** |  | [optional]
 **previous** | **string** |  | [optional]
-**results** | [**\Purplship\Model\Shipment[]**](Shipment.md) |  |
+**results** | [**\Karrio\Model\Shipment[]**](Shipment.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

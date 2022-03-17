@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **app_version** | **string** |  |
 **app_website** | **string** |  |
 **multi_organizations** | **bool** |  |
+**orders_management** | **bool** |  |
+**apps_management** | **bool** |  |
+**allow_signup** | **bool** |  |
 **admin** | **string** |  |
 **openapi** | **string** |  |
 **graphql** | **string** |  |

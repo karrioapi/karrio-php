@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**commodities** | [**\Purplship\Model\Commodity[]**](Commodity.md) | The parcel content items |
-**duty** | [**\Purplship\Model\Duty**](Duty.md) |  | [optional]
+**commodities** | [**\Karrio\Model\CommodityData[]**](CommodityData.md) | The parcel content items |
+**duty** | [**\Karrio\Model\Duty**](Duty.md) |  | [optional]
 **content_type** | **string** |  | [optional]
 **content_description** | **string** |  | [optional]
 **incoterm** | **string** | The customs &#39;term of trade&#39; also known as &#39;incoterm&#39; | [optional]

@@ -1,12 +1,12 @@
-# purplship PHP Client
+# Karrio PHP Client
 
-purplship is a Multi-carrier Shipping API that simplifies the integration of logistic carrier services.
+karrio is a universal Shipping API that simplifies the integration of logistic carrier services.
 
-Visit [purplship.com](https://purplship.com) to deploy your private cloud multi-carrier shipping API.
+Visit [karrio.io](https://karrio.io) to deploy your private cloud multi-carrier shipping API.
 
 ## Documentation
 
-See the full [PHP API docs](https://next.purplship.com/docs/reference).
+See the full [PHP API docs](https://docs.karrio.io/reference/).
 
 ## Requirements
 
@@ -19,7 +19,7 @@ PHP 5.5 and later
 To install the bindings via [Composer](http://getcomposer.org/), add the following to `composer.json`:
 
 ```bash
-composer require purplship/purplship-php
+composer require karrio/karrio-php
 ```
 
 ### Development
@@ -37,10 +37,10 @@ Please follow the [installation procedure](#installation--usage) and then run th
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
-$purplship = new \Purplship\Purplship('YOUR_API_KEY', 'https://instance.purplship.api');
+$karrio = new \Karrio\Karrio('YOUR_API_KEY', 'https://api.karrio.io');
 
 try {
-    $result = $purplship->carriers->list();
+    $result = $karrio->carriers->list();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling carriers->list: ', $e->getMessage(), PHP_EOL;
@@ -50,6 +50,8 @@ try {
 ```
 
 ## Documentation For Models
+
+## Models
 
 - [Address](docs/Model/Address.md)
 - [AddressData](docs/Model/AddressData.md)
@@ -63,12 +65,18 @@ try {
 - [Customs](docs/Model/Customs.md)
 - [CustomsData](docs/Model/CustomsData.md)
 - [CustomsList](docs/Model/CustomsList.md)
+- [Documents](docs/Model/Documents.md)
 - [Duty](docs/Model/Duty.md)
 - [ErrorResponse](docs/Model/ErrorResponse.md)
 - [Message](docs/Model/Message.md)
+- [Metadata](docs/Model/Metadata.md)
 - [Operation](docs/Model/Operation.md)
 - [OperationConfirmation](docs/Model/OperationConfirmation.md)
 - [OperationResponse](docs/Model/OperationResponse.md)
+- [Order](docs/Model/Order.md)
+- [OrderData](docs/Model/OrderData.md)
+- [OrderList](docs/Model/OrderList.md)
+- [OrderUpdateData](docs/Model/OrderUpdateData.md)
 - [Parcel](docs/Model/Parcel.md)
 - [ParcelData](docs/Model/ParcelData.md)
 - [ParcelList](docs/Model/ParcelList.md)
@@ -92,7 +100,9 @@ try {
 - [ShipmentList](docs/Model/ShipmentList.md)
 - [ShipmentPurchaseData](docs/Model/ShipmentPurchaseData.md)
 - [ShipmentRateData](docs/Model/ShipmentRateData.md)
+- [ShipmentUpdateData](docs/Model/ShipmentUpdateData.md)
 - [ShippingRequest](docs/Model/ShippingRequest.md)
+- [ShippingResponse](docs/Model/ShippingResponse.md)
 - [TokenObtainPair](docs/Model/TokenObtainPair.md)
 - [TokenPair](docs/Model/TokenPair.md)
 - [TokenRefresh](docs/Model/TokenRefresh.md)
@@ -108,4 +118,4 @@ try {
 
 ## Author
 
-purplship Team | hello@purplship.com | [purplship.com](https://purplship.com)
+Team Karrio | hello@karrio.io | [karrio.io](https://karrio.io)
