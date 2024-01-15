@@ -1,3 +1,5 @@
+__This repository is not maintained anymore. Chat with us if you want to help maintain a PHP client for Karrio at https://github.com/karrioapi/karrio__ 
+
 # Karrio PHP Client
 
 karrio is a universal Shipping API that simplifies the integration of logistic carrier services.
